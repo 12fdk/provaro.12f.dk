@@ -111,8 +111,12 @@ img { max-width: 100%; display: block; }
   height: 34px;
   align-items: center;
   justify-content: center;
-  background: var(--accent-subtle);
-  border-radius: 9px;
+  flex: none;
+}
+.brand-mark img {
+  width: 34px;
+  height: 34px;
+  display: block;
 }
 .brand-name {
   font-weight: 700;
