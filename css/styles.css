@@ -788,8 +788,10 @@ p { margin: 0; }
 .offline-inner h2 { max-width: 18ch; }
 
 /* ---------- Privacy ------------------------------------------------------- */
-.privacy-inner { display: grid; gap: 20px; }
-.privacy-inner p { color: var(--ink-2); }
+/* A column of plain argument, used where a section is a paragraph rather than a
+   grid of things: #privacy, and #no-list. */
+.prose-inner, .privacy-inner { display: grid; gap: 20px; }
+.prose-inner p, .privacy-inner p { color: var(--ink-2); }
 .privacy-inner .receipt {
   margin-top: 6px;
   padding: 22px 24px;
