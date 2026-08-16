@@ -210,39 +210,23 @@ p { margin: 0; }
 .on-dark .btn-line:hover,
 .hero .btn-line:hover { border-color: #fff; background: rgba(255, 255, 255, .1); }
 
-/* The App Store lockup, built rather than fetched so it stays crisp and themed */
+/* Apple's own badge artwork, self-hosted so the page still fetches nothing from
+   anywhere but itself. It is supplied as-is on purpose: the guidelines want the
+   badge unmodified, at 40px or taller, with clear space around it — so this rule
+   sets a height and gets out of the way. The artwork carries its own black plate
+   and a light outline, which is what lets the same file sit on the navy hero and
+   on the cement pricing card without a themed variant.
+
+   An earlier pass drew the lockup in markup instead, to set it in the page's own
+   type. It looked right until you compared the Apple mark to a real one — it had
+   no leaf and no bite. Do not rebuild it. */
 .appstore {
-  display: inline-flex;
-  align-items: center;
-  gap: 11px;
-  padding: 10px 20px 11px 17px;
-  border-radius: 6px;
-  background: var(--ink);
-  color: #fff;
-  text-decoration: none;
-  transition: background .15s ease, transform .15s ease;
+  display: inline-block;
+  line-height: 0;
+  transition: transform .15s ease, opacity .15s ease;
 }
-.appstore:hover { background: #000; transform: translateY(-1px); }
-.appstore svg { flex: none; }
-.appstore span { display: block; line-height: 1; }
-.appstore .as-sm {
-  font-family: var(--mono);
-  font-size: .58rem;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  opacity: .78;
-  margin-bottom: 5px;
-}
-.appstore .as-lg {
-  font-size: 1.28rem;
-  font-weight: 600;
-  font-stretch: 104%;
-  letter-spacing: -.02em;
-}
-.on-dark .appstore,
-.hero .appstore { background: var(--paper); color: var(--ink); }
-.on-dark .appstore:hover,
-.hero .appstore:hover { background: #EFF1F4; }
+.appstore img { height: 52px; width: auto; }
+.appstore:hover { transform: translateY(-1px); opacity: .88; }
 
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
 
@@ -1054,7 +1038,8 @@ p { margin: 0; }
   .brand-name { font-size: 1.06rem; }
   .header-cta { padding: 8px 13px; font-size: .82rem; }
   .actions { gap: 12px; }
-  .btn, .appstore { width: 100%; justify-content: center; }
+  /* the badge keeps its own size — Apple's artwork is not ours to stretch */
+  .btn { width: 100%; justify-content: center; }
   .feature-grid { grid-template-columns: 1fr; }
   .callout-list { grid-template-columns: 1fr; }
   .doc-foot { grid-template-columns: 1fr; gap: .6em; }
