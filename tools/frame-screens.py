@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
-"""Composite the raw simulator screenshots into an iPhone 16 Pro device frame.
+"""Composite the raw simulator screenshots into their device frame.
 
-The raw shots in assets/screens are 1206x2622 (iPhone 16 Pro @3x). The frame PNG
-has a transparent screen aperture at (102, 100)-(1307, 2721) — exactly 1206x2622 —
-so each shot drops straight in with no scaling. The screenshot goes *behind* the
-frame, which is what keeps the rounded screen corners and the Dynamic Island right,
-and it is clipped to the device silhouette so its square corners cannot poke out
-past the rounded bezel.
+Two devices, one path. The raw shots under assets/screens/<device> are exactly
+the size of the transparent screen aperture in that device's frame PNG, so each
+shot drops straight in with no scaling:
 
-The frame itself is downloaded on demand and cached (gitignored) rather than kept
-in the repo as a source asset.
+    iphone  1206x2622 (iPhone 16 Pro @3x)      frame 1406x2822, aperture at (102, 100)
+    ipad    2064x2752 (iPad Pro 13" M4 @2x)    frame 2264x2952, aperture at (100, 100)
+
+The screenshot goes *behind* the frame, which is what keeps the rounded screen
+corners and the Dynamic Island right, and it is clipped to the device silhouette
+so its square corners cannot poke out past the rounded bezel.
+
+The frames themselves are downloaded on demand and cached (gitignored) rather
+than kept in the repo as source assets.
 
 The one screen that cannot be composited ahead of time is the `<video>` in the
-core-loop section, so this also writes assets/img/device-frame.png — the bezel
+core-loop section, so this also writes assets/img/device-frame*.png — the bezel
 with its aperture left transparent — which the page lays *over* the playing
-video. `.device-frame` in css/styles.css positions the video using the same
-aperture numbers, expressed as percentages of the frame:
+video. `.reel-frame` in css/styles.css positions the video using the same
+aperture numbers, expressed as percentages of the frame.
 
-    left   102/1406    top     100/2822
-    width 1206/1406    height 2622/2822
+Output is downscaled on the way out (see MAX_W below). The frames are 1406 and
+2264 pixels wide and the page renders them at 176-430 CSS pixels, so shipping
+them at full resolution costs megabytes that no display can spend.
 
     python3 tools/frame-screens.py
 """
@@ -32,26 +37,40 @@ from PIL import Image, ImageChops, ImageDraw
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets" / "screens"
-OUT = SRC / "framed"
-OVERLAY = ROOT / "assets" / "img" / "device-frame.png"
 CACHE = ROOT / "tools" / ".cache"
-FRAME = CACHE / "iphone-16-pro-black-titanium.png"
-FRAME_URL = (
-    "https://raw.githubusercontent.com/jamesjingyi/mockup-device-frames/main/"
-    "Exports/iOS/16%20Pro/16%20Pro%20-%20Black%20Titanium.png"
-)
+BASE_URL = "https://raw.githubusercontent.com/jamesjingyi/mockup-device-frames/main/Exports/"
 
-# Transparent screen aperture inside the frame, measured from its alpha channel.
-APERTURE = (102, 100)
-SCREEN_SIZE = (1206, 2622)
+# Widest the page ever renders these, times a comfortable factor for high-DPR
+# screens: framed shots peak at 264 CSS px in a step, the bezel at 430 in the reel.
+MAX_W = {"shot": 800, "bezel": 1200}
+
+DEVICES = {
+    "iphone": {
+        "frame": CACHE / "iphone-16-pro-black-titanium.png",
+        "url": BASE_URL + "iOS/16%20Pro/16%20Pro%20-%20Black%20Titanium.png",
+        "aperture": (102, 100),
+        "screen": (1206, 2622),
+        # Named without a suffix because the page shipped with it before the iPad existed.
+        "overlay": ROOT / "assets" / "img" / "device-frame.png",
+    },
+    "ipad": {
+        "frame": CACHE / "ipad-pro-13-m4-space-black.png",
+        "url": BASE_URL + "iPadOS/iPad%20Pro/M4%20%26%20M5/13/"
+                          "iPad%20Pro%2013%20M4%20%26%20M5%20-%20Portrait%20-%20Space%20Black.png",
+        "aperture": (100, 100),
+        "screen": (2064, 2752),
+        "overlay": ROOT / "assets" / "img" / "device-frame-ipad.png",
+    },
+}
 
 
-def load_frame() -> Image.Image:
-    if not FRAME.exists():
+def load_frame(device: dict) -> Image.Image:
+    path = device["frame"]
+    if not path.exists():
         CACHE.mkdir(parents=True, exist_ok=True)
-        print(f"downloading device frame -> {FRAME}")
-        urllib.request.urlretrieve(FRAME_URL, FRAME)
-    return Image.open(FRAME).convert("RGBA")
+        print(f"downloading device frame -> {path}")
+        urllib.request.urlretrieve(device["url"], path)
+    return Image.open(path).convert("RGBA")
 
 
 def body_mask(frame: Image.Image) -> Image.Image:
@@ -79,38 +98,58 @@ def zero_transparent(canvas: Image.Image) -> Image.Image:
     )
 
 
-def main() -> int:
-    frame = load_frame()
+def fit(canvas: Image.Image, max_w: int) -> Image.Image:
+    if canvas.width <= max_w:
+        return canvas
+    h = round(canvas.height * max_w / canvas.width)
+    return canvas.resize((max_w, h), Image.LANCZOS)
+
+
+def frame_device(name: str, device: dict) -> int:
+    frame = load_frame(device)
     mask = body_mask(frame)
-    OUT.mkdir(parents=True, exist_ok=True)
+    src = SRC / name
+    out = src / "framed"
+    out.mkdir(parents=True, exist_ok=True)
 
-    zero_transparent(frame).save(OVERLAY, optimize=True)
-    print(f"bezel overlay -> {OVERLAY.relative_to(ROOT)}")
+    overlay = fit(zero_transparent(frame), MAX_W["bezel"])
+    overlay.save(device["overlay"], optimize=True)
+    print(f"[{name}] bezel overlay {overlay.size} -> {device['overlay'].relative_to(ROOT)}")
 
-    shots = sorted(p for p in SRC.glob("*.png") if p.is_file())
+    shots = sorted(p for p in src.glob("*.png") if p.is_file())
     if not shots:
-        print(f"no screenshots in {SRC}", file=sys.stderr)
+        print(f"no screenshots in {src}", file=sys.stderr)
         return 1
 
     for shot in shots:
         screen = Image.open(shot).convert("RGBA")
-        if screen.size != SCREEN_SIZE:
-            print(f"  {shot.name}: {screen.size} -> resizing to {SCREEN_SIZE}")
-            screen = screen.resize(SCREEN_SIZE, Image.LANCZOS)
+        if screen.size != device["screen"]:
+            print(f"  {shot.name}: {screen.size} -> resizing to {device['screen']}")
+            screen = screen.resize(device["screen"], Image.LANCZOS)
 
         canvas = Image.new("RGBA", frame.size, (0, 0, 0, 0))
-        canvas.paste(screen, APERTURE)
+        canvas.paste(screen, device["aperture"])
         canvas.putalpha(ImageChops.multiply(canvas.getchannel("A"), mask))
         canvas.alpha_composite(frame)
 
-        canvas = zero_transparent(canvas)
+        canvas = fit(zero_transparent(canvas), MAX_W["shot"])
 
-        dest = OUT / shot.name
+        dest = out / shot.name
         canvas.save(dest, optimize=True)
-        print(f"framed {shot.name} -> {dest.relative_to(ROOT)}")
+        print(f"[{name}] framed {shot.name} {canvas.size} -> {dest.relative_to(ROOT)}")
 
     return 0
 
 
+def main(argv: list[str]) -> int:
+    wanted = argv[1:] or list(DEVICES)
+    unknown = [d for d in wanted if d not in DEVICES]
+    if unknown:
+        print(f"unknown device(s): {', '.join(unknown)}", file=sys.stderr)
+        print(f"known: {', '.join(DEVICES)}", file=sys.stderr)
+        return 2
+    return max(frame_device(name, DEVICES[name]) for name in wanted)
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv))

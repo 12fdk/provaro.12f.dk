@@ -541,11 +541,76 @@ p { margin: 0; }
 .stake h3 { margin-bottom: 12px; }
 .stake p { color: var(--ink-2); font-size: .97rem; }
 
+/* ---------- Device switch ------------------------------------------------- */
+/* The app is sold as iPhone *and* iPad, so every screen on the page exists in
+   both. A .device-pick holds a radio pair and the shots they govern; :has()
+   turns the checked one into the tokens below, so the swap is pure CSS and the
+   page still works with scripting off. Without :has() (nothing current) both
+   devices simply show, stacked — which is still the honest answer.
+
+   The iPad is sized to stand the same height as the phone rather than the same
+   width: 264 / 176 is 2264/2952 against 1406/2822, the two frames' aspects. */
+.device-pick {
+  --shot-col: 190px;
+  --shot-w: 176px;
+  --reel-w: min(330px, 76vw);
+}
+.device-pick:has(.device-radio[value="ipad"]:checked) {
+  --shot-col: 278px;
+  --shot-w: 264px;
+  --reel-w: min(430px, 84vw);
+}
+.device-pick:has(.device-radio[value="ipad"]:checked) .on-iphone { display: none; }
+.device-pick:has(.device-radio[value="iphone"]:checked) .on-ipad { display: none; }
+
+.switch-row { margin-bottom: 26px; }
+.switch-row.right { text-align: right; }
+.switch-row:not(.right) { text-align: center; }
+
+.device-switch {
+  position: relative;   /* keeps the hidden radios anchored here, not adrift */
+  display: inline-flex;
+  gap: 3px;
+  min-width: 0;
+  margin: 0;
+  padding: 4px;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: var(--paper);
+  text-align: left;
+}
+/* the radios themselves are only a state store — the labels are the control */
+.device-switch input {
+  position: absolute;
+  width: 1px; height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.device-switch label {
+  padding: 8px 18px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s ease, color .15s ease;
+}
+.device-switch label:hover { color: var(--ink); background: rgba(16, 23, 32, .05); }
+.device-switch input:checked + label { background: var(--ink); color: #fff; }
+.device-switch input:focus-visible + label {
+  outline: 3px solid var(--markup);
+  outline-offset: 2px;
+}
+
 /* ---------- Steps --------------------------------------------------------- */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
 .step {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) 190px;
+  grid-template-columns: auto minmax(0, 1fr) var(--shot-col);
   align-items: center;
   gap: clamp(22px, 3.4vw, 46px);
   background: var(--paper);
@@ -567,13 +632,13 @@ p { margin: 0; }
 .step-body h3 { font-size: 1.4rem; font-stretch: 106%; }
 .step-body p { margin-top: 12px; color: var(--ink-2); font-size: .97rem; }
 .step-shot { justify-self: center; }
-.step-shot img { width: 176px; filter: drop-shadow(0 20px 30px rgba(16, 23, 32, .22)); }
+.step-shot img { width: var(--shot-w); filter: drop-shadow(0 20px 30px rgba(16, 23, 32, .22)); }
 
 /* ---------- Video --------------------------------------------------------- */
 .reel { display: grid; place-items: center; }
 .reel-frame {
   position: relative;
-  width: min(330px, 76vw);
+  width: var(--reel-w);
   aspect-ratio: 1406 / 2822;
   filter: drop-shadow(0 26px 44px rgba(16, 23, 32, .3));
 }
@@ -592,6 +657,17 @@ p { margin: 0; }
   border-radius: 14.9% / 6.86%;
   object-fit: cover;
   background: #000;
+}
+/* Same construction for the iPad: aperture (100, 100), 2064x2752 inside a
+   2264x2952 frame. Its screen corners are far shallower than the phone's —
+   52 of those aperture pixels, 2.52% of its width and 1.89% of its height. */
+.reel-frame.reel-ipad { aspect-ratio: 2264 / 2952; }
+.reel-frame.reel-ipad video {
+  left: 4.4170%;
+  top: 3.3875%;
+  width: 91.1661%;
+  height: 93.2249%;
+  border-radius: 2.52% / 1.89%;
 }
 .reel-frame .bezel { position: absolute; inset: 0; width: 100%; pointer-events: none; }
 .reel figcaption {
@@ -963,7 +1039,8 @@ p { margin: 0; }
   .step { grid-template-columns: auto minmax(0, 1fr); padding: 28px; }
   .step-n { font-size: 3.4rem; align-self: start; }
   .step-shot { grid-column: 1 / -1; justify-self: start; margin-top: 4px; }
-  .step-shot img { width: 152px; }
+  .device-pick { --shot-w: 152px; }
+  .device-pick:has(.device-radio[value="ipad"]:checked) { --shot-w: 228px; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .pricing { grid-template-columns: 1fr; }
   .close-inner { grid-template-columns: 1fr; }

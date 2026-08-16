@@ -1,10 +1,30 @@
 # Screenshots
 
-Raw 1206x2622 (iPhone 16 Pro @3x) simulator shots, copied from the app repo's
-App Store set — `provaro/fastlane/screenshots/raw/iphone/en-US`. `framed/` holds
-the same shots composited into a device frame by `tools/frame-screens.py`; that
-script globs `*.png`, so a rename here only needs a re-run (and a delete of the
-old file in `framed/`).
+Raw simulator shots, copied from the app repo's App Store set —
+`provaro/fastlane/screenshots/raw/<device>/en-US`. One directory per device,
+because the app is sold as iPhone *and* iPad and the page carries both:
+
+| Here | Raw size | Device |
+|---|---|---|
+| `iphone/` | 1206x2622 | iPhone 16 Pro @3x |
+| `ipad/` | 2064x2752 | iPad Pro 13" M4 @2x |
+
+`<device>/framed/` holds the same shots composited into that device's frame by
+`tools/frame-screens.py`; the script globs `*.png` per device, so a rename here
+only needs a re-run (and a delete of the old file in `framed/`). Run it with no
+arguments for both devices, or name one — `python3 tools/frame-screens.py ipad`.
+
+Framed output is downscaled on the way out. The frames are 1406 and 2264 pixels
+wide and the page renders them between 152 and 264 CSS pixels, so full
+resolution would be megabytes no display can spend.
+
+## The iPad is not the iPhone shot made bigger
+
+Worth knowing before swapping one for the other: the iPad runs a split view, so
+`report-editor` and `document-preview` show the reports list down the left with
+the open job beside it, and `report-library` shows the list with an empty detail
+pane. Only `markup` is the same full-screen scene on both. The alt text in
+`index.html` says so, and should keep saying so.
 
 ## They are renamed on the way in, on purpose
 
