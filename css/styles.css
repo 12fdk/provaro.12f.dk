@@ -379,14 +379,14 @@ p { margin: 0; }
 }
 .handover .doc { position: relative; box-shadow: var(--lift-3); }
 
-/* the page's own photo frame, still empty — the slot the capture drops into.
-   The extra top margin is the room the lifted photo needs so it never covers
-   the caption line above it. */
+/* the page's own photo slot, still empty — where the capture drops in. The
+   extra top margin is the room the lifted photo needs so it never covers the
+   caption line above it. */
 .handover .doc-plate { margin-top: 2.2em; }
-.doc-plate.empty {
-  position: relative;
+.doc-shot.empty {
   border: 2px dashed var(--markup);
   border-radius: 3px;
+  overflow: visible;
 }
 .capture {
   position: absolute;
@@ -458,22 +458,32 @@ p { margin: 0; }
   font-weight: 500;
   color: var(--ink);
 }
+/* Each photo gets a slot that takes its height from what the page has left,
+   and the photo itself is out of flow inside that slot. Nothing an image does
+   can then change the slot, so the page cannot overflow its own A4 box —
+   which is what put a footer underneath a photograph in WebKit. */
 .doc-plate {
   margin-top: 1em;
-  flex: 1;
+  flex: 1 1 0;
   min-height: 0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: .7em;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
 }
-.doc-plate img {
-  width: 100%;
-  height: 100%;
+.doc-shot {
+  position: relative;
+  flex: 1 1 0;
   min-height: 0;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 1px;
 }
-.doc-plate.single { grid-template-rows: minmax(0, 1fr); }
+.doc-shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .doc-foot {
   margin-top: 1.2em;
   padding-top: .8em;
@@ -598,8 +608,10 @@ p { margin: 0; }
 .section.deliverable { background: var(--ground-2); }
 
 /* The page is 560px wide inside a 940px box, leaving a 190px margin either
-   side for the callout labels. Both are fixed above the breakpoint so the
-   leader-line percentages below stay true. */
+   side for the callout labels. The leaders between the two are measured from
+   the live layout by the script at the foot of the page — see drawCallouts —
+   so they stay on target through any width, font swap or wrap change. Until
+   that runs, the labels are the plain list underneath instead. */
 .annotated {
   position: relative;
   max-width: 940px;
@@ -613,33 +625,42 @@ p { margin: 0; }
 }
 .annotated .doc { box-shadow: var(--lift-2); }
 @media (min-width: 1120px) {
-  .annotated { padding: 0 190px; }
-  .annotated .doc-frame { max-width: none; }
+  .annotated.has-lines { padding: 0 190px; }
+  .annotated.has-lines .doc-frame { max-width: none; }
 }
+/* The page sits in a container-query wrapper, and inline-size containment makes
+   that wrapper its own stacking context — so without a z-index here the paper
+   paints over the leaders and every line stops dead at the page edge. */
 .annotated-lines {
+  display: none;
   position: absolute;
   inset: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  overflow: visible;
   pointer-events: none;
 }
+.has-lines .annotated-lines { display: block; }
 .annotated-lines path {
   fill: none;
   stroke: var(--markup);
-  stroke-width: 1.9;
+  stroke-width: 1.6;
   stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
 }
 .annotated-lines circle { fill: var(--markup); }
 
-.callout {
+.callout { display: none; }
+.has-lines .callout {
+  display: block;
   position: absolute;
+  z-index: 2;
+  left: 0;
   width: 160px;
   font-size: .85rem;
   line-height: 1.45;
   color: var(--ink-2);
 }
+.has-lines .callout.right { left: auto; right: 0; }
 .callout b {
   display: block;
   font-family: var(--mono);
@@ -652,7 +673,32 @@ p { margin: 0; }
 }
 .callout.right { text-align: right; }
 
-.callout-list { display: none; }
+.callout-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+  max-width: 560px;
+  margin: 34px auto 0;
+  padding: 0;
+  list-style: none;
+}
+.callout-list li {
+  padding-top: 14px;
+  border-top: 2px solid var(--markup);
+  font-size: .9rem;
+  color: var(--ink-2);
+}
+.callout-list b {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: .68rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.has-lines .callout-list { display: none; }
 
 /* ---------- Features ------------------------------------------------------ */
 .feature-grid {
@@ -855,9 +901,9 @@ p { margin: 0; }
 /* the page-load handover: the paper arrives, the photo lands on it */
 .handover .doc,
 .handover .capture,
-.handover .doc-plate.empty { animation-fill-mode: both; }
+.handover .doc-shot.empty { animation-fill-mode: both; }
 .handover .doc { animation: paper-in .8s cubic-bezier(.2, .7, .3, 1) .1s; }
-.handover .doc-plate.empty { animation: slot-in .5s ease .45s; }
+.handover .doc-shot.empty { animation: slot-in .5s ease .45s; }
 .handover .capture { animation: photo-land .85s cubic-bezier(.2, .8, .3, 1) .55s; }
 
 @keyframes paper-in {
@@ -873,10 +919,11 @@ p { margin: 0; }
   to { opacity: 1; transform: none; }
 }
 
-/* the callout leader lines draw themselves, the way the app draws */
+/* the callout leader lines draw themselves, the way the app draws.
+   --len is each path's own measured length, set by drawCallouts. */
 .annotated-lines path {
-  stroke-dasharray: 210;
-  stroke-dashoffset: 210;
+  stroke-dasharray: var(--len, 400);
+  stroke-dashoffset: var(--len, 400);
   transition: stroke-dashoffset .7s cubic-bezier(.3, .7, .3, 1);
 }
 .annotated-lines circle { transform-box: fill-box; transform-origin: center; scale: 0; transition: scale .3s cubic-bezier(.3, 1.6, .5, 1); }
@@ -886,53 +933,24 @@ p { margin: 0; }
 .annotated.is-in .annotated-lines g:nth-child(2) * { transition-delay: .2s; }
 .annotated.is-in .annotated-lines g:nth-child(3) * { transition-delay: .35s; }
 .annotated.is-in .annotated-lines g:nth-child(4) * { transition-delay: .5s; }
-.annotated .callout { opacity: 0; transition: opacity .5s ease; }
-.annotated.is-in .callout { opacity: 1; }
-.annotated.is-in .callout:nth-of-type(1) { transition-delay: .4s; }
-.annotated.is-in .callout:nth-of-type(2) { transition-delay: .55s; }
-.annotated.is-in .callout:nth-of-type(3) { transition-delay: .7s; }
-.annotated.is-in .callout:nth-of-type(4) { transition-delay: .85s; }
+.has-lines .callout { opacity: 0; transition: opacity .5s ease; }
+.annotated.is-in.has-lines .callout { opacity: 1; }
+.annotated.is-in.has-lines .callout:nth-of-type(1) { transition-delay: .4s; }
+.annotated.is-in.has-lines .callout:nth-of-type(2) { transition-delay: .55s; }
+.annotated.is-in.has-lines .callout:nth-of-type(3) { transition-delay: .7s; }
+.annotated.is-in.has-lines .callout:nth-of-type(4) { transition-delay: .85s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
-  .handover .doc, .handover .capture, .handover .doc-plate.empty { animation: none; }
+  .handover .doc, .handover .capture, .handover .doc-shot.empty { animation: none; }
   .annotated-lines path { stroke-dasharray: none; stroke-dashoffset: 0; transition: none; }
   .annotated-lines circle { scale: 1; transition: none; }
-  .annotated .callout { opacity: 1; transition: none; }
+  .has-lines .callout { opacity: 1; transition: none; }
   .btn:hover, .appstore:hover { transform: none; }
 }
 
 /* ---------- Responsive ---------------------------------------------------- */
-@media (max-width: 1119px) {
-  .annotated-lines, .annotated .callout { display: none; }
-  .callout-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 28px;
-    max-width: 560px;
-    margin: 34px auto 0;
-    padding: 0;
-    list-style: none;
-  }
-  .callout-list li {
-    padding-top: 14px;
-    border-top: 2px solid var(--markup);
-    font-size: .9rem;
-    color: var(--ink-2);
-  }
-  .callout-list b {
-    display: block;
-    font-family: var(--mono);
-    font-weight: 500;
-    font-size: .68rem;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 5px;
-  }
-}
-
 @media (max-width: 960px) {
   .site-nav { display: none; }
   .hero-inner { grid-template-columns: 1fr; gap: 46px; }

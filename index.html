@@ -154,11 +154,13 @@
               14 August 2026
             </p>
             <p class="doc-caption">Old suite stripped out and walls prepared</p>
-            <div class="doc-plate single empty">
-              <figure class="capture">
-                <img src="assets/photos/job-strip-out.jpg" alt="A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page" width="1206" height="904" />
-                <figcaption class="capture-tag">Marked up on site &middot; 09:41</figcaption>
-              </figure>
+            <div class="doc-plate">
+              <div class="doc-shot empty">
+                <figure class="capture">
+                  <img src="assets/photos/job-strip-out.jpg" alt="A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page" width="1206" height="904" />
+                  <figcaption class="capture-tag">Marked up on site &middot; 09:41</figcaption>
+                </figure>
+              </div>
             </div>
             <div class="doc-foot">
               <div><strong>Wrenfield Building Services</strong>VAT GB 123 4567 89</div>
@@ -294,47 +296,48 @@
         </div>
 
         <div class="annotated" data-annotated>
-          <svg class="annotated-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <g><path d="M 18.2 5.9 H 23.5 L 30 7.4" /><circle cx="30" cy="7.4" r="0.55" /></g>
-            <g><path d="M 18.2 29.9 H 22 L 25.6 31.7" /><circle cx="25.6" cy="31.7" r="0.55" /></g>
-            <g><path d="M 81.8 46.9 H 75 L 60.8 52.8" /><circle cx="60.8" cy="52.8" r="0.55" /></g>
-            <g><path d="M 81.8 91.9 H 76 L 67.5 91.6" /><circle cx="67.5" cy="91.6" r="0.55" /></g>
-          </svg>
+          <svg class="annotated-lines" aria-hidden="true"></svg>
 
-          <p class="callout" style="left: 0; top: 2%;"><b>Your letterhead</b>Logo and company name at the head of every page.</p>
-          <p class="callout" style="left: 0; top: 26%;"><b>Your words</b>The caption you typed on site, or one you saved and reuse.</p>
-          <p class="callout right" style="right: 0; top: 43%;"><b>The arrow you drew</b>Marked up on the job. Your original photo is untouched.</p>
-          <p class="callout right" style="right: 0; top: 88%;"><b>Your details, every page</b>Registration number, phone, email and review link.</p>
+          <p class="callout" data-for="letterhead"><b>Your letterhead</b>Logo and company name at the head of every page.</p>
+          <p class="callout" data-for="caption"><b>Your words</b>The caption you typed on site, or one you saved and reuse.</p>
+          <p class="callout right" data-for="arrow" data-lift="64"><b>The arrow you drew</b>Marked up on the job. Your original photo is untouched.</p>
+          <p class="callout right" data-for="foot"><b>Your details, every page</b>Registration number, phone, email and your review link.</p>
 
           <div class="doc-frame">
-          <article class="doc" aria-label="A finished Provaro report page, annotated">
-            <div class="doc-head">
-              <img src="assets/img/logo.png" alt="" width="20" height="20" />
-              <span class="doc-firm">Wrenfield Building Services</span>
-            </div>
-            <p class="doc-title">Bathroom refit &mdash; 14 Selborne Road</p>
-            <p class="doc-meta">
-              Mr &amp; Mrs Ashworth<br />
-              14 Selborne Road, London SE6 1XN<br />
-              14 August 2026
-            </p>
-            <p class="doc-caption">Old suite stripped out, walls prepared, new tray set and sealed</p>
-            <div class="doc-plate">
-              <img src="assets/photos/job-strip-out.jpg" alt="Stripped bathroom with a red arrow drawn across the wall" width="1206" height="904" loading="lazy" />
-              <img src="assets/photos/job-shower-marked.jpg" alt="New tiled shower tray with a red arrow pointing at the fall to the drain" width="709" height="508" loading="lazy" />
-            </div>
-            <div class="doc-foot">
-              <div><strong>Wrenfield Building Services</strong>VAT GB 123 4567 89</div>
-              <div>27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example</div>
-              <div>wrenfield.example<br />Review us on Trustpilot<br />Page 2 of 3</div>
-            </div>
-          </article>
+            <article class="doc" aria-label="A finished Provaro report page, annotated">
+              <div class="doc-head">
+                <img src="assets/img/logo.png" alt="" width="20" height="20" data-anno="letterhead" />
+                <span class="doc-firm">Wrenfield Building Services</span>
+              </div>
+              <p class="doc-title">Bathroom refit &mdash; 14 Selborne Road</p>
+              <p class="doc-meta">
+                Mr &amp; Mrs Ashworth<br />
+                14 Selborne Road, London SE6 1XN<br />
+                14 August 2026
+              </p>
+              <p class="doc-caption" data-anno="caption">Old suite stripped out and walls prepared</p>
+              <div class="doc-plate">
+                <div class="doc-shot">
+                  <!-- data-anno-x/y is where the arrowhead sits in the source file,
+                       measured off the red channel: 0.7017, 0.6210 of 1206x904. -->
+                  <img src="assets/photos/job-strip-out.jpg"
+                       alt="Stripped bathroom with a red arrow drawn across the wall to the corner that was made good"
+                       width="1206" height="904" loading="lazy"
+                       data-anno="arrow" data-anno-x="0.7017" data-anno-y="0.6210" />
+                </div>
+              </div>
+              <div class="doc-foot" data-anno="foot">
+                <div><strong>Wrenfield Building Services</strong>VAT GB 123 4567 89</div>
+                <div>27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example</div>
+                <div>wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3</div>
+              </div>
+            </article>
           </div>
 
           <ul class="callout-list">
             <li><b>Your letterhead</b>Logo and company name at the head of every page.</li>
             <li><b>Your words</b>The caption you typed on site, or one you saved and reuse.</li>
-            <li><b>The arrow you drew</b>Marked up on the job. The original photo is untouched.</li>
+            <li><b>The arrow you drew</b>Marked up on the job. Your original photo is untouched.</li>
             <li><b>Your details, every page</b>Registration number, phone, email and your review link.</li>
           </ul>
         </div>
@@ -577,6 +580,97 @@
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---- Callout leaders -------------------------------------------------
+         Drawn from the live layout rather than from coordinates typed into the
+         markup, so they stay on target through any width, font swap or wrap.
+         A leader runs from the label's inner edge to a point just outside the
+         thing it names — except the arrowhead, which is the one place the dot
+         lands on the content, because the content is the point. */
+      var anno = document.querySelector('[data-annotated]');
+      if (anno) drawCallouts(anno);
+
+      function drawCallouts(root) {
+        var svg = root.querySelector('.annotated-lines');
+        var labels = [].slice.call(root.querySelectorAll('.callout'));
+        var wide = window.matchMedia('(min-width: 1120px)');
+
+        var r2 = function (n) { return Math.round(n * 10) / 10; };
+        var ns = 'http://www.w3.org/2000/svg';
+
+        var pairs = labels.map(function (label) {
+          var target = root.querySelector('[data-anno="' + label.dataset.for + '"]');
+          if (!target) return null;
+          var g = document.createElementNS(ns, 'g');
+          var path = document.createElementNS(ns, 'path');
+          var dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('r', '3.2');
+          g.appendChild(path); g.appendChild(dot); svg.appendChild(g);
+          return { label: label, target: target, path: path, dot: dot,
+                   right: label.classList.contains('right'),
+                   lift: +(label.dataset.lift || 0) };
+        }).filter(Boolean);
+
+        /* Where a leader should end. Normally just clear of the element's edge,
+           in the page's own margin. For a photo it is a named point inside the
+           picture, put back through the crop that object-fit: cover applied. */
+        function endPoint(p, box) {
+          var r = p.target.getBoundingClientRect();
+          var fx = p.target.getAttribute('data-anno-x');
+          if (fx === null) {
+            return [(p.right ? r.right + 9 : r.left - 9) - box.left,
+                    r.top + r.height / 2 - box.top];
+          }
+          var iw = p.target.naturalWidth || +p.target.getAttribute('width');
+          var ih = p.target.naturalHeight || +p.target.getAttribute('height');
+          var scale = Math.max(r.width / iw, r.height / ih);
+          return [r.left + r.width / 2 + (+fx - 0.5) * iw * scale - box.left,
+                  r.top + r.height / 2 +
+                    (+p.target.getAttribute('data-anno-y') - 0.5) * ih * scale - box.top];
+        }
+
+        function update() {
+          if (!wide.matches) {
+            root.classList.remove('has-lines');
+            return;
+          }
+          /* the padding that opens the margins only exists once has-lines is on,
+             so set it first and measure after the layout it causes */
+          root.classList.add('has-lines');
+
+          var box = root.getBoundingClientRect();
+          svg.setAttribute('viewBox', '0 0 ' + r2(box.width) + ' ' + r2(box.height));
+
+          pairs.forEach(function (p) {
+            var end = endPoint(p, box);
+            var lh = p.label.offsetHeight;
+            var top = Math.max(0, Math.min(box.height - lh, end[1] - lh / 2 - p.lift));
+            p.label.style.top = top + 'px';
+
+            var lr = p.label.getBoundingClientRect();
+            var sx = (p.right ? lr.left - 10 : lr.right + 10) - box.left;
+            var sy = lr.top + lr.height / 2 - box.top;
+            var run = Math.min(26, Math.abs(end[0] - sx) * 0.3);
+            var mx = p.right ? sx - run : sx + run;
+
+            p.path.setAttribute('d', 'M ' + r2(sx) + ' ' + r2(sy) +
+              ' H ' + r2(mx) + ' L ' + r2(end[0]) + ' ' + r2(end[1]));
+            p.dot.setAttribute('cx', r2(end[0]));
+            p.dot.setAttribute('cy', r2(end[1]));
+            p.path.style.setProperty('--len', r2(p.path.getTotalLength()));
+          });
+        }
+
+        update();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+        window.addEventListener('load', update);
+
+        var tick;
+        window.addEventListener('resize', function () {
+          clearTimeout(tick);
+          tick = setTimeout(update, 120);
+        }, { passive: true });
+      }
 
       var animated = document.querySelectorAll('[data-reveal], [data-annotated]');
 
