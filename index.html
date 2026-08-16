@@ -16,7 +16,7 @@
        a four-hour cache and no hash in its filename, so without a fresh query the
        new markup gets styled by the old rules for hours after a deploy. The HTML
        itself carries a much shorter TTL, so a changed token lands immediately. -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-08-16b" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-08-16c" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Provaro" />
@@ -80,6 +80,11 @@
         "@type": "Question",
         "name": "Do I need an account?",
         "acceptedAnswer": { "@type": "Answer", "text": "No. There is no sign-up, no email to hand over and no password. Open the app and start a report." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I have to enter my customers into Provaro first?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no customer list in Provaro, and it never asks for your address book. You send the finished PDF through the ordinary iOS share sheet — WhatsApp, iMessage, email, AirDrop or print — and pick the person in the app you already talk to them in, from the contacts you already have. If you want their name and address printed on the report, you type them on that job; it is ink on that one document, not a record kept of anybody." }
       },
       {
         "@type": "Question",
@@ -440,6 +445,35 @@
       </div>
     </section>
 
+    <!-- ================= NO CUSTOMER LIST ================= -->
+    <section id="no-list" class="section">
+      <div class="wrap narrow">
+        <div class="prose-inner">
+          <span class="eyebrow">No admin</span>
+          <h2>There is no customer list, because you already have one.</h2>
+          <p class="lede">
+            The person you are doing this job for is already in your phone — a WhatsApp
+            thread, a number in your contacts, an email you answered this morning. The
+            report goes straight there. Nothing to type in before you can start, and
+            nothing to keep up to date afterwards.
+          </p>
+          <p>
+            When the PDF is ready you hand it to the ordinary share sheet and pick the
+            person the way you always do, in the app you already talk to them in.
+            Provaro passes over one file and stops: who it goes to happens over there,
+            not in here. It never asks for your address book, so there isn’t even a
+            permission prompt to turn down.
+          </p>
+          <p>
+            Put their name and address on the document if you want them printed. That is
+            ink on that one report, not a record kept of anybody. Come back to the job
+            months later and you find it by searching the address — filing it was doing
+            the work.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= OFFLINE ================= -->
     <section id="offline" class="section on-dark">
       <div class="wrap">
@@ -544,6 +578,10 @@
           <details>
             <summary>Do I need an account?</summary>
             <p>No. There’s no sign-up, no email to hand over and no password. Open the app and start a report.</p>
+          </details>
+          <details>
+            <summary>Do I have to enter my customers into it first?</summary>
+            <p>No. There’s no customer list in Provaro, and it never asks for your address book — there isn’t even a permission prompt to turn down. You send the finished PDF through the ordinary share sheet and pick the person in the app you already talk to them in, from the contacts you already have. If you want their name and address printed on the report, you type them on that job: ink on that one document, not a record kept of anybody.</p>
           </details>
           <details>
             <summary>Which trades is it for?</summary>
