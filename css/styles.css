@@ -7,7 +7,7 @@
    only for annotation. Red never fills a button and never sets a word of type.
    =========================================================================== */
 
-/* ---------- Fonts (self-hosted: the page promises no third parties) -------- */
+/* ---------- Fonts (self-hosted: no font CDN gets to see a visitor) --------- */
 @font-face {
   font-family: 'Archivo';
   font-style: normal;
