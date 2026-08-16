@@ -7,8 +7,8 @@ not a redraw.
 
 | File | Cut from | Region |
 |---|---|---|
-| `job-strip-out.jpg` | `screens/markup.png` | the full-bleed photo band on the mark-up canvas, rows 661–1565 |
-| `job-shower-marked.jpg` | `screens/document-preview.png` | the upper photo in the PDF preview, `(248, 852)` → `(957, 1360)` |
+| `job-strip-out.jpg` | `screens/iphone/markup.png` | the full-bleed photo band on the mark-up canvas, rows 661–1565 |
+| `job-shower-marked.jpg` | `screens/iphone/document-preview.png` | the upper photo in the PDF preview, `(248, 852)` → `(957, 1360)` |
 
 The bands were found by looking for the contiguous run of non-black rows in the
 mark-up screenshot rather than by eye, so a re-cut after new screenshots is a

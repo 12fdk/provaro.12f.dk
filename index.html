@@ -227,41 +227,55 @@
           <h2>Built for gloves, bad light and one free hand</h2>
           <p class="lede">Three moves, in the order you already work in. Big targets, nothing to save and reopen.</p>
         </div>
-        <ol class="steps">
-          <li class="step" data-reveal>
-            <span class="step-n" aria-hidden="true">1</span>
-            <div class="step-body">
-              <span class="eyebrow">Step one</span>
-              <h3>Shoot the whole job without leaving the camera</h3>
-              <p>Stay in the viewfinder and work through a room in one go, or pull in as many shots as you like from the camera roll. They land straight in the job, grouped into sections, each with a caption in your own words.</p>
-            </div>
-            <div class="step-shot">
-              <img src="assets/screens/framed/report-editor.png" alt="A job open in Provaro: photos gathered into sections, each with a caption underneath" width="1406" height="2822" loading="lazy" />
-            </div>
-          </li>
-          <li class="step" data-reveal>
-            <span class="step-n" aria-hidden="true">2</span>
-            <div class="step-body">
-              <span class="eyebrow">Step two</span>
-              <h3>Draw on what the photo doesn’t say by itself</h3>
-              <p>Arrows, circles, dots, freehand and text callouts, in six colours at a size you set — one tap from the photo you just took. Nothing is burned in: your original stays exactly as the camera saved it, and you can come back days later and add more.</p>
-            </div>
-            <div class="step-shot">
-              <img src="assets/screens/framed/markup.png" alt="Marking up a photo in Provaro with a red arrow, the tool bar underneath" width="1406" height="2822" loading="lazy" />
-            </div>
-          </li>
-          <li class="step" data-reveal>
-            <span class="step-n" aria-hidden="true">3</span>
-            <div class="step-body">
-              <span class="eyebrow">Step three</span>
-              <h3>Hand it over before you pack up</h3>
-              <p>Pick one photo per page, two-up for before and after, or a grid. See the finished PDF and its file size before it goes, then send it the way the customer already talks to you — WhatsApp, iMessage, email, AirDrop or print.</p>
-            </div>
-            <div class="step-shot">
-              <img src="assets/screens/framed/document-preview.png" alt="The finished branded PDF in Provaro, showing its page count and file size before sharing" width="1406" height="2822" loading="lazy" />
-            </div>
-          </li>
-        </ol>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row right">
+            <fieldset class="device-switch">
+              <legend class="sr-only">Show these screens on</legend>
+              <input class="device-radio" type="radio" name="how-device" id="how-iphone" value="iphone" checked />
+              <label for="how-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="how-device" id="how-ipad" value="ipad" />
+              <label for="how-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <ol class="steps">
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">1</span>
+              <div class="step-body">
+                <span class="eyebrow">Step one</span>
+                <h3>Shoot the whole job without leaving the camera</h3>
+                <p>Stay in the viewfinder and work through a room in one go, or pull in as many shots as you like from the camera roll. They land straight in the job, grouped into sections, each with a caption in your own words.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="assets/screens/iphone/framed/report-editor.png" alt="A job open in Provaro on iPhone: photos gathered into sections, each with a caption underneath" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="assets/screens/ipad/framed/report-editor.png" alt="The same job on iPad, with the list of reports down the left and the open job beside it" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">2</span>
+              <div class="step-body">
+                <span class="eyebrow">Step two</span>
+                <h3>Draw on what the photo doesn’t say by itself</h3>
+                <p>Arrows, circles, dots, freehand and text callouts, in six colours at a size you set — one tap from the photo you just took. Nothing is burned in: your original stays exactly as the camera saved it, and you can come back days later and add more.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="assets/screens/iphone/framed/markup.png" alt="Marking up a photo in Provaro on iPhone with a red arrow, the tool bar underneath" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="assets/screens/ipad/framed/markup.png" alt="The same mark-up on iPad, the photo filling the screen with the tool bar underneath" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">3</span>
+              <div class="step-body">
+                <span class="eyebrow">Step three</span>
+                <h3>Hand it over before you pack up</h3>
+                <p>Pick one photo per page, two-up for before and after, or a grid. See the finished PDF and its file size before it goes, then send it the way the customer already talks to you — WhatsApp, iMessage, email, AirDrop or print.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="assets/screens/iphone/framed/document-preview.png" alt="The finished branded PDF in Provaro on iPhone, showing its page count and file size before sharing" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="assets/screens/ipad/framed/document-preview.png" alt="The same export sheet on iPad, the layout picker and the finished PDF over the open job" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -272,17 +286,36 @@
           <span class="eyebrow">Thirty seconds, filmed not mocked up</span>
           <h2>Shoot it. Mark it up. Send it.</h2>
         </div>
-        <figure class="reel">
-          <div class="reel-frame">
-            <video controls preload="metadata" playsinline poster="assets/img/poster.png">
-              <source src="assets/preview.webm" type="video/webm" />
-              <source src="assets/preview.mp4" type="video/mp4" />
-              Your browser can’t play this video.
-            </video>
-            <img class="bezel" src="assets/img/device-frame.png" alt="" aria-hidden="true" />
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row">
+            <fieldset class="device-switch">
+              <legend class="sr-only">Play the film recorded on</legend>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-iphone" value="iphone" checked />
+              <label for="reel-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-ipad" value="ipad" />
+              <label for="reel-ipad">iPad</label>
+            </fieldset>
           </div>
-          <figcaption>Capturing a job, adding arrows, exporting the report</figcaption>
-        </figure>
+          <figure class="reel">
+            <div class="reel-frame on-iphone">
+              <video controls preload="metadata" playsinline poster="assets/img/poster.png">
+                <source src="assets/preview.webm" type="video/webm" />
+                <source src="assets/preview.mp4" type="video/mp4" />
+                Your browser can’t play this video.
+              </video>
+              <img class="bezel" src="assets/img/device-frame.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="reel-frame reel-ipad on-ipad">
+              <video controls preload="metadata" playsinline poster="assets/img/poster-ipad.png">
+                <source src="assets/preview-ipad.webm" type="video/webm" />
+                <source src="assets/preview-ipad.mp4" type="video/mp4" />
+                Your browser can’t play this video.
+              </video>
+              <img class="bezel" src="assets/img/device-frame-ipad.png" alt="" aria-hidden="true" />
+            </div>
+            <figcaption>Capturing a job, adding arrows, exporting the report</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -580,6 +613,25 @@
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---- Device switch ---------------------------------------------------
+         Each .device-pick carries its own radio pair, so the iPhone/iPad swap
+         is done by CSS and survives scripting being off. Choosing a device in
+         one place is meant to mean it everywhere, though, so mirror the choice
+         across the page — and stop a film that is playing on the device the
+         reader just switched away from. */
+      var radios = [].slice.call(document.querySelectorAll('.device-radio'));
+      radios.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          if (!radio.checked) return;
+          radios.forEach(function (other) {
+            if (other !== radio && other.value === radio.value) other.checked = true;
+          });
+          [].slice.call(document.querySelectorAll('.reel-frame video')).forEach(function (v) {
+            if (!v.offsetParent) v.pause();
+          });
+        });
+      });
 
       /* ---- Callout leaders -------------------------------------------------
          Drawn from the live layout rather than from coordinates typed into the
