@@ -3,25 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Provaro — Job photo reports your customer is impressed by</title>
-  <meta name="description" content="Turn the job you just finished into a professional photo report — marked-up photos in a branded PDF, made on site, in under a minute. Pay once. No subscription. Ever." />
+  <title>Provaro — Photograph the job, hand over the proof</title>
+  <meta name="description" content="Provaro turns the photos you just took into a branded PDF report — arrows on what matters, your logo at the top, your details at the foot. Made on site, in under a minute, with no signal and no account. One payment. No subscription." />
   <link rel="canonical" href="https://provaro.12f.dk/" />
-  <meta name="theme-color" content="#0A52BE" />
+  <meta name="theme-color" content="#0A1D3A" />
   <link rel="icon" href="assets/img/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <link rel="preload" href="assets/fonts/archivo-400_800-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/ibm-plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/styles.css" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Provaro" />
-  <meta property="og:title" content="Provaro — Job photo reports your customer is impressed by" />
-  <meta property="og:description" content="Photograph the work, mark up what matters, hand over a branded PDF report before you have packed up your tools. Pay once. No subscription. Ever." />
+  <meta property="og:title" content="Provaro — Photograph the job, hand over the proof" />
+  <meta property="og:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. One payment. No subscription. No account. Works with no signal." />
   <meta property="og:url" content="https://provaro.12f.dk/" />
   <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Provaro — Job photo reports your customer is impressed by" />
-  <meta name="twitter:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. Pay once. No subscription. Ever." />
+  <meta name="twitter:title" content="Provaro — Photograph the job, hand over the proof" />
+  <meta name="twitter:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. One payment. No subscription." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
   <script type="application/ld+json">
@@ -29,337 +32,517 @@
     "@context": "https://schema.org",
     "@type": "MobileApplication",
     "name": "Provaro",
-    "operatingSystem": "IOS",
+    "operatingSystem": "iOS",
     "applicationCategory": "BusinessApplication",
-    "description": "Turn a job into a professional photo report: marked-up photos in a branded PDF, made on site, in under a minute. Works offline, no account, no ads.",
-    "offers": {
-      "@type": "Offer",
-      "price": "19.99",
-      "priceCurrency": "USD",
-      "description": "Pro (Lifetime): your own branding on the report and iCloud sync across your devices. One-time purchase."
-    }
+    "url": "https://provaro.12f.dk/",
+    "installUrl": "https://apps.apple.com/us/app/id6800068309",
+    "description": "Turn a finished job into a professional photo report: marked-up photos in a branded PDF, made on site, in under a minute. Works offline, no account, no ads.",
+    "featureList": [
+      "Photograph a whole job without leaving the camera",
+      "Arrows, circles, dots, freehand and text callouts on any photo",
+      "Branded PDF with your logo, registration number and contact details",
+      "Works fully offline",
+      "iCloud sync across your own devices"
+    ],
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Free: photograph, mark up, export and share. Not a trial." },
+      { "@type": "Offer", "price": "19.99", "priceCurrency": "EUR", "description": "Pro (Lifetime): your own branding on the report and iCloud sync across your devices. One-time purchase." }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does Provaro really work with no signal?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Capture, mark-up and the PDF all happen on the phone in your hand. Nothing is uploaded and no step waits on a connection. Send the report when you are back in range, or over the customer’s wifi at the door." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the free version a trial?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Free is the whole job — photograph, mark up, export, share — and it does not expire. Pro is a single 19.99 EUR payment that puts your branding on the report and turns on iCloud sync. There is no renewal and nothing to cancel." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an account?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no sign-up, no email to hand over and no password. Open the app and start a report." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which trades is Provaro for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Anyone who has to show what they did: plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers, and letting agents doing property inspections." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do my photos go?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Onto your device, and nowhere else, unless you send the report yourself. With Pro they also sync through your own iCloud account — not a server of ours. There is no advertising identifier and no ad network in the app." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does one purchase cover iPhone and iPad?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Start the report on the phone at the job and finish it on the iPad in the van. With Pro the two stay in step through your own iCloud." }
+      },
+      {
+        "@type": "Question",
+        "name": "What languages is Provaro available in?",
+        "acceptedAnswer": { "@type": "Answer", "text": "English and Danish." }
+      }
+    ]
   }
   </script>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Provaro home">
-        <span class="brand-mark" role="img" aria-label="Provaro">
-          <img src="assets/img/logo.png" alt="" width="34" height="34" aria-hidden="true" />
-        </span>
+      <a class="brand" href="#top">
+        <img src="assets/img/logo.png" alt="" width="30" height="30" />
         <span class="brand-name">Provaro</span>
       </a>
-      <nav class="site-nav" aria-label="Page">
+      <nav class="site-nav" aria-label="Sections">
         <a href="#how">How it works</a>
-        <a href="#features">Features</a>
-        <a href="#privacy">Privacy</a>
+        <a href="#report">The report</a>
         <a href="#pricing">Pricing</a>
+        <a href="#faq">Questions</a>
       </nav>
-      <a class="btn btn-primary btn-sm" href="#download">Get the app</a>
+      <a class="header-cta" href="https://apps.apple.com/us/app/id6800068309" target="_blank" rel="noopener">Get Provaro</a>
     </div>
   </header>
 
   <main id="top">
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
     <section class="hero">
       <div class="wrap hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">For tradespeople who show their work</p>
-          <h1>
-            Turn the job you just finished<br />
-            into a report they will <span class="hl">share</span>.
-          </h1>
+        <div>
+          <p class="eyebrow">Photo reports for trades &middot; iPhone &amp; iPad</p>
+          <h1><span class="ln">Photograph the job.</span> <span class="ln">Hand over the proof.</span></h1>
           <p class="lede">
-            Photograph the work, mark up what matters with arrows and circles, and hand
-            over a professional PDF before you have packed up your tools.
-            Made on site. In under a minute.
+            Provaro turns the photos you just took into a branded PDF — arrows on what
+            matters, your logo at the head, your details at the foot. Made on site, in
+            under a minute, with no signal and no account.
           </p>
-          <div class="cta-row">
-            <a class="btn btn-primary btn-lg" href="#download">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3c.5 3-2 4.4-2 6.5 0 1.4 1 2.5 2 2.5s2-1.1 2-2.5c0-2.1-2.5-3.5-2-6.5zM8 13.2c-2.3.9-3.8 2.6-3.8 4.8 0 2.2 1.6 3.6 3.8 3.6.9 0 1.5-.3 2-.6.5.3 1.1.6 2 .6s1.5-.3 2-.6c.5.3 1.1.6 2 .6 2.2 0 3.8-1.4 3.8-3.6 0-2.2-1.5-3.9-3.8-4.8.3-.8.5-1.7.5-2.7 0-.5 0-1-.1-1.4-.6.3-1.6.5-2.4.5-.9 0-1.9-.2-2.5-.5-.1.4-.1.9-.1 1.4 0 1 .2 1.9.5 2.7z" fill="currentColor"/></svg>
-              Get it on the App Store
+          <div class="actions">
+            <a class="appstore" href="https://apps.apple.com/us/app/id6800068309" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.5 3-2 4.4-2 6.5 0 1.4 1 2.5 2 2.5s2-1.1 2-2.5c0-2.1-2.5-3.5-2-6.5zM8 13.2c-2.3.9-3.8 2.6-3.8 4.8 0 2.2 1.6 3.6 3.8 3.6.9 0 1.5-.3 2-.6.5.3 1.1.6 2 .6s1.5-.3 2-.6c.5.3 1.1.6 2 .6 2.2 0 3.8-1.4 3.8-3.6 0-2.2-1.5-3.9-3.8-4.8.3-.8.5-1.7.5-2.7 0-.5 0-1-.1-1.4-.6.3-1.6.5-2.4.5-.9 0-1.9-.2-2.5-.5-.1.4-.1.9-.1 1.4 0 1 .2 1.9.5 2.7z" fill="currentColor"/></svg>
+              <span>
+                <span class="as-sm">Download on the</span>
+                <span class="as-lg">App&nbsp;Store</span>
+              </span>
             </a>
-            <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
+            <a class="btn btn-line" href="#report">See what your customer gets</a>
           </div>
-          <p class="hero-points">
-            <span class="tick"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No subscription</span>
-            <span class="tick"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No account</span>
-            <span class="tick"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Works with no signal</span>
-            <span class="tick"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Your photos stay yours</span>
-          </p>
+          <ul class="hero-ticks">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> One payment</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> No subscription</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Works offline</li>
+          </ul>
         </div>
 
-        <div class="hero-media" aria-hidden="true">
-          <div class="device">
-            <img class="device-screen" src="assets/screens/framed/document-preview.png" alt="A finished Provaro report: marked-up photos and captions on branded pages, three pages ready to share" />
-          </div>
-        </div>
-      </div>
-      <div class="hero-wash" aria-hidden="true"></div>
-    </section>
-
-    <!-- PROOF STRIP -->
-    <section class="proof">
-      <div class="wrap proof-grid">
-        <div class="proof-item">
-          <strong>&lt; 1 min</strong>
-          <span>from last photo to finished report, on site</span>
-        </div>
-        <div class="proof-item">
-          <strong>0</strong>
-          <span>subscriptions, trials counting down or trials to cancel</span>
-        </div>
-        <div class="proof-item">
-          <strong>1 purchase</strong>
-          <span>puts your branding on the report — yours for good</span>
-        </div>
-        <div class="proof-item">
-          <strong>0 signal</strong>
-          <span>needed: capture, markup and PDF all happen on the device</span>
+        <div class="handover">
+          <article class="doc" aria-label="A finished Provaro report page">
+            <div class="doc-head">
+              <img src="assets/img/logo.png" alt="" width="20" height="20" />
+              <span class="doc-firm">Wrenfield Building Services</span>
+            </div>
+            <p class="doc-title">Bathroom refit &mdash; 14 Selborne Road</p>
+            <p class="doc-meta">
+              Mr &amp; Mrs Ashworth<br />
+              14 Selborne Road, London SE6 1XN<br />
+              14 August 2026
+            </p>
+            <p class="doc-caption">Old suite stripped out and walls prepared</p>
+            <div class="doc-plate single empty">
+              <figure class="capture">
+                <img src="assets/photos/job-strip-out.jpg" alt="A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page" width="1206" height="904" />
+                <figcaption class="capture-tag">Marked up on site &middot; 09:41</figcaption>
+              </figure>
+            </div>
+            <div class="doc-foot">
+              <div><strong>Wrenfield Building Services</strong>VAT GB 123 4567 89</div>
+              <div>+44 20 7946 0958<br />hello@wrenfield.example</div>
+              <div>wrenfield.example<br />Page 1 of 3</div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section class="gallery">
-      <div class="wrap gallery-inner">
-        <figure class="phone-tile">
-          <img src="assets/screens/framed/report-editor.png" alt="A job in Provaro: photos gathered into sections, each with a caption" />
-          <figcaption>Documenting the job</figcaption>
-        </figure>
-        <figure class="phone-tile">
-          <img src="assets/screens/framed/markup.png" alt="Marking up a photo with a red arrow, the tool bar underneath" />
-          <figcaption>Marking up what matters</figcaption>
-        </figure>
-        <figure class="phone-tile">
-          <img src="assets/screens/framed/document-preview.png" alt="The finished branded PDF, with its page count and file size before sharing" />
-          <figcaption>The finished report</figcaption>
-        </figure>
-        <figure class="phone-tile">
-          <img src="assets/screens/framed/branding.png" alt="Your business details in Provaro: logo, company name, registration and contact" />
-          <figcaption>Your name on the paper</figcaption>
-        </figure>
-        <figure class="phone-tile">
-          <img src="assets/screens/framed/report-library.png" alt="Your library of documented jobs, each marked draft or finalized" />
-          <figcaption>Every job, searchable</figcaption>
-        </figure>
+    <!-- ================= LEDGER ================= -->
+    <section class="ledger" aria-label="At a glance">
+      <div class="wrap ledger-grid">
+        <div class="ledger-item">
+          <strong>Under a minute</strong>
+          <span>from the last photo to a finished PDF, standing on the job</span>
+        </div>
+        <div class="ledger-item">
+          <strong>19.99&nbsp;&euro; once</strong>
+          <span>not per month and not per user — there is nothing to renew</span>
+        </div>
+        <div class="ledger-item">
+          <strong>No account</strong>
+          <span>no sign-up, no email, no password, no trial counting down</span>
+        </div>
+        <div class="ledger-item">
+          <strong>Works offline</strong>
+          <span>capture, mark-up and export all run on the device in your hand</span>
+        </div>
       </div>
     </section>
 
-    <!-- VIDEO -->
-    <section class="section video-section">
-      <div class="wrap narrow centered">
-        <p class="section-eyebrow">The core loop</p>
-        <h2>Shoot it. Mark it up. Hand it over.</h2>
-        <p class="section-sub">Thirty seconds of Provaro doing what it exists to do — filmed on camera, not a mock-up.</p>
-        <figure class="video-shell">
-          <div class="device-frame">
-            <video controls preload="metadata" playsinline poster="assets/img/poster.png">
-              <source src="assets/preview.webm" type="video/webm" />
-              <source src="assets/preview.mp4" type="video/mp4" />
-              Your browser can't play this video.
-            </video>
-            <img class="device-bezel" src="assets/img/device-frame.png" alt="" aria-hidden="true" />
-          </div>
-          <figcaption>Provaro in use: capturing a job, adding arrows and circles, exporting the report.</figcaption>
-        </figure>
+    <!-- ================= STAKES ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Why it is worth the minute</span>
+          <h2>The photos are already on your phone. They just aren’t worth anything yet.</h2>
+          <p class="lede">Two hundred shots in the camera roll prove nothing. One document with your name on it settles the question.</p>
+        </div>
+        <div class="stakes-grid">
+          <article class="stake" data-reveal>
+            <h3>Six months on, they ask</h3>
+            <p>The pipework is behind plaster and the tiling is finished. A dated report with the photo in it ends that conversation before it starts.</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>The quote said one thing, the job found another</h3>
+            <p>Photograph what you actually found, caption it in your own words, send it the same hour. Variations stop being an argument about memory.</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>Two firms quote, one shows its work</h3>
+            <p>Same trade, same price. The one who hands over a proper document looks like the bigger outfit — and gets recommended to the neighbour.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
+    <!-- ================= HOW IT WORKS ================= -->
     <section id="how" class="section">
       <div class="wrap">
         <div class="head">
-          <p class="section-eyebrow">How it works</p>
-          <h2>Built for the way you actually work</h2>
-          <p class="section-sub">Gloves on, bad light, one hand. Big buttons, no fiddling, no saving-and-reopening.</p>
+          <span class="eyebrow">How it works</span>
+          <h2>Built for gloves, bad light and one free hand</h2>
+          <p class="lede">Three moves, in the order you already work in. Big targets, nothing to save and reopen.</p>
         </div>
         <ol class="steps">
           <li class="step" data-reveal>
-            <span class="step-n">1</span>
+            <span class="step-n" aria-hidden="true">1</span>
             <div class="step-body">
-              <h3>Photograph the work</h3>
-              <p>Stay in the camera and shoot a whole room without leaving the viewfinder — or bring in as many as you like from the camera roll. They land straight in the job, grouped into sections, each with a caption in your own words.</p>
+              <span class="eyebrow">Step one</span>
+              <h3>Shoot the whole job without leaving the camera</h3>
+              <p>Stay in the viewfinder and work through a room in one go, or pull in as many shots as you like from the camera roll. They land straight in the job, grouped into sections, each with a caption in your own words.</p>
             </div>
-            <img class="step-shot" src="assets/screens/framed/report-editor.png" alt="A job in Provaro: photos gathered into sections, each with a caption" />
+            <div class="step-shot">
+              <img src="assets/screens/framed/report-editor.png" alt="A job open in Provaro: photos gathered into sections, each with a caption underneath" width="1406" height="2822" loading="lazy" />
+            </div>
           </li>
           <li class="step" data-reveal>
-            <span class="step-n">2</span>
+            <span class="step-n" aria-hidden="true">2</span>
             <div class="step-body">
-              <h3>Mark up what matters</h3>
-              <p>Arrows, circles, dots, freehand and text callouts — six colours, at a size you set. One tap straight from the photo you just took. Nothing is baked in; your original photo is never touched.</p>
+              <span class="eyebrow">Step two</span>
+              <h3>Draw on what the photo doesn’t say by itself</h3>
+              <p>Arrows, circles, dots, freehand and text callouts, in six colours at a size you set — one tap from the photo you just took. Nothing is burned in: your original stays exactly as the camera saved it, and you can come back days later and add more.</p>
             </div>
-            <img class="step-shot" src="assets/screens/framed/markup.png" alt="Marking up a photo with a red arrow, the tool bar underneath" />
+            <div class="step-shot">
+              <img src="assets/screens/framed/markup.png" alt="Marking up a photo in Provaro with a red arrow, the tool bar underneath" width="1406" height="2822" loading="lazy" />
+            </div>
           </li>
           <li class="step" data-reveal>
-            <span class="step-n">3</span>
+            <span class="step-n" aria-hidden="true">3</span>
             <div class="step-body">
-              <h3>Hand over the report</h3>
-              <p>Your logo up top, registration and contact details along the bottom of every page. See the finished PDF and its size before you send it — small enough to email, ready to WhatsApp, AirDrop or print.</p>
+              <span class="eyebrow">Step three</span>
+              <h3>Hand it over before you pack up</h3>
+              <p>Pick one photo per page, two-up for before and after, or a grid. See the finished PDF and its file size before it goes, then send it the way the customer already talks to you — WhatsApp, iMessage, email, AirDrop or print.</p>
             </div>
-            <img class="step-shot" src="assets/screens/framed/document-preview.png" alt="The finished branded PDF, with its page count and file size before sharing" />
+            <div class="step-shot">
+              <img src="assets/screens/framed/document-preview.png" alt="The finished branded PDF in Provaro, showing its page count and file size before sharing" width="1406" height="2822" loading="lazy" />
+            </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- FEATURES -->
-    <section id="features" class="section section-sunken">
+    <!-- ================= REEL ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Thirty seconds, filmed not mocked up</span>
+          <h2>Shoot it. Mark it up. Send it.</h2>
+        </div>
+        <figure class="reel">
+          <div class="reel-frame">
+            <video controls preload="metadata" playsinline poster="assets/img/poster.png">
+              <source src="assets/preview.webm" type="video/webm" />
+              <source src="assets/preview.mp4" type="video/mp4" />
+              Your browser can’t play this video.
+            </video>
+            <img class="bezel" src="assets/img/device-frame.png" alt="" aria-hidden="true" />
+          </div>
+          <figcaption>Capturing a job, adding arrows, exporting the report</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= THE REPORT (signature) ================= -->
+    <section id="report" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">The deliverable</span>
+          <h2>This is what lands in their inbox</h2>
+          <p class="lede">Not a gallery link and not a screenshot. A PDF that carries your name, small enough to email and good enough to print.</p>
+        </div>
+
+        <div class="annotated" data-annotated>
+          <svg class="annotated-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <g><path d="M 18.2 5.9 H 23.5 L 30 7.4" /><circle cx="30" cy="7.4" r="0.55" /></g>
+            <g><path d="M 18.2 29.9 H 22 L 25.6 31.7" /><circle cx="25.6" cy="31.7" r="0.55" /></g>
+            <g><path d="M 81.8 46.9 H 75 L 60.8 52.8" /><circle cx="60.8" cy="52.8" r="0.55" /></g>
+            <g><path d="M 81.8 91.9 H 76 L 67.5 91.6" /><circle cx="67.5" cy="91.6" r="0.55" /></g>
+          </svg>
+
+          <p class="callout" style="left: 0; top: 2%;"><b>Your letterhead</b>Logo and company name at the head of every page.</p>
+          <p class="callout" style="left: 0; top: 26%;"><b>Your words</b>The caption you typed on site, or one you saved and reuse.</p>
+          <p class="callout right" style="right: 0; top: 43%;"><b>The arrow you drew</b>Marked up on the job. Your original photo is untouched.</p>
+          <p class="callout right" style="right: 0; top: 88%;"><b>Your details, every page</b>Registration number, phone, email and review link.</p>
+
+          <div class="doc-frame">
+          <article class="doc" aria-label="A finished Provaro report page, annotated">
+            <div class="doc-head">
+              <img src="assets/img/logo.png" alt="" width="20" height="20" />
+              <span class="doc-firm">Wrenfield Building Services</span>
+            </div>
+            <p class="doc-title">Bathroom refit &mdash; 14 Selborne Road</p>
+            <p class="doc-meta">
+              Mr &amp; Mrs Ashworth<br />
+              14 Selborne Road, London SE6 1XN<br />
+              14 August 2026
+            </p>
+            <p class="doc-caption">Old suite stripped out, walls prepared, new tray set and sealed</p>
+            <div class="doc-plate">
+              <img src="assets/photos/job-strip-out.jpg" alt="Stripped bathroom with a red arrow drawn across the wall" width="1206" height="904" loading="lazy" />
+              <img src="assets/photos/job-shower-marked.jpg" alt="New tiled shower tray with a red arrow pointing at the fall to the drain" width="709" height="508" loading="lazy" />
+            </div>
+            <div class="doc-foot">
+              <div><strong>Wrenfield Building Services</strong>VAT GB 123 4567 89</div>
+              <div>27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example</div>
+              <div>wrenfield.example<br />Review us on Trustpilot<br />Page 2 of 3</div>
+            </div>
+          </article>
+          </div>
+
+          <ul class="callout-list">
+            <li><b>Your letterhead</b>Logo and company name at the head of every page.</li>
+            <li><b>Your words</b>The caption you typed on site, or one you saved and reuse.</li>
+            <li><b>The arrow you drew</b>Marked up on the job. The original photo is untouched.</li>
+            <li><b>Your details, every page</b>Registration number, phone, email and your review link.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section id="features" class="section">
       <div class="wrap">
         <div class="head">
-          <p class="section-eyebrow">Features</p>
+          <span class="eyebrow">The rest of it</span>
           <h2>Everything a real business document should be</h2>
         </div>
         <div class="feature-grid">
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 8h13M4 8l3.5-3.5M4 8l3.5 3.5M20 16H7m13 0l-3.5-3.5M20 16l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h3>Straight from the photo</h3>
-              <p>Mark up right on the image you just took — one tap, no saving and reopening. Come back days later and add more.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13M4 8l3.5-3.5M4 8l3.5 3.5M20 16H7m13 0l-3.5-3.5M20 16l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Straight from the photo</h3>
+            <p>Mark up the image you just took without saving and reopening it. Come back days later and add more.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 21s-7-5.5-7-10.5A7 7 0 0 1 19 10.5c0 .5 0 1-.1 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="10.5" r="2.2" fill="currentColor"/></svg></div>
-            <div>
-              <h3>The job address, plus a map</h3>
-              <p>Add the address in a tap; the report carries a map of where you were, so the paper shows the place.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-10.5A7 7 0 0 1 19 10.5C19 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.2" fill="currentColor"/></svg>
+            <h3>The address, plus a map</h3>
+            <p>Add the job address in a tap and the report carries a map of where you were, so the paper shows the place.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M5 4h14v14h-9l-5 4V4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 9h6M9 13h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <div>
-              <h3>Saved phrases</h3>
-              <p>Keep the words you write over and over and drop them into a caption with one tap.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v14h-9l-5 4V4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>Saved phrases</h3>
+            <p>Keep the sentences you write on every job and drop one into a caption with a single tap.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><circle cx="9" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-            <div>
-              <h3>Layouts that suit the trade</h3>
-              <p>One photo per page, two-up for before and after, or a grid for dense documentation. Cover page on or off.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 12v8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <h3>Layouts that suit the trade</h3>
+            <p>One photo per page, two-up for before and after, or a grid for dense documentation. Cover page on or off.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 4l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h3>Your paper, your name on it</h3>
-              <p>Logo and company name at the head; registration, address, phone, email and review link along the foot of every page.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l7.5 3v5.2c0 4.6-3.1 7.8-7.5 9.3-4.4-1.5-7.5-4.7-7.5-9.3V6.5l7.5-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.4 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Your paper, your name on it</h3>
+            <p>Logo and company name at the head; registration, address, phone, email and review link along the foot of every page.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 14l5-5 3 3 4-4 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h3>The PDF before you send it</h3>
-              <p>See the finished document and how big the file is, so nothing surprises the customer or your data plan.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 14.5l4.5-4.5 3 3 4-4 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>The PDF before you send it</h3>
+            <p>See the finished document and exactly how big the file is, so nothing surprises the customer or your data plan.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 13a8 8 0 0 1 14.9-4M20 11a8 8 0 0 1-14.9 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 4v4h-4M6 20v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h3>A library of your jobs</h3>
-              <p>Search, sort and archive every job you have documented — find the last painting in a house, fast.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.6 15.6L20.5 20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>A library of your jobs</h3>
+            <p>Search, sort and archive everything you have documented — find the last time you were in that house, fast.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M7 4h10v4H7zM5 14h14v6H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 8v3M9 11l3-3 3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div>
-              <h3>Send it their way</h3>
-              <p>WhatsApp, iMessage, email, AirDrop — whatever your customer already uses.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10v4H7zM4.5 14h15v5.5h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8.5v3.5M9.4 11l2.6-2.6L14.6 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Send it their way</h3>
+            <p>WhatsApp, iMessage, email, AirDrop or print — whatever the customer already uses to talk to you.</p>
           </article>
           <article class="feature">
-            <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M2 9l10-5 10 5-10 5L2 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 13l8 4 8-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" opacity=".55"/></svg></div>
-            <div>
-              <h3>Every device you own</h3>
-              <p>With Pro, reports sync through your own iCloud: start on the phone at the job, finish on the iPad in the van.</p>
-            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.3 21.5 9 12 13.7 2.5 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 13l7.5 3.7 7.5-3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" opacity=".55"/></svg>
+            <h3>Every device you own</h3>
+            <p>With Pro, reports move through your own iCloud: start on the phone at the job, finish on the iPad in the van.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- OFFLINE -->
-    <section id="offline" class="section dark">
-      <div class="wrap narrow">
-        <h2>It does the job where there is no signal.</h2>
-        <p class="section-sub light">
-          Basements. Lofts. Half-built houses. Everything happens on the phone in your hand —
-          capture, markup, the PDF, the lot. No connection at any step, nothing waiting on an
-          upload. When you are back in range, send it whenever you like.
-        </p>
+    <!-- ================= OFFLINE ================= -->
+    <section id="offline" class="section on-dark">
+      <div class="wrap">
+        <div class="offline-inner">
+          <span class="eyebrow">Basements, lofts, half-built houses</span>
+          <h2>It does the job where there is no signal.</h2>
+          <p class="lede">
+            Every step runs on the phone in your hand — capture, mark-up, the PDF, the lot.
+            Nothing waits on an upload and no spinner stands between you and the customer at
+            the door. When you’re back in range, send it whenever you like.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- PRIVACY -->
+    <!-- ================= PRIVACY ================= -->
     <section id="privacy" class="section">
-      <div class="wrap narrow privacy">
-        <h2>No account. No sign-up. No ads.</h2>
-        <p>
-          No login, no email to hand over, no trial counting down and no sales call.
-          Your reports never leave your device unless you send them yourself.
-          There is no advertising identifier, no ad network and nothing sold to anybody.
-        </p>
-        <p>
-          Anonymous usage figures — which screens get opened, how long an export takes —
-          never your photos, notes, customers or addresses — tell us what to build next.
-          And <a href="https://provaro.12f.dk/privacy-policy/">Settings has a switch</a> to turn them off.
-        </p>
+      <div class="wrap narrow">
+        <div class="privacy-inner">
+          <span class="eyebrow">Privacy</span>
+          <h2>No account. No sign-up. No ads.</h2>
+          <p>
+            No login, no email to hand over, no trial counting down and no sales call. Your
+            reports never leave your device unless you send them yourself, and there is no
+            advertising identifier, no ad network and nothing sold to anybody.
+          </p>
+          <p>
+            Anonymous usage figures — which screens get opened, how long an export takes — tell
+            us what to build next. Never your photos, notes, customers or addresses. And
+            <a href="https://provaro.12f.dk/privacy-policy/">Settings has a switch</a> to turn
+            even that off.
+          </p>
+          <div class="receipt">
+            <span data-value="Your device">Where your photos live</span>
+            <span data-value="Your own iCloud">Where Pro syncs them</span>
+            <span data-value="Only when you send it">When a report leaves</span>
+            <span data-value="None">Advertising identifiers</span>
+            <span data-value="None">Accounts required</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="section section-sunken">
+    <!-- ================= PRICING ================= -->
+    <section id="pricing" class="section deliverable">
       <div class="wrap">
         <div class="head centered">
-          <p class="section-eyebrow">Pricing</p>
+          <span class="eyebrow">Pricing</span>
           <h2>Pay once. No subscription. Ever.</h2>
-          <p class="section-sub">Because the last thing you need is another subscription.</p>
+          <p class="lede">Job-photo software is usually sold per user, per month, forever. This one is a purchase, like a tool.</p>
         </div>
         <div class="pricing">
           <div class="plan">
-            <h3>Free</h3>
-            <p class="plan-price">0&nbsp;&euro; <small>forever</small></p>
-            <p class="plan-bill">The whole job — it is not a trial, and it never expires.</p>
+            <span class="plan-flag">Free</span>
+            <h3>The whole job</h3>
+            <p class="plan-price">0&nbsp;&euro;<small>Not a trial. It does not expire.</small></p>
+            <p class="plan-bill">Everything you need to document a job and hand the PDF over.</p>
             <ul>
-              <li>Photograph or import photos</li>
-              <li>Every mark-up tool, colours and sizes</li>
-              <li>Export and share the PDF</li>
-              <li>Works fully offline</li>
-              <li>No account, no ads</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Photograph or import photos</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Every mark-up tool, colour and size</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Export and share the PDF</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Works fully offline</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>No account, no ads</li>
             </ul>
-            <a class="btn btn-ghost" href="#download">Start free</a>
+            <a class="btn btn-line" href="https://apps.apple.com/us/app/id6800068309" target="_blank" rel="noopener">Start free</a>
           </div>
           <div class="plan plan-pro">
-            <span class="plan-flag">One-time purchase</span>
-            <h3>Pro (Lifetime)</h3>
-            <p class="plan-price">19.99&nbsp;&euro; <small>one time &middot; 149&nbsp;DKK</small></p>
-            <p class="plan-bill">Bought once, yours for good — nothing to cancel, no renewal to be surprised by.</p>
+            <span class="plan-flag">Pro &middot; one-time purchase</span>
+            <h3>Your name on the paper</h3>
+            <p class="plan-price">19.99&nbsp;&euro;<small>One time &middot; 149 DKK &middot; nothing to cancel</small></p>
+            <p class="plan-bill">Bought once, yours for good — no renewal date to be surprised by.</p>
             <ul>
-              <li><strong>Your own branding</strong> — logo, name, registration and details on the report</li>
-              <li><strong>iCloud sync across all your devices</strong> — your iCloud, not a server of ours</li>
-              <li>Everything in Free</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Your own branding</strong> — logo, company name, registration and contact details on every page</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>iCloud sync across your devices</strong> — your iCloud, not a server of ours</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Free</li>
             </ul>
-            <a class="btn btn-primary" href="#download">Get Provaro</a>
-            <p class="plan-note">Available in the app on the App Store.</p>
+            <a class="appstore" href="https://apps.apple.com/us/app/id6800068309" target="_blank" rel="noopener">
+              <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.5 3-2 4.4-2 6.5 0 1.4 1 2.5 2 2.5s2-1.1 2-2.5c0-2.1-2.5-3.5-2-6.5zM8 13.2c-2.3.9-3.8 2.6-3.8 4.8 0 2.2 1.6 3.6 3.8 3.6.9 0 1.5-.3 2-.6.5.3 1.1.6 2 .6s1.5-.3 2-.6c.5.3 1.1.6 2 .6 2.2 0 3.8-1.4 3.8-3.6 0-2.2-1.5-3.9-3.8-4.8.3-.8.5-1.7.5-2.7 0-.5 0-1-.1-1.4-.6.3-1.6.5-2.4.5-.9 0-1.9-.2-2.5-.5-.1.4-.1.9-.1 1.4 0 1 .2 1.9.5 2.7z" fill="currentColor"/></svg>
+              <span>
+                <span class="as-sm">Download on the</span>
+                <span class="as-lg">App&nbsp;Store</span>
+              </span>
+            </a>
+            <p class="plan-note">Pro is bought inside the app.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- DOWNLOAD -->
-    <section id="download" class="section cta">
-      <div class="wrap cta-inner">
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Questions</span>
+          <h2>The things people ask first</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Does it really work with no signal?</summary>
+            <p>Yes. Capture, mark-up and the PDF all happen on the phone in your hand. Nothing is uploaded and no step waits on a connection. Send the report when you’re back in range, or over the customer’s wifi at the door.</p>
+          </details>
+          <details>
+            <summary>Is the free version a trial?</summary>
+            <p>No. Free is the whole job — photograph, mark up, export, share — and it doesn’t expire. Pro is a single 19.99&nbsp;&euro; payment that puts your branding on the report and turns on iCloud sync. There’s no renewal and nothing to cancel.</p>
+          </details>
+          <details>
+            <summary>Do I need an account?</summary>
+            <p>No. There’s no sign-up, no email to hand over and no password. Open the app and start a report.</p>
+          </details>
+          <details>
+            <summary>Which trades is it for?</summary>
+            <p>Anyone who has to show what they did: plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers, and letting agents doing property inspections.</p>
+          </details>
+          <details>
+            <summary>Where do my photos go?</summary>
+            <p>Onto your device, and nowhere else — unless you send the report yourself. With Pro they also sync through your own iCloud account, not a server of ours. There’s no advertising identifier and no ad network in the app.</p>
+          </details>
+          <details>
+            <summary>Does one purchase cover iPhone and iPad?</summary>
+            <p>Yes. Start the report on the phone at the job and finish it on the iPad in the van. With Pro the two stay in step through your own iCloud.</p>
+          </details>
+          <details>
+            <summary>What languages is it in?</summary>
+            <p>English and Danish.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSE ================= -->
+    <section id="download" class="section on-dark">
+      <div class="wrap close-inner">
         <div>
           <h2>Hand over the report before you go.</h2>
-          <p class="section-sub light">iPhone and iPad. English and Danish on the App Store.</p>
+          <p class="lede">iPhone and iPad. Free to start, 19.99&nbsp;&euro; once for your branding.</p>
         </div>
-        <div class="cta-actions">
-          <a class="btn btn-light btn-lg" href="https://apps.apple.com/us/app/id6800068309" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3c.5 3-2 4.4-2 6.5 0 1.4 1 2.5 2 2.5s2-1.1 2-2.5c0-2.1-2.5-3.5-2-6.5zM8 13.2c-2.3.9-3.8 2.6-3.8 4.8 0 2.2 1.6 3.6 3.8 3.6.9 0 1.5-.3 2-.6.5.3 1.1.6 2 .6s1.5-.3 2-.6c.5.3 1.1.6 2 .6 2.2 0 3.8-1.4 3.8-3.6 0-2.2-1.5-3.9-3.8-4.8.3-.8.5-1.7.5-2.7 0-.5 0-1-.1-1.4-.6.3-1.6.5-2.4.5-.9 0-1.9-.2-2.5-.5-.1.4-.1.9-.1 1.4 0 1 .2 1.9.5 2.7z" fill="currentColor"/></svg>
-            App Store
+        <div class="close-actions">
+          <a class="appstore" href="https://apps.apple.com/us/app/id6800068309" target="_blank" rel="noopener">
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.5 3-2 4.4-2 6.5 0 1.4 1 2.5 2 2.5s2-1.1 2-2.5c0-2.1-2.5-3.5-2-6.5zM8 13.2c-2.3.9-3.8 2.6-3.8 4.8 0 2.2 1.6 3.6 3.8 3.6.9 0 1.5-.3 2-.6.5.3 1.1.6 2 .6s1.5-.3 2-.6c.5.3 1.1.6 2 .6 2.2 0 3.8-1.4 3.8-3.6 0-2.2-1.5-3.9-3.8-4.8.3-.8.5-1.7.5-2.7 0-.5 0-1-.1-1.4-.6.3-1.6.5-2.4.5-.9 0-1.9-.2-2.5-.5-.1.4-.1.9-.1 1.4 0 1 .2 1.9.5 2.7z" fill="currentColor"/></svg>
+            <span>
+              <span class="as-sm">Download on the</span>
+              <span class="as-lg">App&nbsp;Store</span>
+            </span>
           </a>
-          <p class="fineprint">A subscription-free app. Nothing here is an ad and nothing is tracked about you as a visitor.</p>
+          <p class="fineprint">Nothing on this page is an ad, and nothing about your visit is tracked.</p>
         </div>
       </div>
     </section>
@@ -373,9 +556,10 @@
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#how">How it works</a>
-        <a href="#features">Features</a>
+        <a href="#report">The report</a>
         <a href="#pricing">Pricing</a>
-        <a href="https://provaro.12f.dk/privacy-policy/">Privacy</a>
+        <a href="#faq">Questions</a>
+        <a href="https://provaro.12f.dk/privacy-policy/">Privacy policy</a>
       </nav>
       <p class="copyright">&copy; 2026 Provaro</p>
     </div>
@@ -383,15 +567,33 @@
 
   <script>
     (function () {
-      var supports = 'IntersectionObserver' in window;
-      var els = document.querySelectorAll('[data-reveal]');
-      if (!supports || !els.length) return;
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* The header sits transparent over the navy hero and turns solid once the
+         hero has scrolled past, so the two never fight for the same contrast. */
+      var header = document.getElementById('site-header');
+      var onScroll = function () {
+        header.classList.toggle('is-stuck', window.scrollY > 24);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      var animated = document.querySelectorAll('[data-reveal], [data-annotated]');
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        animated.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
         });
-      }, { threshold: 0.12 });
-      els.forEach(function (el) { io.observe(el); });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+
+      animated.forEach(function (el) { io.observe(el); });
     })();
   </script>
 </body>
