@@ -8,8 +8,17 @@ frame, which is what keeps the rounded screen corners and the Dynamic Island rig
 and it is clipped to the device silhouette so its square corners cannot poke out
 past the rounded bezel.
 
-The frame itself is downloaded on demand (and cached, gitignored) rather than
-committed, so we are not redistributing it.
+The frame itself is downloaded on demand and cached (gitignored) rather than kept
+in the repo as a source asset.
+
+The one screen that cannot be composited ahead of time is the `<video>` in the
+core-loop section, so this also writes assets/img/device-frame.png — the bezel
+with its aperture left transparent — which the page lays *over* the playing
+video. `.device-frame` in css/styles.css positions the video using the same
+aperture numbers, expressed as percentages of the frame:
+
+    left   102/1406    top     100/2822
+    width 1206/1406    height 2622/2822
 
     python3 tools/frame-screens.py
 """
@@ -24,6 +33,7 @@ from PIL import Image, ImageChops, ImageDraw
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets" / "screens"
 OUT = SRC / "framed"
+OVERLAY = ROOT / "assets" / "img" / "device-frame.png"
 CACHE = ROOT / "tools" / ".cache"
 FRAME = CACHE / "iphone-16-pro-black-titanium.png"
 FRAME_URL = (
@@ -55,10 +65,27 @@ def body_mask(frame: Image.Image) -> Image.Image:
     return filled.point(lambda v: 0 if v == 128 else 255)
 
 
+def zero_transparent(canvas: Image.Image) -> Image.Image:
+    """Zero the colour of fully transparent pixels.
+
+    Browsers honour alpha, but viewers and thumbnailers that ignore it otherwise
+    show the leftover colour as square corners around the device.
+    """
+    alpha = canvas.getchannel("A")
+    opaque = alpha.point(lambda v: 255 if v > 0 else 0)
+    return Image.merge(
+        "RGBA",
+        [ImageChops.multiply(ch, opaque) for ch in canvas.split()[:3]] + [alpha],
+    )
+
+
 def main() -> int:
     frame = load_frame()
     mask = body_mask(frame)
     OUT.mkdir(parents=True, exist_ok=True)
+
+    zero_transparent(frame).save(OVERLAY, optimize=True)
+    print(f"bezel overlay -> {OVERLAY.relative_to(ROOT)}")
 
     shots = sorted(p for p in SRC.glob("*.png") if p.is_file())
     if not shots:
@@ -76,15 +103,7 @@ def main() -> int:
         canvas.putalpha(ImageChops.multiply(canvas.getchannel("A"), mask))
         canvas.alpha_composite(frame)
 
-        # Zero the colour of fully transparent pixels: browsers honour alpha, but
-        # viewers and thumbnailers that ignore it otherwise show the leftover
-        # screenshot colour as square corners around the device.
-        alpha = canvas.getchannel("A")
-        opaque = alpha.point(lambda v: 255 if v > 0 else 0)
-        canvas = Image.merge(
-            "RGBA",
-            [ImageChops.multiply(ch, opaque) for ch in canvas.split()[:3]] + [alpha],
-        )
+        canvas = zero_transparent(canvas)
 
         dest = OUT / shot.name
         canvas.save(dest, optimize=True)
