@@ -1,0 +1,135 @@
+{
+  "appId": "6800068309",
+  "product": "Pro (Lifetime)",
+  "primary": "ie",
+  "secondary": "dk",
+  "storefronts": {
+    "ie": {
+      "regions": [
+        "IE",
+        "AT",
+        "BE",
+        "CY",
+        "DE",
+        "EE",
+        "ES",
+        "FI",
+        "FR",
+        "GR",
+        "HR",
+        "IT",
+        "LT",
+        "LU",
+        "LV",
+        "MT",
+        "NL",
+        "PT",
+        "SI",
+        "SK"
+      ],
+      "currency": "EUR",
+      "free": "€0",
+      "pro": "€9.99",
+      "proAmount": 9.99
+    },
+    "dk": {
+      "regions": [
+        "DK"
+      ],
+      "currency": "DKK",
+      "free": "0 kr",
+      "pro": "99,00 kr",
+      "proAmount": 99.0
+    },
+    "se": {
+      "regions": [
+        "SE"
+      ],
+      "currency": "SEK",
+      "free": "0 kr",
+      "pro": "129,00 kr",
+      "proAmount": 129.0
+    },
+    "no": {
+      "regions": [
+        "NO"
+      ],
+      "currency": "NOK",
+      "free": "0 kr",
+      "pro": "129,00 kr",
+      "proAmount": 129.0
+    },
+    "gb": {
+      "regions": [
+        "GB"
+      ],
+      "currency": "GBP",
+      "free": "£0",
+      "pro": "£9.99",
+      "proAmount": 9.99
+    },
+    "us": {
+      "regions": [
+        "US"
+      ],
+      "currency": "USD",
+      "free": "$0",
+      "pro": "$9.99",
+      "proAmount": 9.99
+    },
+    "ca": {
+      "regions": [
+        "CA"
+      ],
+      "currency": "CAD",
+      "free": "$0",
+      "pro": "$12.99",
+      "proAmount": 12.99
+    },
+    "au": {
+      "regions": [
+        "AU"
+      ],
+      "currency": "AUD",
+      "free": "$0",
+      "pro": "$14.99",
+      "proAmount": 14.99
+    },
+    "nz": {
+      "regions": [
+        "NZ"
+      ],
+      "currency": "NZD",
+      "free": "$0",
+      "pro": "$19.99",
+      "proAmount": 19.99
+    },
+    "ch": {
+      "regions": [
+        "CH"
+      ],
+      "currency": "CHF",
+      "free": "CHF 0",
+      "pro": "CHF 9.00",
+      "proAmount": 9.0
+    },
+    "pl": {
+      "regions": [
+        "PL"
+      ],
+      "currency": "PLN",
+      "free": "0 zł",
+      "pro": "49,99 zł",
+      "proAmount": 49.99
+    },
+    "cz": {
+      "regions": [
+        "CZ"
+      ],
+      "currency": "CZK",
+      "free": "0 Kč",
+      "pro": "249,00 Kč",
+      "proAmount": 249.0
+    }
+  }
+}

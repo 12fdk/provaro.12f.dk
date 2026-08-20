@@ -1,0 +1,50 @@
+name: App Store price
+
+# The prices on the page are Apple's, not ours: tools/fetch-appstore-price.py
+# reads them off the App Store and writes them into index.html and
+# assets/data/pricing.json. Apple moves them without telling us — a tier
+# repricing, a VAT change, a storefront we newly sell in — so ask once a day
+# and commit only when the answer is different. A commit to main deploys the
+# page, and IndexNow picks it up from the deployment event.
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/fetch-appstore-price.py'
+      - '.github/workflows/appstore-price.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: appstore-price
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ask Apple what it charges
+        run: python3 tools/fetch-appstore-price.py
+
+      - name: Commit if the price moved
+        run: |
+          if git diff --quiet -- index.html assets/data/pricing.json; then
+            echo "Apple's prices are unchanged — nothing to commit."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/data/pricing.json
+          git commit -m "Take the price Apple is actually charging
+
+          Written by tools/fetch-appstore-price.py from the App Store listing."
+          git push
