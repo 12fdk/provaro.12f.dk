@@ -86,6 +86,15 @@
       "pro": "$12.99",
       "proAmount": 12.99
     },
+    "au": {
+      "regions": [
+        "AU"
+      ],
+      "currency": "AUD",
+      "free": "$0",
+      "pro": "$14.99",
+      "proAmount": 14.99
+    },
     "nz": {
       "regions": [
         "NZ"

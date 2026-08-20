@@ -29,6 +29,7 @@ import json
 import pathlib
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -72,10 +73,30 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
       "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15")
 
 
-def fetch(url):
+def fetch(url, attempts=4):
+    """GET, with a pause for Apple's rate limiter.
+
+    A shared runner IP asks for a dozen storefronts in a row and Apple answers
+    one of them with a 429. Backing off and asking again is enough; giving up
+    on that storefront is not, because the price would silently vanish from
+    the page for everyone it covers.
+    """
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode("utf-8", "replace")
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.read().decode("utf-8", "replace")
+        except urllib.error.HTTPError as e:
+            retriable = e.code == 429 or 500 <= e.code < 600
+            if not retriable or attempt == attempts - 1:
+                raise
+            wait = int(e.headers.get("Retry-After") or 0) or 3 * (attempt + 1)
+            print(f"    {e.code} — waiting {wait}s", file=sys.stderr)
+            time.sleep(wait)
+        except urllib.error.URLError:
+            if attempt == attempts - 1:
+                raise
+            time.sleep(3 * (attempt + 1))
 
 
 def app_price(storefront):
@@ -132,16 +153,25 @@ def zero_like(formatted):
     return re.sub(r"\d[\d.,   ]*\d|\d", "0", formatted, count=1)
 
 
-def collect():
+def collect(previous):
     """Everything Apple will tell us, for every storefront we publish."""
     out = {}
-    for sf in STOREFRONTS:
+    for i, sf in enumerate(STOREFRONTS):
+        if i:
+            time.sleep(1)  # a dozen requests in a row is what trips the 429
         try:
             free, pro = app_price(sf), iap_price(sf)
         except (urllib.error.URLError, LookupError, ValueError, KeyError) as e:
-            # One dead storefront must not cost us the other twelve. The
-            # previous value stays in pricing.json and the page is unchanged.
-            print(f"  {sf}: skipped — {e}", file=sys.stderr)
+            # One unreachable storefront must not cost us its price. Keep what
+            # Apple told us last time rather than dropping the storefront and
+            # quoting those visitors a currency they are not billed in.
+            if sf in previous:
+                out[sf] = previous[sf]
+                print(f"  {sf}: unreachable ({e}) — keeping {previous[sf]['pro']}",
+                      file=sys.stderr)
+            else:
+                print(f"  {sf}: unreachable ({e}) — no previous price to keep",
+                      file=sys.stderr)
             continue
         # The app download is free everywhere today, and "0 €" beside the Pro
         # price reads better than the word — but if a storefront ever charges
@@ -222,7 +252,15 @@ def main():
     args = ap.parse_args()
 
     print("Asking Apple:")
-    prices = collect()
+    previous = {}
+    if PRICING.exists():
+        previous = json.loads(PRICING.read_text(encoding="utf-8")).get(
+            "storefronts", {})
+    prices = collect(previous)
+
+    # Storefronts are ordered as declared, so a kept price does not reshuffle
+    # the file and show up as a diff.
+    prices = {sf: prices[sf] for sf in STOREFRONTS if sf in prices}
     for sf in (PRIMARY, SECONDARY):
         if sf not in prices:
             raise SystemExit(
