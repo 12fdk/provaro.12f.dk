@@ -31,6 +31,106 @@
   <meta name="twitter:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. One payment. No subscription." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
+  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+       reads them off the App Store and bakes the euro price into the markup
+       above, so a crawler and a visitor with no JavaScript both read the real
+       number. This then swaps in the visitor's own storefront price, because a
+       Dane charged 99 kr should not be quoted euros. pricing.json is served
+       from this domain, so the promise in the closing fineprint still holds:
+       nothing here talks to anyone but us. -->
+  <script>
+    (function () {
+      var url = 'assets/data/pricing.json?v=655d8fd2';
+
+      // A regional locale is the honest signal — someone in Denmark almost
+      // always carries a -DK tag even when the interface language is English.
+      // Failing that, the time zone names the country well enough to price it.
+      var ZONES = {
+        'Europe/Copenhagen': 'dk', 'Europe/Stockholm': 'se',
+        'Europe/Oslo': 'no', 'Europe/London': 'gb', 'Europe/Zurich': 'ch',
+        'Europe/Warsaw': 'pl', 'Europe/Prague': 'cz', 'Pacific/Auckland': 'nz',
+        'America/Toronto': 'ca', 'America/Vancouver': 'ca',
+        'America/Edmonton': 'ca', 'America/Winnipeg': 'ca',
+        'America/Halifax': 'ca', 'America/St_Johns': 'ca'
+      };
+
+      function regions() {
+        var tags = (navigator.languages || [navigator.language || '']).slice(0);
+        var out = [];
+        tags.forEach(function (tag) {
+          var m = /^[a-z]{2,3}[-_](?:[A-Za-z]{4}[-_])?([A-Za-z]{2})\b/.exec(tag);
+          if (m) out.push(m[1].toUpperCase());
+        });
+        return out;
+      }
+
+      function zone() {
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          if (ZONES[tz]) return ZONES[tz];
+          if (/^(America|US)\//.test(tz)) return 'us';
+          if (/^Australia\//.test(tz)) return 'au';
+        } catch (e) {}
+        return null;
+      }
+
+      function pick(data) {
+        var sf = data.storefronts || {};
+        var wanted = regions();
+        for (var i = 0; i < wanted.length; i++) {
+          for (var key in sf) {
+            if (sf[key].regions.indexOf(wanted[i]) !== -1) return key;
+          }
+        }
+        var byZone = zone();
+        return sf[byZone] ? byZone : data.primary;
+      }
+
+      function apply(data) {
+        var sf = data.storefronts || {};
+        var hereKey = pick(data);
+        var here = sf[hereKey];
+        if (!here) return;
+        var home = sf[data.secondary] || here;
+
+        // The small print quotes a second currency so the number can be
+        // checked against a familiar one — kroner for the euro page, euros for
+        // a Danish visitor. To anyone billed in a third currency it is just
+        // noise, so they get the aside dropped rather than translated.
+        var other = hereKey === data.secondary ? sf[data.primary]
+                  : hereKey === data.primary ? home : null;
+
+        var aside = document.querySelector('[data-price-aside]');
+        if (aside) aside.hidden = !other;
+
+        var text = {
+          free: here.free,
+          pro: here.pro,
+          'pro-secondary': other ? other.pro : null
+        };
+
+        var spans = document.querySelectorAll('[data-price]');
+        for (var i = 0; i < spans.length; i++) {
+          var value = text[spans[i].getAttribute('data-price')];
+          if (value) spans[i].textContent = value;
+        }
+      }
+
+      var loaded = fetch(url, { cache: 'no-cache' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      });
+
+      function run() { loaded.then(apply).catch(function () {}); }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+      } else {
+        run();
+      }
+    })();
+  </script>
+
   <!-- Umami: self-hosted on our own box, cookie-less, no cross-site identifier.
        It is the only request this page makes to anywhere but itself, which is
        why the fonts below it are self-hosted and the closing fineprint says
@@ -58,7 +158,7 @@
     ],
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Free: photograph, mark up, export and share. Not a trial." },
-      { "@type": "Offer", "price": "19.99", "priceCurrency": "EUR", "description": "Pro (Lifetime): your own branding on the report and iCloud sync across your devices. One-time purchase." }
+      { "@type": "Offer", "price": "9.99", "priceCurrency": "EUR", "description": "Pro (Lifetime): your own branding on the report and iCloud sync across your devices. One-time purchase." }
     ]
   }
   </script>
@@ -76,7 +176,7 @@
       {
         "@type": "Question",
         "name": "Is the free version a trial?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. Free is the whole job — photograph, mark up, export, share — and it does not expire. Pro is a single 19.99 EUR payment that puts your branding on the report and turns on iCloud sync. There is no renewal and nothing to cancel." }
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Free is the whole job — photograph, mark up, export, share — and it does not expire. Pro is a single 9.99 EUR payment that puts your branding on the report and turns on iCloud sync. There is no renewal and nothing to cancel." }
       },
       {
         "@type": "Question",
@@ -193,7 +293,7 @@
           <span>from the last photo to a finished PDF, standing on the job</span>
         </div>
         <div class="ledger-item">
-          <strong>19.99&nbsp;&euro; once</strong>
+          <strong><span data-price="pro">€9.99</span> once</strong>
           <span>not per month and not per user — there is nothing to renew</span>
         </div>
         <div class="ledger-item">
@@ -531,7 +631,7 @@
           <div class="plan">
             <span class="plan-flag">Free</span>
             <h3>The whole job</h3>
-            <p class="plan-price">0&nbsp;&euro;<small>Not a trial. It does not expire.</small></p>
+            <p class="plan-price"><span data-price="free">€0</span><small>Not a trial. It does not expire.</small></p>
             <p class="plan-bill">Everything you need to document a job and hand the PDF over.</p>
             <ul>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Photograph or import photos</li>
@@ -545,7 +645,7 @@
           <div class="plan plan-pro">
             <span class="plan-flag">Pro &middot; one-time purchase</span>
             <h3>Your name on the paper</h3>
-            <p class="plan-price">19.99&nbsp;&euro;<small>One time &middot; 149 DKK &middot; nothing to cancel</small></p>
+            <p class="plan-price"><span data-price="pro">€9.99</span><small>One time<span data-price-aside> &middot; <span data-price="pro-secondary">99,00&nbsp;kr</span></span> &middot; nothing to cancel</small></p>
             <p class="plan-bill">Bought once, yours for good — no renewal date to be surprised by.</p>
             <ul>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Your own branding</strong> — logo, company name, registration and contact details on every page</li>
@@ -575,7 +675,7 @@
           </details>
           <details>
             <summary>Is the free version a trial?</summary>
-            <p>No. Free is the whole job — photograph, mark up, export, share — and it doesn’t expire. Pro is a single 19.99&nbsp;&euro; payment that puts your branding on the report and turns on iCloud sync. There’s no renewal and nothing to cancel.</p>
+            <p>No. Free is the whole job — photograph, mark up, export, share — and it doesn’t expire. Pro is a single <span data-price="pro">€9.99</span> payment that puts your branding on the report and turns on iCloud sync. There’s no renewal and nothing to cancel.</p>
           </details>
           <details>
             <summary>Do I need an account?</summary>
@@ -610,7 +710,7 @@
       <div class="wrap close-inner">
         <div>
           <h2>Hand over the report before you go.</h2>
-          <p class="lede">iPhone and iPad. Free to start, 19.99&nbsp;&euro; once for your branding.</p>
+          <p class="lede">iPhone and iPad. Free to start, <span data-price="pro">€9.99</span> once for your branding.</p>
         </div>
         <div class="close-actions">
           <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
