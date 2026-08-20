@@ -502,7 +502,10 @@ p { margin: 0; }
   letter-spacing: -.025em;
   line-height: 1.05;
 }
-.ledger-item span {
+/* Direct child only: the tile's caption. The headline <strong> can carry a
+   span of its own — the price, written in by tools/fetch-appstore-price.py —
+   and that one must stay headline-sized, not drop to caption grey. */
+.ledger-item > span {
   display: block;
   margin-top: 10px;
   font-size: .87rem;
