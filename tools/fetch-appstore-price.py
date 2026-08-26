@@ -50,10 +50,19 @@ SECONDARY = "dk"   # kroner, quoted next to it on the Pro card
 # Region codes are what Intl/navigator.language hand us; the inline script does
 # the matching, this table only decides what we go and fetch.
 STOREFRONTS = {
-    # One euro tier covers the whole eurozone; Ireland is the storefront that
-    # prints it in English, which is the language this page is written in.
-    "ie": ["IE", "AT", "BE", "CY", "DE", "EE", "ES", "FI", "FR", "GR", "HR",
-           "IT", "LT", "LU", "LV", "MT", "NL", "PT", "SI", "SK"],
+    # One euro tier covers the whole eurozone, but every storefront prints it
+    # its own way — €9.99 in Ireland, 9,99 € in Germany. Ireland is the one
+    # that prints it the way an English page reads it; the rest are here
+    # because a translated page quotes the price the way its readers write it.
+    "ie": ["IE", "CY", "EE", "FI", "GR", "HR", "LT", "LU", "LV", "MT", "PT",
+           "SI", "SK"],
+    "de": ["DE", "AT"],
+    "es": ["ES"],
+    "fr": ["FR"],
+    "it": ["IT"],
+    "nl": ["NL", "BE"],
+    "br": ["BR"],
+    "jp": ["JP"],
     "dk": ["DK"],
     "se": ["SE"],
     "no": ["NO"],

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="fr" data-price-primary="fr" data-price-secondary="ch">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Provaro — Photographiez le chantier, remettez la preuve</title>
+  <meta name="description" content="Provaro transforme les photos que vous venez de prendre en un rapport PDF à votre image — des flèches sur ce qui compte, votre logo en haut, vos coordonnées en bas. Fait sur le chantier, en moins d'une minute, sans réseau et sans compte. Un seul paiement. Pas d'abonnement." />
+  <link rel="canonical" href="https://provaro.12f.dk/fr/" />
+  <meta property="og:locale" content="fr_FR" />
+  <!-- i18n:alternates — every translation points at every other one, self
+       included, which is what Google asks for. tools/build-i18n.py copies this
+       block unchanged; edit it here and rebuild. -->
+  <link rel="alternate" hreflang="x-default" href="https://provaro.12f.dk/" />
+  <link rel="alternate" hreflang="en" href="https://provaro.12f.dk/" />
+  <link rel="alternate" hreflang="de" href="https://provaro.12f.dk/de/" />
+  <link rel="alternate" hreflang="es" href="https://provaro.12f.dk/es/" />
+  <link rel="alternate" hreflang="fr" href="https://provaro.12f.dk/fr/" />
+  <link rel="alternate" hreflang="it" href="https://provaro.12f.dk/it/" />
+  <link rel="alternate" hreflang="ja" href="https://provaro.12f.dk/ja/" />
+  <link rel="alternate" hreflang="nl" href="https://provaro.12f.dk/nl/" />
+  <link rel="alternate" hreflang="pl" href="https://provaro.12f.dk/pl/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://provaro.12f.dk/pt-br/" />
+  <!-- /i18n:alternates -->
+  <meta name="theme-color" content="#0A1D3A" />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+
+  <link rel="preload" href="../assets/fonts/archivo-400_800-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/ibm-plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- BUMP ?v= WHENEVER css/styles.css CHANGES. Pages serves the stylesheet with
+       a four-hour cache and no hash in its filename, so without a fresh query the
+       new markup gets styled by the old rules for hours after a deploy. The HTML
+       itself carries a much shorter TTL, so a changed token lands immediately. -->
+  <link rel="stylesheet" href="../css/styles.css?v=2026-08-26c" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Provaro" />
+  <meta property="og:title" content="Provaro — Photographiez le chantier, remettez la preuve" />
+  <meta property="og:description" content="Des photos annotées dans un PDF à votre image, fait sur le chantier, en moins d'une minute. Un seul paiement. Pas d'abonnement. Pas de compte. Fonctionne sans réseau." />
+  <meta property="og:url" content="https://provaro.12f.dk/fr/" />
+  <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Provaro — Photographiez le chantier, remettez la preuve" />
+  <meta name="twitter:description" content="Des photos annotées dans un PDF à votre image, fait sur le chantier, en moins d'une minute. Un seul paiement. Pas d'abonnement." />
+  <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
+
+  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+       reads them off the App Store and bakes the euro price into the markup
+       above, so a crawler and a visitor with no JavaScript both read the real
+       number. This then swaps in the visitor's own storefront price, because a
+       Dane charged 99 kr should not be quoted euros. pricing.json is served
+       from this domain, so the promise in the closing fineprint still holds:
+       nothing here talks to anyone but us. -->
+  <script>
+    (function () {
+      var url = '../assets/data/pricing.json?v=802b44ac';
+
+      // A regional locale is the honest signal — someone in Denmark almost
+      // always carries a -DK tag even when the interface language is English.
+      // Failing that, the time zone names the country well enough to price it.
+      var ZONES = {
+        'Europe/Copenhagen': 'dk', 'Europe/Stockholm': 'se',
+        'Europe/Oslo': 'no', 'Europe/London': 'gb', 'Europe/Zurich': 'ch',
+        'Europe/Warsaw': 'pl', 'Europe/Prague': 'cz', 'Pacific/Auckland': 'nz',
+        'Europe/Berlin': 'de', 'Europe/Vienna': 'de', 'Europe/Madrid': 'es',
+        'Europe/Paris': 'fr', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl',
+        'Europe/Brussels': 'nl', 'Asia/Tokyo': 'jp',
+        'America/Sao_Paulo': 'br', 'America/Bahia': 'br',
+        'America/Fortaleza': 'br', 'America/Recife': 'br',
+        'America/Toronto': 'ca', 'America/Vancouver': 'ca',
+        'America/Edmonton': 'ca', 'America/Winnipeg': 'ca',
+        'America/Halifax': 'ca', 'America/St_Johns': 'ca'
+      };
+
+      function regions() {
+        var tags = (navigator.languages || [navigator.language || '']).slice(0);
+        var out = [];
+        tags.forEach(function (tag) {
+          var m = /^[a-z]{2,3}[-_](?:[A-Za-z]{4}[-_])?([A-Za-z]{2})\b/.exec(tag);
+          if (m) out.push(m[1].toUpperCase());
+        });
+        return out;
+      }
+
+      function zone() {
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          if (ZONES[tz]) return ZONES[tz];
+          if (/^(America|US)\//.test(tz)) return 'us';
+          if (/^Australia\//.test(tz)) return 'au';
+        } catch (e) {}
+        return null;
+      }
+
+      // Which storefront this page is written for. The English page is
+      // priced in euros and quotes kroner beside it; /de/ is priced in euros
+      // the German way and quotes francs; /ja/ is priced in yen and quotes
+      // nothing, because a third currency is noise. Absent, pricing.json
+      // decides, which is what a page with no attributes gets.
+      var root = document.documentElement;
+      var PRIMARY = root.getAttribute('data-price-primary');
+      var SECONDARY = root.getAttribute('data-price-secondary');
+
+      function pick(data) {
+        var sf = data.storefronts || {};
+        var wanted = regions();
+        for (var i = 0; i < wanted.length; i++) {
+          for (var key in sf) {
+            if (sf[key].regions.indexOf(wanted[i]) !== -1) return key;
+          }
+        }
+        var byZone = zone();
+        return sf[byZone] ? byZone : primary(data);
+      }
+
+      function primary(data) { return PRIMARY || data.primary; }
+      function secondary(data) { return SECONDARY || data.secondary; }
+
+      function apply(data) {
+        var sf = data.storefronts || {};
+        var hereKey = pick(data);
+        var here = sf[hereKey];
+        if (!here) return;
+        var mine = primary(data), theirs = secondary(data);
+        var home = sf[theirs] || null;
+
+        // The small print quotes a second currency so the number can be
+        // checked against a familiar one — kroner for the euro page, euros for
+        // a Danish visitor. To anyone billed in a third currency it is just
+        // noise, so they get the aside dropped rather than translated. A page
+        // that names no second currency drops it for everyone.
+        var other = hereKey === theirs ? sf[mine]
+                  : hereKey === mine ? home : null;
+
+        var aside = document.querySelector('[data-price-aside]');
+        if (aside) aside.hidden = !other;
+
+        var text = {
+          free: here.free,
+          pro: here.pro,
+          'pro-secondary': other ? other.pro : null
+        };
+
+        var spans = document.querySelectorAll('[data-price]');
+        for (var i = 0; i < spans.length; i++) {
+          var value = text[spans[i].getAttribute('data-price')];
+          if (value) spans[i].textContent = value;
+        }
+      }
+
+      var loaded = fetch(url, { cache: 'no-cache' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      });
+
+      function run() { loaded.then(apply).catch(function () {}); }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+      } else {
+        run();
+      }
+    })();
+  </script>
+
+  <!-- Umami: self-hosted on our own box, cookie-less, no cross-site identifier.
+       It is the only request this page makes to anywhere but itself, which is
+       why the fonts below it are self-hosted and the closing fineprint says
+       plainly that visits are counted. -->
+  <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="007e0c65-405a-4881-99a3-ca9bb0895715"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Provaro",
+    "operatingSystem": "iOS",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://provaro.12f.dk/fr/",
+    "installUrl": "https://apps.apple.com/fr/app/provaro-job-photo-reports/id6800068309",
+    "author": {
+      "@type": "Organization",
+      "name": "12F ApS"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "12F ApS"
+    },
+    "description": "Transformez un chantier terminé en rapport photo professionnel : des photos annotées dans un PDF à votre image, fait sur place, en moins d'une minute. Fonctionne hors ligne, sans compte, sans publicité.",
+    "featureList": [
+      "Photographier un chantier entier sans quitter l'appareil photo",
+      "Flèches, cercles, points, tracé libre et légendes sur n'importe quelle photo",
+      "PDF à votre image, avec votre logo, votre SIRET et vos coordonnées",
+      "Fonctionne entièrement hors ligne",
+      "Synchronisation iCloud entre vos propres appareils"
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Gratuit : photographier, annoter, exporter et partager. Ce n'est pas un essai."
+      },
+      {
+        "@type": "Offer",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "description": "Pro (à vie) : votre image sur le rapport et la synchronisation iCloud entre vos appareils. Achat unique."
+      }
+    ],
+    "inLanguage": "fr"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Provaro fonctionne-t-il vraiment sans réseau ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. La prise de vue, l'annotation et le PDF se font sur le téléphone que vous avez en main. Rien n'est envoyé et aucune étape n'attend une connexion. Envoyez le rapport une fois de retour dans une zone couverte, ou par le wifi du client sur le pas de la porte."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "La version gratuite est-elle un essai ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Le gratuit, c'est tout le chantier — photographier, annoter, exporter, partager — et il n'expire pas. Pro est un paiement unique de 9,99 € qui met votre image sur le rapport et active la synchronisation iCloud. Il n'y a pas de renouvellement et rien à résilier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ai-je besoin d'un compte ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Pas d'inscription, pas d'e-mail à donner, pas de mot de passe. Ouvrez l'app et commencez un rapport."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dois-je d'abord saisir mes clients dans Provaro ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Il n'y a pas de fichier client dans Provaro, et l'app ne demande jamais votre carnet d'adresses. Vous transmettez le PDF terminé par la feuille de partage iOS habituelle et choisissez la personne dans l'app où vous lui parlez déjà, parmi les contacts que vous avez déjà. Si vous voulez son nom et son adresse imprimés sur le rapport, vous les tapez sur ce chantier ; c'est de l'encre sur ce document-là, pas une fiche gardée sur qui que ce soit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "À quels métiers Provaro s'adresse-t-il ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "À tous ceux qui doivent montrer ce qu'ils ont fait : plombiers, électriciens, couvreurs, maçons, peintres, plâtriers, spécialistes de l'humidité et des moisissures, terrassiers, et gestionnaires locatifs en état des lieux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Où vont mes photos ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sur votre appareil, et nulle part ailleurs, tant que vous n'envoyez pas le rapport vous-même. Avec Pro, elles se synchronisent aussi par votre propre compte iCloud — pas par un serveur à nous. Il n'y a pas d'identifiant publicitaire ni de régie publicitaire dans l'app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Un seul achat couvre-t-il l'iPhone et l'iPad ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Commencez le rapport sur le téléphone au chantier et terminez-le sur l'iPad dans le camion. Avec Pro, les deux restent alignés par votre propre iCloud."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "En quelles langues Provaro est-il disponible ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En plus de cinquante, dont le français, l'anglais, l'allemand, l'espagnol, l'italien, le néerlandais, le portugais, le polonais et le japonais. Provaro suit la langue à laquelle votre iPhone est déjà réglé."
+        }
+      }
+    ],
+    "inLanguage": "fr"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" translate="no">
+        <img src="../assets/img/logo.png" alt="" width="30" height="30" />
+        <span class="brand-name">Provaro</span>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#how">Comment ça marche</a>
+        <a href="#report">Le rapport</a>
+        <a href="#pricing">Tarif</a>
+        <a href="#faq">Questions</a>
+      </nav>
+      <!-- i18n:langpick — tools/build-i18n.py replaces this whole block, so the
+           list of languages is edited here and nowhere else. -->
+      <details class="lang-pick" translate="no">
+        <summary aria-label="Langue"><span class="lang-face">FR<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <nav class="lang-menu" aria-label="Langue">
+          <a href="/" hreflang="en" lang="en">English</a>
+          <a href="/de/" hreflang="de" lang="de">Deutsch</a>
+          <a href="/es/" hreflang="es" lang="es">Español</a>
+          <a href="/fr/" hreflang="fr" lang="fr" aria-current="true">Français</a>
+          <a href="/it/" hreflang="it" lang="it">Italiano</a>
+          <a href="/ja/" hreflang="ja" lang="ja">日本語</a>
+          <a href="/nl/" hreflang="nl" lang="nl">Nederlands</a>
+          <a href="/pl/" hreflang="pl" lang="pl">Polski</a>
+          <a href="/pt-br/" hreflang="pt-BR" lang="pt-BR">Português (BR)</a>
+        </nav>
+      </details>
+      <!-- /i18n:langpick -->
+      <a class="header-cta" href="https://apps.apple.com/fr/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Obtenir Provaro</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">Rapports photo pour artisans &middot; iPhone &amp; iPad</p>
+          <h1><span class="ln">Photographiez le chantier.</span> <span class="ln">Remettez la preuve.</span></h1>
+          <p class="lede">Provaro transforme les photos que vous venez de prendre en un PDF à votre image — des flèches sur ce qui compte, votre logo en haut, vos coordonnées en bas. Fait sur le chantier, en moins d'une minute, sans réseau et sans compte.</p>
+          <div class="actions">
+            <a class="appstore" href="https://apps.apple.com/fr/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+              <img src="../assets/img/appstore-badge.svg" alt="Télécharger dans l'App Store" width="120" height="40" />
+            </a>
+            <a class="btn btn-line" href="#report">Voir ce que reçoit votre client</a>
+          </div>
+          <ul class="hero-ticks">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Un seul paiement</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Pas d'abonnement</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Fonctionne hors ligne</li>
+          </ul>
+        </div>
+
+        <div class="handover">
+          <article class="doc" aria-label="Une page de rapport Provaro terminée">
+            <div class="doc-head">
+              <img src="../assets/img/logo.png" alt="" width="20" height="20" />
+              <span class="doc-firm">Vernier Bâtiment</span>
+            </div>
+            <p class="doc-title">Rénovation de salle de bains &mdash; 14 rue Selborne</p>
+            <p class="doc-meta">M. et Mme Achard<br /> 14 rue Selborne, 75011 Paris<br /> 14 août 2026</p>
+            <p class="doc-caption">Ancienne installation déposée et murs préparés</p>
+            <div class="doc-plate">
+              <div class="doc-shot empty">
+                <figure class="capture">
+                  <img src="../assets/photos/job-strip-out.jpg" alt="Une salle de bains déposée avec une flèche rouge tracée en travers du mur, qui vient se poser sur la page du rapport" width="1206" height="904" />
+                  <figcaption class="capture-tag">Annoté sur place &middot; 09:41</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <div><strong>Vernier Bâtiment</strong>SIRET 123 456 789 00012</div>
+              <div>+33 1 70 18 20 30<br />bonjour@vernier.example</div>
+              <div>vernier.example<br />Page 1 sur 3</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEDGER ================= -->
+    <section class="ledger" aria-label="En bref">
+      <div class="wrap ledger-grid">
+        <div class="ledger-item"><strong>Moins d'une minute</strong> <span>de la dernière photo au PDF terminé, debout sur le chantier</span></div>
+        <div class="ledger-item"><strong><span data-price="pro">9,99 €</span> une fois</strong> <span>ni par mois ni par utilisateur — il n'y a rien à renouveler</span></div>
+        <div class="ledger-item"><strong>Pas de compte</strong> <span>pas d'inscription, pas d'e-mail, pas de mot de passe, pas d'essai qui s'épuise</span></div>
+        <div class="ledger-item"><strong>Fonctionne hors ligne</strong> <span>prise de vue, annotation et export tournent tous sur l'appareil que vous avez en main</span></div>
+      </div>
+    </section>
+
+    <!-- ================= STAKES ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Pourquoi cette minute vaut le coup</span>
+          <h2>Les photos sont déjà sur votre téléphone. Simplement, elles ne valent encore rien.</h2>
+          <p class="lede">Deux cents clichés dans la pellicule ne prouvent rien. Un document à votre nom règle la question.</p>
+        </div>
+        <div class="stakes-grid">
+          <article class="stake" data-reveal>
+            <h3>Six mois plus tard, on vous demande</h3>
+            <p>Les canalisations sont derrière l'enduit et le carrelage est posé. Un rapport daté avec la photo dedans met fin à la conversation avant qu'elle commence.</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>Le devis disait une chose, le chantier en a trouvé une autre</h3>
+            <p>Photographiez ce que vous avez réellement trouvé, légendez-le avec vos mots, envoyez-le dans l'heure. Les avenants cessent d'être une dispute de mémoire.</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>Deux entreprises chiffrent, une seule montre son travail</h3>
+            <p>Même métier, même prix. Celui qui remet un vrai document a l'air de la plus grosse boîte — et se fait recommander au voisin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section id="how" class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Comment ça marche</span>
+          <h2>Conçu pour les gants, la mauvaise lumière et une seule main libre</h2>
+          <p class="lede">Trois gestes, dans l'ordre où vous travaillez déjà. De grandes cibles, rien à enregistrer puis rouvrir.</p>
+        </div>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row right">
+            <fieldset class="device-switch">
+              <legend class="sr-only">Afficher ces écrans sur</legend>
+              <input class="device-radio" type="radio" name="how-device" id="how-iphone" value="iphone" checked />
+              <label for="how-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="how-device" id="how-ipad" value="ipad" />
+              <label for="how-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <ol class="steps">
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">1</span>
+              <div class="step-body">
+                <span class="eyebrow">Étape un</span>
+                <h3>Photographier tout le chantier sans quitter l'appareil photo</h3>
+                <p>Restez dans le viseur et faites une pièce d'un seul tenant, ou importez autant de clichés que vous voulez depuis la pellicule. Ils arrivent directement dans le chantier, groupés en sections, chacun avec une légende dans vos mots.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/report-editor.png" alt="Un chantier ouvert dans Provaro sur iPhone : les photos réunies en sections, chacune avec une légende en dessous" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/report-editor.png" alt="Le même chantier sur iPad, la liste des rapports à gauche et le chantier ouvert à côté" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">2</span>
+              <div class="step-body">
+                <span class="eyebrow">Étape deux</span>
+                <h3>Dessiner ce que la photo ne dit pas toute seule</h3>
+                <p>Flèches, cercles, points, tracé libre et légendes, en six couleurs et à l'épaisseur que vous réglez — à une pression de la photo que vous venez de prendre. Rien n'est incrusté : votre original reste exactement tel que l'appareil l'a enregistré, et vous pouvez revenir des jours plus tard en ajouter.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/markup.png" alt="Annotation d'une photo dans Provaro sur iPhone avec une flèche rouge, la barre d'outils en dessous" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/markup.png" alt="La même annotation sur iPad, la photo remplissant l'écran, la barre d'outils en dessous" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">3</span>
+              <div class="step-body">
+                <span class="eyebrow">Étape trois</span>
+                <h3>Le remettre avant de remballer</h3>
+                <p>Une photo par page, deux côte à côte pour l'avant et l'après, ou une grille. Voyez le PDF terminé et son poids avant qu'il parte, puis envoyez-le comme le client vous parle déjà — WhatsApp, iMessage, e-mail, AirDrop ou impression.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/document-preview.png" alt="Le PDF terminé à votre image dans Provaro sur iPhone, avec son nombre de pages et son poids avant partage" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/document-preview.png" alt="La même feuille d'export sur iPad, le choix de mise en page et le PDF terminé par-dessus le chantier ouvert" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REEL ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Trente secondes, filmées et non simulées</span>
+          <h2>Photographiez. Annotez. Envoyez.</h2>
+        </div>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row">
+            <fieldset class="device-switch">
+              <legend class="sr-only">Lire le film enregistré sur</legend>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-iphone" value="iphone" checked />
+              <label for="reel-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-ipad" value="ipad" />
+              <label for="reel-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <figure class="reel">
+            <div class="reel-frame on-iphone">
+              <video controls preload="metadata" playsinline poster="../assets/img/poster.png">
+                <source src="../assets/preview.webm" type="video/webm" />
+                <source src="../assets/preview.mp4" type="video/mp4" />
+                Votre navigateur ne peut pas lire cette vidéo.
+              </video>
+              <img class="bezel" src="../assets/img/device-frame.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="reel-frame reel-ipad on-ipad">
+              <video controls preload="metadata" playsinline poster="../assets/img/poster-ipad.png">
+                <source src="../assets/preview-ipad.webm" type="video/webm" />
+                <source src="../assets/preview-ipad.mp4" type="video/mp4" />
+                Votre navigateur ne peut pas lire cette vidéo.
+              </video>
+              <img class="bezel" src="../assets/img/device-frame-ipad.png" alt="" aria-hidden="true" />
+            </div>
+            <figcaption>Un chantier photographié, des flèches ajoutées, le rapport exporté</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE REPORT (signature) ================= -->
+    <section id="report" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Le livrable</span>
+          <h2>Voilà ce qui arrive dans sa boîte mail</h2>
+          <p class="lede">Ni un lien vers une galerie ni une capture d'écran. Un PDF qui porte votre nom, assez léger pour l'e-mail et assez bon pour l'impression.</p>
+        </div>
+
+        <div class="annotated" data-annotated>
+          <svg class="annotated-lines" aria-hidden="true"></svg>
+
+          <p class="callout" data-for="letterhead"><b>Votre en-tête</b>Logo et raison sociale en haut de chaque page.</p>
+          <p class="callout" data-for="caption"><b>Vos mots</b>La légende que vous avez tapée sur place, ou une que vous avez enregistrée.</p>
+          <p class="callout right" data-for="arrow" data-lift="64"><b>La flèche que vous avez tracée</b>Annotée sur le chantier. Votre photo d'origine reste intacte.</p>
+          <p class="callout right" data-for="foot"><b>Vos coordonnées, à chaque page</b>SIRET, téléphone, e-mail et votre lien d'avis.</p>
+
+          <div class="doc-frame">
+            <article class="doc" aria-label="Une page de rapport Provaro terminée, annotée">
+              <div class="doc-head">
+                <img src="../assets/img/logo.png" alt="" width="20" height="20" data-anno="letterhead" />
+                <span class="doc-firm">Vernier Bâtiment</span>
+              </div>
+              <p class="doc-title">Rénovation de salle de bains &mdash; 14 rue Selborne</p>
+              <p class="doc-meta">M. et Mme Achard<br /> 14 rue Selborne, 75011 Paris<br /> 14 août 2026</p>
+              <p class="doc-caption" data-anno="caption">Ancienne installation déposée et murs préparés</p>
+              <div class="doc-plate">
+                <div class="doc-shot">
+                  <!-- data-anno-x/y is where the arrowhead sits in the source file,
+                       measured off the red channel: 0.7017, 0.6210 of 1206x904. -->
+                  <img src="../assets/photos/job-strip-out.jpg"
+                       alt="Salle de bains déposée avec une flèche rouge tracée en travers du mur jusqu'à l'angle repris"
+                       width="1206" height="904" loading="lazy"
+                       data-anno="arrow" data-anno-x="0.7017" data-anno-y="0.6210" />
+                </div>
+              </div>
+              <div class="doc-foot" data-anno="foot">
+                <div><strong>Vernier Bâtiment</strong>SIRET 123 456 789 00012</div>
+                <div>27 rue Sandhurst, 75011 Paris<br />+33 1 70 18 20 30<br />bonjour@vernier.example</div>
+                <div>vernier.example<br />Donnez-nous un avis sur Trustpilot<br />Page 1 sur 3</div>
+              </div>
+            </article>
+          </div>
+
+          <ul class="callout-list">
+            <li><b>Votre en-tête</b>Logo et raison sociale en haut de chaque page.</li>
+            <li><b>Vos mots</b>La légende que vous avez tapée sur place, ou une que vous avez enregistrée.</li>
+            <li><b>La flèche que vous avez tracée</b>Annotée sur le chantier. Votre photo d'origine reste intacte.</li>
+            <li><b>Vos coordonnées, à chaque page</b>SIRET, téléphone, e-mail et votre lien d'avis.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section id="features" class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Le reste</span>
+          <h2>Tout ce qu'un vrai document d'entreprise doit être</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13M4 8l3.5-3.5M4 8l3.5 3.5M20 16H7m13 0l-3.5-3.5M20 16l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Directement depuis la photo</h3>
+            <p>Annotez l'image que vous venez de prendre sans l'enregistrer puis la rouvrir. Revenez des jours plus tard en ajouter.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-10.5A7 7 0 0 1 19 10.5C19 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.2" fill="currentColor"/></svg>
+            <h3>L'adresse, et une carte</h3>
+            <p>Ajoutez l'adresse du chantier d'une pression et le rapport porte une carte de l'endroit où vous étiez : le papier montre le lieu.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v14h-9l-5 4V4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>Phrases enregistrées</h3>
+            <p>Gardez les phrases que vous écrivez sur chaque chantier et glissez-en une dans une légende d'une seule pression.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 12v8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <h3>Des mises en page qui vont au métier</h3>
+            <p>Une photo par page, deux côte à côte pour l'avant et l'après, ou une grille pour une documentation dense. Page de garde avec ou sans.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l7.5 3v5.2c0 4.6-3.1 7.8-7.5 9.3-4.4-1.5-7.5-4.7-7.5-9.3V6.5l7.5-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.4 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Votre papier, votre nom dessus</h3>
+            <p>Logo et raison sociale en haut ; SIRET, adresse, téléphone, e-mail et lien d'avis au pied de chaque page.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 14.5l4.5-4.5 3 3 4-4 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Le PDF avant de l'envoyer</h3>
+            <p>Voyez le document terminé et exactement le poids du fichier, pour ne surprendre ni le client ni votre forfait data.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.6 15.6L20.5 20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>Une bibliothèque de vos chantiers</h3>
+            <p>Cherchez, triez et archivez tout ce que vous avez documenté — retrouvez vite la dernière fois où vous étiez dans cette maison.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10v4H7zM4.5 14h15v5.5h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8.5v3.5M9.4 11l2.6-2.6L14.6 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Envoyez-le par son canal</h3>
+            <p>WhatsApp, iMessage, e-mail, AirDrop ou impression — ce que le client utilise déjà pour vous parler.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.3 21.5 9 12 13.7 2.5 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 13l7.5 3.7 7.5-3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" opacity=".55"/></svg>
+            <h3>Tous les appareils qui sont à vous</h3>
+            <p>Avec Pro, les rapports passent par votre propre iCloud : commencez sur le téléphone au chantier, terminez sur l'iPad dans le camion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NO CUSTOMER LIST ================= -->
+    <section id="no-list" class="section">
+      <div class="wrap narrow">
+        <div class="prose-inner">
+          <span class="eyebrow">Zéro administratif</span>
+          <h2>Il n'y a pas de fichier client, parce que vous en avez déjà un.</h2>
+          <p class="lede">La personne pour qui vous faites ce chantier est déjà dans votre téléphone — un fil WhatsApp, un numéro dans vos contacts, un e-mail auquel vous avez répondu ce matin. Le rapport y va directement. Rien à saisir avant de commencer, et rien à tenir à jour ensuite.</p>
+          <p>Quand le PDF est prêt, vous le passez à la feuille de partage habituelle et choisissez la personne comme vous le faites toujours, dans l'app où vous lui parlez déjà. Provaro transmet un fichier et s'arrête là : à qui il va se décide là-bas, pas ici. Votre carnet d'adresses n'est jamais demandé, il n'y a donc même pas d'autorisation à refuser.</p>
+          <p>Mettez son nom et son adresse sur le document si vous les voulez imprimés. C'est de l'encre sur ce rapport-là, pas une fiche gardée sur qui que ce soit. Revenez au chantier des mois plus tard et vous le retrouvez en cherchant l'adresse — le classement était déjà fait.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OFFLINE ================= -->
+    <section id="offline" class="section on-dark">
+      <div class="wrap">
+        <div class="offline-inner">
+          <span class="eyebrow">Caves, combles, maisons en chantier</span>
+          <h2>Il fait le travail là où il n'y a pas de réseau.</h2>
+          <p class="lede">Chaque étape tourne sur le téléphone que vous avez en main — prise de vue, annotation, le PDF, tout. Rien n'attend un envoi et aucune roue qui tourne ne s'interpose entre vous et le client sur le pas de la porte. De retour dans une zone couverte, envoyez-le quand vous voulez.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRIVACY ================= -->
+    <section id="privacy" class="section">
+      <div class="wrap narrow">
+        <div class="privacy-inner">
+          <span class="eyebrow">Confidentialité</span>
+          <h2>Pas de compte. Pas d'inscription. Pas de publicité.</h2>
+          <p>Pas de connexion, pas d'e-mail à donner, pas d'essai qui s'épuise et pas d'appel commercial. Vos rapports ne quittent jamais votre appareil à moins que vous ne les envoyiez vous-même, et il n'y a pas d'identifiant publicitaire, pas de régie publicitaire et rien de vendu à personne.</p>
+          <p>Des chiffres d'usage anonymes — quels écrans sont ouverts, combien de temps prend un export — nous disent quoi construire ensuite. Jamais vos photos, vos notes, vos clients ou vos adresses. Et <a href="https://provaro.12f.dk/privacy-policy/">les Réglages ont un interrupteur</a> pour couper même cela.</p>
+          <div class="receipt">
+            <span data-value="Votre appareil">Où vivent vos photos</span>
+            <span data-value="Votre propre iCloud">Où Pro les synchronise</span>
+            <span data-value="Seulement quand vous l'envoyez">Quand un rapport s'en va</span>
+            <span data-value="Aucun">Identifiants publicitaires</span>
+            <span data-value="Aucun">Comptes obligatoires</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section id="pricing" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Tarif</span>
+          <h2>Payez une fois. Pas d'abonnement. Jamais.</h2>
+          <p class="lede">Les logiciels de photos de chantier se vendent d'habitude par utilisateur, par mois, pour toujours. Celui-ci est un achat, comme un outil.</p>
+        </div>
+        <div class="pricing">
+          <div class="plan">
+            <span class="plan-flag">Gratuit</span>
+            <h3>Tout le chantier</h3>
+            <p class="plan-price"><span data-price="free">0 €</span><small>Ce n'est pas un essai. Il n'expire pas.</small></p>
+            <p class="plan-bill">Tout ce qu'il faut pour documenter un chantier et remettre le PDF.</p>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Photographier ou importer des photos</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Tous les outils d'annotation, couleurs et épaisseurs</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Exporter et partager le PDF</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Fonctionne entièrement hors ligne</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Pas de compte, pas de publicité</li>
+            </ul>
+            <a class="btn btn-line" href="https://apps.apple.com/fr/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Commencer gratuitement</a>
+          </div>
+          <div class="plan plan-pro">
+            <span class="plan-flag">Pro &middot; achat unique</span>
+            <h3>Votre nom sur le papier</h3>
+            <p class="plan-price"><span data-price="pro">9,99 €</span><small>Une fois<span data-price-aside> &middot; <span data-price="pro-secondary">CHF 9.00</span></span> &middot; rien à résilier</small></p>
+            <p class="plan-bill">Acheté une fois, à vous pour de bon — pas de date de renouvellement qui vous surprend.</p>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Votre propre image</strong> — logo, raison sociale, SIRET et coordonnées sur chaque page</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Synchronisation iCloud entre vos appareils</strong> — votre iCloud, pas un serveur à nous</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Tout ce qu'il y a dans Gratuit</li>
+            </ul>
+            <a class="appstore" href="https://apps.apple.com/fr/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+              <img src="../assets/img/appstore-badge.svg" alt="Télécharger dans l'App Store" width="120" height="40" />
+            </a>
+            <p class="plan-note">Pro s'achète dans l'app.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Questions</span>
+          <h2>Ce qu'on demande en premier</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Ça marche vraiment sans réseau ?</summary>
+            <p>Oui. La prise de vue, l'annotation et le PDF se font sur le téléphone que vous avez en main. Rien n'est envoyé et aucune étape n'attend une connexion. Envoyez le rapport une fois de retour dans une zone couverte, ou par le wifi du client sur le pas de la porte.</p>
+          </details>
+          <details>
+            <summary>La version gratuite est-elle un essai ?</summary>
+            <p>Non. Le gratuit, c'est tout le chantier — photographier, annoter, exporter, partager — et il n'expire pas. Pro est un paiement unique de <span data-price="pro">9,99 €</span> qui met votre image sur le rapport et active la synchronisation iCloud. Il n'y a pas de renouvellement et rien à résilier.</p>
+          </details>
+          <details>
+            <summary>Ai-je besoin d'un compte ?</summary>
+            <p>Non. Pas d'inscription, pas d'e-mail à donner, pas de mot de passe. Ouvrez l'app et commencez un rapport.</p>
+          </details>
+          <details>
+            <summary>Dois-je d'abord y saisir mes clients ?</summary>
+            <p>Non. Il n'y a pas de fichier client dans Provaro, et l'app ne demande jamais votre carnet d'adresses — il n'y a même pas d'autorisation à refuser. Vous transmettez le PDF terminé par la feuille de partage habituelle et choisissez la personne dans l'app où vous lui parlez déjà, parmi les contacts que vous avez déjà. Si vous voulez son nom et son adresse imprimés sur le rapport, vous les tapez sur ce chantier : de l'encre sur ce document-là, pas une fiche gardée sur qui que ce soit.</p>
+          </details>
+          <details>
+            <summary>À quels métiers ça s'adresse ?</summary>
+            <p>À tous ceux qui doivent montrer ce qu'ils ont fait : plombiers, électriciens, couvreurs, maçons, peintres, plâtriers, spécialistes de l'humidité et des moisissures, terrassiers, et gestionnaires locatifs en état des lieux.</p>
+          </details>
+          <details>
+            <summary>Où vont mes photos ?</summary>
+            <p>Sur votre appareil, et nulle part ailleurs — à moins que vous n'envoyiez le rapport vous-même. Avec Pro, elles se synchronisent aussi par votre propre compte iCloud, pas par un serveur à nous. Il n'y a pas d'identifiant publicitaire ni de régie publicitaire dans l'app.</p>
+          </details>
+          <details>
+            <summary>Un seul achat couvre-t-il l'iPhone et l'iPad ?</summary>
+            <p>Oui. Commencez le rapport sur le téléphone au chantier et terminez-le sur l'iPad dans le camion. Avec Pro, les deux restent alignés par votre propre iCloud.</p>
+          </details>
+          <details>
+            <summary>En quelles langues est-elle ?</summary>
+            <p>En plus de cinquante, dont le français, l'anglais, l'allemand, l'espagnol, l'italien, le néerlandais, le portugais, le polonais et le japonais. Provaro suit la langue à laquelle votre iPhone est déjà réglé — il n'y a rien à choisir.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSE ================= -->
+    <section id="download" class="section on-dark">
+      <div class="wrap close-inner">
+        <div>
+          <h2>Remettez le rapport avant de partir.</h2>
+          <p class="lede">iPhone et iPad. Gratuit pour commencer, <span data-price="pro">9,99 €</span> une fois pour votre image.</p>
+        </div>
+        <div class="close-actions">
+          <a class="appstore" href="https://apps.apple.com/fr/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <img src="../assets/img/appstore-badge.svg" alt="Télécharger dans l'App Store" width="120" height="40" />
+          </a>
+          <p class="fineprint">Rien sur cette page n'est une publicité. Les visites sont comptées sur notre propre serveur, sans cookies.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name" translate="no">Provaro</span>
+        <span class="footer-tag">Rapports photo pour les artisans</span>
+      </div>
+      <nav class="footer-nav" aria-label="Pied de page">
+        <a href="#how">Comment ça marche</a>
+        <a href="#report">Le rapport</a>
+        <a href="#pricing">Tarif</a>
+        <a href="#faq">Questions</a>
+        <a href="https://provaro.12f.dk/privacy-policy/">Politique de confidentialité</a>
+      </nav>
+      <p class="copyright">&copy; 2026 12F ApS</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* The header sits transparent over the navy hero and turns solid once the
+         hero has scrolled past, so the two never fight for the same contrast. */
+      var header = document.getElementById('site-header');
+      var onScroll = function () {
+        header.classList.toggle('is-stuck', window.scrollY > 24);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---- Device switch ---------------------------------------------------
+         Each .device-pick carries its own radio pair, so the iPhone/iPad swap
+         is done by CSS and survives scripting being off. Choosing a device in
+         one place is meant to mean it everywhere, though, so mirror the choice
+         across the page — and stop a film that is playing on the device the
+         reader just switched away from. */
+      var radios = [].slice.call(document.querySelectorAll('.device-radio'));
+      radios.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          if (!radio.checked) return;
+          radios.forEach(function (other) {
+            if (other !== radio && other.value === radio.value) other.checked = true;
+          });
+          [].slice.call(document.querySelectorAll('.reel-frame video')).forEach(function (v) {
+            if (!v.offsetParent) v.pause();
+          });
+        });
+      });
+
+      /* ---- Callout leaders -------------------------------------------------
+         Drawn from the live layout rather than from coordinates typed into the
+         markup, so they stay on target through any width, font swap or wrap.
+         A leader runs from the label's inner edge to a point just outside the
+         thing it names — except the arrowhead, which is the one place the dot
+         lands on the content, because the content is the point. */
+      var anno = document.querySelector('[data-annotated]');
+      if (anno) drawCallouts(anno);
+
+      function drawCallouts(root) {
+        var svg = root.querySelector('.annotated-lines');
+        var labels = [].slice.call(root.querySelectorAll('.callout'));
+        var wide = window.matchMedia('(min-width: 1120px)');
+
+        var r2 = function (n) { return Math.round(n * 10) / 10; };
+        var ns = 'http://www.w3.org/2000/svg';
+
+        var pairs = labels.map(function (label) {
+          var target = root.querySelector('[data-anno="' + label.dataset.for + '"]');
+          if (!target) return null;
+          var g = document.createElementNS(ns, 'g');
+          var path = document.createElementNS(ns, 'path');
+          var dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('r', '3.2');
+          g.appendChild(path); g.appendChild(dot); svg.appendChild(g);
+          return { label: label, target: target, path: path, dot: dot,
+                   right: label.classList.contains('right'),
+                   lift: +(label.dataset.lift || 0) };
+        }).filter(Boolean);
+
+        /* Where a leader should end. Normally just clear of the element's edge,
+           in the page's own margin. For a photo it is a named point inside the
+           picture, put back through the crop that object-fit: cover applied. */
+        function endPoint(p, box) {
+          var r = p.target.getBoundingClientRect();
+          var fx = p.target.getAttribute('data-anno-x');
+          if (fx === null) {
+            return [(p.right ? r.right + 9 : r.left - 9) - box.left,
+                    r.top + r.height / 2 - box.top];
+          }
+          var iw = p.target.naturalWidth || +p.target.getAttribute('width');
+          var ih = p.target.naturalHeight || +p.target.getAttribute('height');
+          var scale = Math.max(r.width / iw, r.height / ih);
+          return [r.left + r.width / 2 + (+fx - 0.5) * iw * scale - box.left,
+                  r.top + r.height / 2 +
+                    (+p.target.getAttribute('data-anno-y') - 0.5) * ih * scale - box.top];
+        }
+
+        function update() {
+          if (!wide.matches) {
+            root.classList.remove('has-lines');
+            return;
+          }
+          /* the padding that opens the margins only exists once has-lines is on,
+             so set it first and measure after the layout it causes */
+          root.classList.add('has-lines');
+
+          var box = root.getBoundingClientRect();
+          svg.setAttribute('viewBox', '0 0 ' + r2(box.width) + ' ' + r2(box.height));
+
+          pairs.forEach(function (p) {
+            var end = endPoint(p, box);
+            var lh = p.label.offsetHeight;
+            var top = Math.max(0, Math.min(box.height - lh, end[1] - lh / 2 - p.lift));
+            p.label.style.top = top + 'px';
+
+            var lr = p.label.getBoundingClientRect();
+            var sx = (p.right ? lr.left - 10 : lr.right + 10) - box.left;
+            var sy = lr.top + lr.height / 2 - box.top;
+            var run = Math.min(26, Math.abs(end[0] - sx) * 0.3);
+            var mx = p.right ? sx - run : sx + run;
+
+            p.path.setAttribute('d', 'M ' + r2(sx) + ' ' + r2(sy) +
+              ' H ' + r2(mx) + ' L ' + r2(end[0]) + ' ' + r2(end[1]));
+            p.dot.setAttribute('cx', r2(end[0]));
+            p.dot.setAttribute('cy', r2(end[1]));
+            p.path.style.setProperty('--len', r2(p.path.getTotalLength()));
+          });
+        }
+
+        update();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+        window.addEventListener('load', update);
+
+        var tick;
+        window.addEventListener('resize', function () {
+          clearTimeout(tick);
+          tick = setTimeout(update, 120);
+        }, { passive: true });
+      }
+
+      var animated = document.querySelectorAll('[data-reveal], [data-annotated]');
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        animated.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+
+      animated.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>

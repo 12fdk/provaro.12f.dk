@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja" data-price-primary="jp" data-price-secondary="none">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Provaro — 現場を撮って、証拠を渡す</title>
+  <meta name="description" content="Provaro は撮ったばかりの写真を、自社ロゴ入りの PDF 報告書に変えます。要点には矢印、上にはロゴ、下には連絡先。現場で、1分もかからずに、電波もアカウントもなしで仕上がります。買い切り。サブスクなし。" />
+  <link rel="canonical" href="https://provaro.12f.dk/ja/" />
+  <meta property="og:locale" content="ja_JP" />
+  <!-- i18n:alternates — every translation points at every other one, self
+       included, which is what Google asks for. tools/build-i18n.py copies this
+       block unchanged; edit it here and rebuild. -->
+  <link rel="alternate" hreflang="x-default" href="https://provaro.12f.dk/" />
+  <link rel="alternate" hreflang="en" href="https://provaro.12f.dk/" />
+  <link rel="alternate" hreflang="de" href="https://provaro.12f.dk/de/" />
+  <link rel="alternate" hreflang="es" href="https://provaro.12f.dk/es/" />
+  <link rel="alternate" hreflang="fr" href="https://provaro.12f.dk/fr/" />
+  <link rel="alternate" hreflang="it" href="https://provaro.12f.dk/it/" />
+  <link rel="alternate" hreflang="ja" href="https://provaro.12f.dk/ja/" />
+  <link rel="alternate" hreflang="nl" href="https://provaro.12f.dk/nl/" />
+  <link rel="alternate" hreflang="pl" href="https://provaro.12f.dk/pl/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://provaro.12f.dk/pt-br/" />
+  <!-- /i18n:alternates -->
+  <meta name="theme-color" content="#0A1D3A" />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+
+  <link rel="preload" href="../assets/fonts/archivo-400_800-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/ibm-plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- BUMP ?v= WHENEVER css/styles.css CHANGES. Pages serves the stylesheet with
+       a four-hour cache and no hash in its filename, so without a fresh query the
+       new markup gets styled by the old rules for hours after a deploy. The HTML
+       itself carries a much shorter TTL, so a changed token lands immediately. -->
+  <link rel="stylesheet" href="../css/styles.css?v=2026-08-26c" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Provaro" />
+  <meta property="og:title" content="Provaro — 現場を撮って、証拠を渡す" />
+  <meta property="og:description" content="マークアップした写真を自社ロゴ入りの PDF に。現場で、1分もかからずに。買い切り、サブスクなし、アカウントなし。電波がなくても動きます。" />
+  <meta property="og:url" content="https://provaro.12f.dk/ja/" />
+  <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Provaro — 現場を撮って、証拠を渡す" />
+  <meta name="twitter:description" content="マークアップした写真を自社ロゴ入りの PDF に。現場で、1分もかからずに。買い切り。サブスクなし。" />
+  <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
+
+  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+       reads them off the App Store and bakes the euro price into the markup
+       above, so a crawler and a visitor with no JavaScript both read the real
+       number. This then swaps in the visitor's own storefront price, because a
+       Dane charged 99 kr should not be quoted euros. pricing.json is served
+       from this domain, so the promise in the closing fineprint still holds:
+       nothing here talks to anyone but us. -->
+  <script>
+    (function () {
+      var url = '../assets/data/pricing.json?v=802b44ac';
+
+      // A regional locale is the honest signal — someone in Denmark almost
+      // always carries a -DK tag even when the interface language is English.
+      // Failing that, the time zone names the country well enough to price it.
+      var ZONES = {
+        'Europe/Copenhagen': 'dk', 'Europe/Stockholm': 'se',
+        'Europe/Oslo': 'no', 'Europe/London': 'gb', 'Europe/Zurich': 'ch',
+        'Europe/Warsaw': 'pl', 'Europe/Prague': 'cz', 'Pacific/Auckland': 'nz',
+        'Europe/Berlin': 'de', 'Europe/Vienna': 'de', 'Europe/Madrid': 'es',
+        'Europe/Paris': 'fr', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl',
+        'Europe/Brussels': 'nl', 'Asia/Tokyo': 'jp',
+        'America/Sao_Paulo': 'br', 'America/Bahia': 'br',
+        'America/Fortaleza': 'br', 'America/Recife': 'br',
+        'America/Toronto': 'ca', 'America/Vancouver': 'ca',
+        'America/Edmonton': 'ca', 'America/Winnipeg': 'ca',
+        'America/Halifax': 'ca', 'America/St_Johns': 'ca'
+      };
+
+      function regions() {
+        var tags = (navigator.languages || [navigator.language || '']).slice(0);
+        var out = [];
+        tags.forEach(function (tag) {
+          var m = /^[a-z]{2,3}[-_](?:[A-Za-z]{4}[-_])?([A-Za-z]{2})\b/.exec(tag);
+          if (m) out.push(m[1].toUpperCase());
+        });
+        return out;
+      }
+
+      function zone() {
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          if (ZONES[tz]) return ZONES[tz];
+          if (/^(America|US)\//.test(tz)) return 'us';
+          if (/^Australia\//.test(tz)) return 'au';
+        } catch (e) {}
+        return null;
+      }
+
+      // Which storefront this page is written for. The English page is
+      // priced in euros and quotes kroner beside it; /de/ is priced in euros
+      // the German way and quotes francs; /ja/ is priced in yen and quotes
+      // nothing, because a third currency is noise. Absent, pricing.json
+      // decides, which is what a page with no attributes gets.
+      var root = document.documentElement;
+      var PRIMARY = root.getAttribute('data-price-primary');
+      var SECONDARY = root.getAttribute('data-price-secondary');
+
+      function pick(data) {
+        var sf = data.storefronts || {};
+        var wanted = regions();
+        for (var i = 0; i < wanted.length; i++) {
+          for (var key in sf) {
+            if (sf[key].regions.indexOf(wanted[i]) !== -1) return key;
+          }
+        }
+        var byZone = zone();
+        return sf[byZone] ? byZone : primary(data);
+      }
+
+      function primary(data) { return PRIMARY || data.primary; }
+      function secondary(data) { return SECONDARY || data.secondary; }
+
+      function apply(data) {
+        var sf = data.storefronts || {};
+        var hereKey = pick(data);
+        var here = sf[hereKey];
+        if (!here) return;
+        var mine = primary(data), theirs = secondary(data);
+        var home = sf[theirs] || null;
+
+        // The small print quotes a second currency so the number can be
+        // checked against a familiar one — kroner for the euro page, euros for
+        // a Danish visitor. To anyone billed in a third currency it is just
+        // noise, so they get the aside dropped rather than translated. A page
+        // that names no second currency drops it for everyone.
+        var other = hereKey === theirs ? sf[mine]
+                  : hereKey === mine ? home : null;
+
+        var aside = document.querySelector('[data-price-aside]');
+        if (aside) aside.hidden = !other;
+
+        var text = {
+          free: here.free,
+          pro: here.pro,
+          'pro-secondary': other ? other.pro : null
+        };
+
+        var spans = document.querySelectorAll('[data-price]');
+        for (var i = 0; i < spans.length; i++) {
+          var value = text[spans[i].getAttribute('data-price')];
+          if (value) spans[i].textContent = value;
+        }
+      }
+
+      var loaded = fetch(url, { cache: 'no-cache' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      });
+
+      function run() { loaded.then(apply).catch(function () {}); }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+      } else {
+        run();
+      }
+    })();
+  </script>
+
+  <!-- Umami: self-hosted on our own box, cookie-less, no cross-site identifier.
+       It is the only request this page makes to anywhere but itself, which is
+       why the fonts below it are self-hosted and the closing fineprint says
+       plainly that visits are counted. -->
+  <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="007e0c65-405a-4881-99a3-ca9bb0895715"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Provaro",
+    "operatingSystem": "iOS",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://provaro.12f.dk/ja/",
+    "installUrl": "https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309",
+    "author": {
+      "@type": "Organization",
+      "name": "12F ApS"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "12F ApS"
+    },
+    "description": "終わった現場を、そのまま本格的な写真報告書に。マークアップした写真を自社ロゴ入りの PDF にまとめ、現場で1分もかからずに仕上げます。オフラインで動作し、アカウントも広告もありません。",
+    "featureList": [
+      "カメラから離れずに現場を丸ごと撮影",
+      "どの写真にも矢印・丸・点・フリーハンド・吹き出しを追加",
+      "ロゴ、登録番号、連絡先が入った自社ブランドの PDF",
+      "完全にオフラインで動作",
+      "自分の端末どうしを iCloud で同期"
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY",
+        "description": "無料版：撮影、マークアップ、書き出し、共有。体験版ではありません。"
+      },
+      {
+        "@type": "Offer",
+        "price": "1500",
+        "priceCurrency": "JPY",
+        "description": "Pro（買い切り）：報告書に自社ブランドを載せ、端末間を iCloud で同期します。一度きりの購入です。"
+      }
+    ],
+    "inLanguage": "ja"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Provaro は本当に電波がなくても使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。撮影もマークアップも PDF の作成も、すべて手元の iPhone の中で完結します。何もアップロードされず、どの手順も通信を待ちません。報告書は電波の届く場所に戻ってから送っても、玄関先でお客さまの Wi-Fi から送ってもかまいません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "無料版は体験版ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ。無料版で現場のひと通り——撮影、マークアップ、書き出し、共有——ができ、期限もありません。Pro は ¥1,500 の一度きりの支払いで、報告書に自社ブランドが入り、iCloud 同期が有効になります。更新もなければ、解約するものもありません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "アカウントは必要ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ。登録も、差し出すメールアドレスも、パスワードもありません。アプリを開いて、報告書を作り始めるだけです。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "先に顧客を Provaro に登録する必要がありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ。Provaro に顧客リストはなく、連絡先へのアクセスを求めることもありません。仕上がった PDF は iOS のいつもの共有シートに渡し、すでにやり取りしているアプリの中から、すでに持っている連絡先で相手を選ぶだけです。氏名と住所を報告書に印字したい場合は、その案件に入力します。それはその1枚の書類に載るインクであって、誰かについて残す記録ではありません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Provaro はどんな職種向けですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "やった仕事を見せる必要のある人すべてに。配管、電気、屋根、大工、塗装、左官、防カビ・防湿の専門業者、土木、そして入退去の立ち会いをする不動産管理会社まで。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "写真はどこに保存されますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "自分の端末の中だけです。報告書を自分で送らないかぎり、ほかのどこにも行きません。Pro では自分の iCloud アカウント経由でも同期しますが、当社のサーバーは通りません。アプリに広告 ID も広告ネットワークもありません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "1回の購入で iPhone と iPad の両方に使えますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい。現場では iPhone で報告書を作り始め、車の中で iPad で仕上げられます。Pro なら自分の iCloud を通じて両方が同じ状態に保たれます。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Provaro は何か国語に対応していますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "50 以上です。日本語、英語、ドイツ語、フランス語、スペイン語、イタリア語、オランダ語、ポルトガル語、ポーランド語などに対応しています。Provaro は iPhone にすでに設定されている言語に従います。"
+        }
+      }
+    ],
+    "inLanguage": "ja"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" translate="no">
+        <img src="../assets/img/logo.png" alt="" width="30" height="30" />
+        <span class="brand-name">Provaro</span>
+      </a>
+      <nav class="site-nav" aria-label="セクション">
+        <a href="#how">使い方</a>
+        <a href="#report">報告書</a>
+        <a href="#pricing">価格</a>
+        <a href="#faq">よくある質問</a>
+      </nav>
+      <!-- i18n:langpick — tools/build-i18n.py replaces this whole block, so the
+           list of languages is edited here and nowhere else. -->
+      <details class="lang-pick" translate="no">
+        <summary aria-label="言語"><span class="lang-face">JA<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <nav class="lang-menu" aria-label="言語">
+          <a href="/" hreflang="en" lang="en">English</a>
+          <a href="/de/" hreflang="de" lang="de">Deutsch</a>
+          <a href="/es/" hreflang="es" lang="es">Español</a>
+          <a href="/fr/" hreflang="fr" lang="fr">Français</a>
+          <a href="/it/" hreflang="it" lang="it">Italiano</a>
+          <a href="/ja/" hreflang="ja" lang="ja" aria-current="true">日本語</a>
+          <a href="/nl/" hreflang="nl" lang="nl">Nederlands</a>
+          <a href="/pl/" hreflang="pl" lang="pl">Polski</a>
+          <a href="/pt-br/" hreflang="pt-BR" lang="pt-BR">Português (BR)</a>
+        </nav>
+      </details>
+      <!-- /i18n:langpick -->
+      <a class="header-cta" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Provaro を入手</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">職人のための写真報告書 &middot; iPhone &amp; iPad</p>
+          <h1><span class="ln">現場を撮る。</span> <span class="ln">証拠を渡す。</span></h1>
+          <p class="lede">Provaro は撮ったばかりの写真を、自社ロゴ入りの PDF に変えます。要点には矢印、上にはロゴ、下には連絡先。現場で、1分もかからずに、電波もアカウントもなしで仕上がります。</p>
+          <div class="actions">
+            <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+              <img src="../assets/img/appstore-badge.svg" alt="App Store からダウンロード" width="120" height="40" />
+            </a>
+            <a class="btn btn-line" href="#report">お客さまに届くものを見る</a>
+          </div>
+          <ul class="hero-ticks">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> 買い切り</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> サブスクなし</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> オフラインで動作</li>
+          </ul>
+        </div>
+
+        <div class="handover">
+          <article class="doc" aria-label="仕上がった Provaro の報告書ページ">
+            <div class="doc-head">
+              <img src="../assets/img/logo.png" alt="" width="20" height="20" />
+              <span class="doc-firm">宮下建設工業</span>
+            </div>
+            <p class="doc-title">浴室改修工事 &mdash; 渋谷1-14-3</p>
+            <p class="doc-meta">芦沢 様<br /> 〒150-0002 東京都渋谷区渋谷1-14-3<br /> 2026年8月14日</p>
+            <p class="doc-caption">既存の衛生設備を撤去し、壁面を下地処理</p>
+            <div class="doc-plate">
+              <div class="doc-shot empty">
+                <figure class="capture">
+                  <img src="../assets/photos/job-strip-out.jpg" alt="解体した浴室の壁に赤い矢印が引かれ、報告書のページに収まっていく様子" width="1206" height="904" />
+                  <figcaption class="capture-tag">現場でマークアップ &middot; 09:41</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <div><strong>宮下建設工業</strong>登録番号 T1234567890123</div>
+              <div>03-6427-1420<br />info@miyashita.example</div>
+              <div>miyashita.example<br />1 / 3 ページ</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEDGER ================= -->
+    <section class="ledger" aria-label="ひと目で">
+      <div class="wrap ledger-grid">
+        <div class="ledger-item"><strong>1分未満</strong> <span>最後の1枚から仕上がった PDF まで、現場に立ったまま</span></div>
+        <div class="ledger-item"><strong><span data-price="pro">¥1,500</span> 一度きり</strong> <span>月額でもユーザー単位でもなく、更新するものがありません</span></div>
+        <div class="ledger-item"><strong>アカウントなし</strong> <span>登録もメールもパスワードもなく、期限の迫る体験版もありません</span></div>
+        <div class="ledger-item"><strong>オフラインで動作</strong> <span>撮影もマークアップも書き出しも、すべて手元の端末で完結します</span></div>
+      </div>
+    </section>
+
+    <!-- ================= STAKES ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">その1分に価値がある理由</span>
+          <h2>写真はもう iPhone の中にあります。ただ、まだ何の値打ちにもなっていないだけです。</h2>
+          <p class="lede">カメラロールの200枚は何も証明しません。自社名の入った1枚の書類が、その話にけりをつけます。</p>
+        </div>
+        <div class="stakes-grid">
+          <article class="stake" data-reveal>
+            <h3>半年後に聞かれる</h3>
+            <p>配管は壁の中、タイルはもう貼り終わっています。写真が入った日付入りの報告書は、その話が始まる前に終わらせます。</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>見積もりと現場が食い違った</h3>
+            <p>実際に出てきたものを撮り、自分の言葉で書き添えて、その日のうちに送る。追加工事が「言った・言わない」の争いでなくなります。</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>2社が見積もり、1社は仕事を見せる</h3>
+            <p>同じ職種、同じ金額。きちんとした書類を渡すほうが大きな会社に見えますし、隣の家に紹介されるのもそちらです。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section id="how" class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">使い方</span>
+          <h2>手袋、暗がり、空いた手は片方だけ——そのために作りました</h2>
+          <p class="lede">3つの動作だけ。しかもいつも通りの順番です。押す場所は大きく、保存して開き直す手間もありません。</p>
+        </div>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row right">
+            <fieldset class="device-switch">
+              <legend class="sr-only">この画面を表示する端末</legend>
+              <input class="device-radio" type="radio" name="how-device" id="how-iphone" value="iphone" checked />
+              <label for="how-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="how-device" id="how-ipad" value="ipad" />
+              <label for="how-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <ol class="steps">
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">1</span>
+              <div class="step-body">
+                <span class="eyebrow">ステップ 1</span>
+                <h3>カメラから離れずに現場を丸ごと撮る</h3>
+                <p>ファインダーを覗いたまま部屋をひと続きで撮っても、カメラロールから好きなだけ取り込んでもかまいません。写真はそのまま案件に入り、セクションごとにまとまって、それぞれに自分の言葉のキャプションが付きます。</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/report-editor.png" alt="iPhone の Provaro で開いた案件。写真がセクションごとにまとまり、それぞれの下にキャプションが付いている" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/report-editor.png" alt="同じ案件を iPad で表示。左に報告書の一覧、その隣に開いた案件" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">2</span>
+              <div class="step-body">
+                <span class="eyebrow">ステップ 2</span>
+                <h3>写真だけでは伝わらないことを描き込む</h3>
+                <p>矢印、丸、点、フリーハンド、吹き出しを6色から、太さも自分で決めて。撮ったばかりの写真からワンタップで使えます。画像に焼き付けることはありません。元の写真はカメラが保存したそのままで、何日か経ってから戻って描き足すこともできます。</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/markup.png" alt="iPhone の Provaro で写真に赤い矢印をマークアップしているところ。下にツールバー" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/markup.png" alt="同じマークアップを iPad で。写真が画面いっぱいに広がり、下にツールバー" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">3</span>
+              <div class="step-body">
+                <span class="eyebrow">ステップ 3</span>
+                <h3>片付ける前に渡す</h3>
+                <p>1ページ1枚、ビフォー・アフターの2枚並び、あるいはグリッド。送る前に仕上がった PDF とファイルサイズを確認して、お客さまがいつも使っている手段で送れます——WhatsApp、iMessage、メール、AirDrop、印刷。</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/document-preview.png" alt="iPhone の Provaro で仕上がった自社ブランドの PDF。共有前にページ数とファイルサイズが表示されている" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/document-preview.png" alt="同じ書き出し画面を iPad で。レイアウトの選択と、開いた案件の上に重なる仕上がった PDF" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REEL ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">30秒、再現ではなく実際の撮影</span>
+          <h2>撮る。描く。送る。</h2>
+        </div>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row">
+            <fieldset class="device-switch">
+              <legend class="sr-only">この端末で撮影した動画を再生</legend>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-iphone" value="iphone" checked />
+              <label for="reel-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-ipad" value="ipad" />
+              <label for="reel-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <figure class="reel">
+            <div class="reel-frame on-iphone">
+              <video controls preload="metadata" playsinline poster="../assets/img/poster.png">
+                <source src="../assets/preview.webm" type="video/webm" />
+                <source src="../assets/preview.mp4" type="video/mp4" />
+                お使いのブラウザではこの動画を再生できません。
+              </video>
+              <img class="bezel" src="../assets/img/device-frame.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="reel-frame reel-ipad on-ipad">
+              <video controls preload="metadata" playsinline poster="../assets/img/poster-ipad.png">
+                <source src="../assets/preview-ipad.webm" type="video/webm" />
+                <source src="../assets/preview-ipad.mp4" type="video/mp4" />
+                お使いのブラウザではこの動画を再生できません。
+              </video>
+              <img class="bezel" src="../assets/img/device-frame-ipad.png" alt="" aria-hidden="true" />
+            </div>
+            <figcaption>案件を撮影し、矢印を描き足し、報告書を書き出すまで</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE REPORT (signature) ================= -->
+    <section id="report" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">納品物</span>
+          <h2>お客さまの受信箱に届くのはこれです</h2>
+          <p class="lede">ギャラリーのリンクでもスクリーンショットでもありません。自社名の入った PDF。メールで送れる軽さで、印刷にも耐えます。</p>
+        </div>
+
+        <div class="annotated" data-annotated>
+          <svg class="annotated-lines" aria-hidden="true"></svg>
+
+          <p class="callout" data-for="letterhead"><b>自社のレターヘッド</b>各ページの上部にロゴと会社名。</p>
+          <p class="callout" data-for="caption"><b>自分の言葉</b>現場で入力したキャプション、または保存しておいた定型文。</p>
+          <p class="callout right" data-for="arrow" data-lift="64"><b>自分で引いた矢印</b>現場でのマークアップ。元の写真はそのままです。</p>
+          <p class="callout right" data-for="foot"><b>各ページに自社情報</b>登録番号、電話、メール、口コミへのリンク。</p>
+
+          <div class="doc-frame">
+            <article class="doc" aria-label="仕上がった Provaro の報告書ページ（注釈付き）">
+              <div class="doc-head">
+                <img src="../assets/img/logo.png" alt="" width="20" height="20" data-anno="letterhead" />
+                <span class="doc-firm">宮下建設工業</span>
+              </div>
+              <p class="doc-title">浴室改修工事 &mdash; 渋谷1-14-3</p>
+              <p class="doc-meta">芦沢 様<br /> 〒150-0002 東京都渋谷区渋谷1-14-3<br /> 2026年8月14日</p>
+              <p class="doc-caption" data-anno="caption">既存の衛生設備を撤去し、壁面を下地処理</p>
+              <div class="doc-plate">
+                <div class="doc-shot">
+                  <!-- data-anno-x/y is where the arrowhead sits in the source file,
+                       measured off the red channel: 0.7017, 0.6210 of 1206x904. -->
+                  <img src="../assets/photos/job-strip-out.jpg"
+                       alt="解体した浴室の壁に赤い矢印が引かれ、補修した隅を指している"
+                       width="1206" height="904" loading="lazy"
+                       data-anno="arrow" data-anno-x="0.7017" data-anno-y="0.6210" />
+                </div>
+              </div>
+              <div class="doc-foot" data-anno="foot">
+                <div><strong>宮下建設工業</strong>登録番号 T1234567890123</div>
+                <div>〒150-0002 東京都渋谷区渋谷2-27-1<br />03-6427-1420<br />info@miyashita.example</div>
+                <div>miyashita.example<br />Trustpilot でご評価ください<br />1 / 3 ページ</div>
+              </div>
+            </article>
+          </div>
+
+          <ul class="callout-list">
+            <li><b>自社のレターヘッド</b>各ページの上部にロゴと会社名。</li>
+            <li><b>自分の言葉</b>現場で入力したキャプション、または保存しておいた定型文。</li>
+            <li><b>自分で引いた矢印</b>現場でのマークアップ。元の写真はそのままです。</li>
+            <li><b>各ページに自社情報</b>登録番号、電話、メール、口コミへのリンク。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section id="features" class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">そのほかの機能</span>
+          <h2>本物の業務書類に必要なもの、すべて</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13M4 8l3.5-3.5M4 8l3.5 3.5M20 16H7m13 0l-3.5-3.5M20 16l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>写真からそのまま</h3>
+            <p>撮ったばかりの画像を、保存して開き直すことなくマークアップ。何日か経ってから戻って描き足すこともできます。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-10.5A7 7 0 0 1 19 10.5C19 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.2" fill="currentColor"/></svg>
+            <h3>住所、そして地図</h3>
+            <p>現場の住所をワンタップで追加すると、報告書に現地の地図が入ります。書類そのものが場所を示します。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v14h-9l-5 4V4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>定型文の保存</h3>
+            <p>どの現場でも書く決まり文句を保存しておき、ワンタップでキャプションに差し込めます。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 12v8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <h3>職種に合うレイアウト</h3>
+            <p>1ページ1枚、ビフォー・アフターの2枚並び、記録量が多いときはグリッド。表紙のあり・なしも選べます。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l7.5 3v5.2c0 4.6-3.1 7.8-7.5 9.3-4.4-1.5-7.5-4.7-7.5-9.3V6.5l7.5-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.4 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>自社の紙に、自社の名前</h3>
+            <p>上部にロゴと会社名。各ページの下部に登録番号、住所、電話、メール、口コミへのリンク。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 14.5l4.5-4.5 3 3 4-4 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>送る前に PDF を確認</h3>
+            <p>仕上がった書類とファイルサイズをそのまま確認できるので、お客さまも自分の通信量も驚かされません。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.6 15.6L20.5 20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>案件のライブラリ</h3>
+            <p>記録したものを検索・並べ替え・アーカイブ。あの家に最後に入ったのはいつかを、すぐに探せます。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10v4H7zM4.5 14h15v5.5h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8.5v3.5M9.4 11l2.6-2.6L14.6 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>相手の使う手段で送る</h3>
+            <p>WhatsApp、iMessage、メール、AirDrop、印刷——お客さまがすでに連絡に使っているもので。</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.3 21.5 9 12 13.7 2.5 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 13l7.5 3.7 7.5-3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" opacity=".55"/></svg>
+            <h3>自分の持っている端末すべてで</h3>
+            <p>Pro なら報告書は自分の iCloud を通ります。現場では iPhone で始め、車の中で iPad で仕上げる。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NO CUSTOMER LIST ================= -->
+    <section id="no-list" class="section">
+      <div class="wrap narrow">
+        <div class="prose-inner">
+          <span class="eyebrow">事務作業なし</span>
+          <h2>顧客リストはありません。もう持っているからです。</h2>
+          <p class="lede">この現場を任せてくれた相手は、とっくに iPhone の中にいます。WhatsApp のやり取り、連絡先の電話番号、今朝返信したメール。報告書はそこへ直行します。始める前に入力するものも、あとで管理し続けるものもありません。</p>
+          <p>PDF ができたら、いつもの共有シートに渡し、いつも通りに相手を選ぶだけです——すでにやり取りしているアプリの中で。Provaro はファイルを1つ引き渡して、そこで終わります。誰に渡すかは向こう側の話で、こちら側の話ではありません。連絡先へのアクセスを求めないので、断るための許可ダイアログすら出ません。</p>
+          <p>印字したいなら、氏名と住所を書類に入れてください。それはその1枚の報告書に載るインクであって、誰かについて残す記録ではありません。何か月か経って戻ってきても、住所で検索すれば見つかります。整理はもう終わっていたわけです。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OFFLINE ================= -->
+    <section id="offline" class="section on-dark">
+      <div class="wrap">
+        <div class="offline-inner">
+          <span class="eyebrow">地下室、屋根裏、建てかけの家</span>
+          <h2>電波のない場所でも、ちゃんと仕事をします。</h2>
+          <p class="lede">撮影も、マークアップも、PDF も、すべて手元の iPhone の中で動きます。アップロードを待つものは何もなく、玄関先のお客さまとの間にぐるぐる回る印が挟まることもありません。電波の届く場所に戻ったら、好きなときに送ってください。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRIVACY ================= -->
+    <section id="privacy" class="section">
+      <div class="wrap narrow">
+        <div class="privacy-inner">
+          <span class="eyebrow">プライバシー</span>
+          <h2>アカウントなし。登録なし。広告なし。</h2>
+          <p>ログインも、差し出すメールアドレスも、期限の迫る体験版も、営業電話もありません。報告書は自分で送らないかぎり端末から出ませんし、広告 ID も広告ネットワークもなく、誰かに売られるものもありません。</p>
+          <p>匿名の利用状況——どの画面が開かれたか、書き出しに何秒かかったか——だけが、次に何を作るかの手がかりになります。写真、メモ、顧客、住所が送られることはありません。しかも <a href="https://provaro.12f.dk/privacy-policy/">設定にはそれさえ止めるスイッチ</a>があります。</p>
+          <div class="receipt">
+            <span data-value="自分の端末">写真がある場所</span>
+            <span data-value="自分の iCloud">Pro が同期する先</span>
+            <span data-value="自分で送ったときだけ">報告書が端末を出るとき</span>
+            <span data-value="なし">広告 ID</span>
+            <span data-value="なし">必要なアカウント</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section id="pricing" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">価格</span>
+          <h2>一度払うだけ。ずっとサブスクなし。</h2>
+          <p class="lede">現場写真のソフトはたいてい、ユーザー単位・月額・永久に課金されます。これは道具と同じ、買い切りです。</p>
+        </div>
+        <div class="pricing">
+          <div class="plan">
+            <span class="plan-flag">無料</span>
+            <h3>現場のひと通り</h3>
+            <p class="plan-price"><span data-price="free">¥0</span><small>体験版ではありません。期限もありません。</small></p>
+            <p class="plan-bill">現場を記録して PDF を渡すのに必要なものが、すべて入っています。</p>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>撮影と写真の読み込み</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>すべてのマークアップ道具・色・太さ</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>PDF の書き出しと共有</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>完全にオフラインで動作</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>アカウントなし、広告なし</li>
+            </ul>
+            <a class="btn btn-line" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">無料で始める</a>
+          </div>
+          <div class="plan plan-pro">
+            <span class="plan-flag">Pro &middot; 買い切り</span>
+            <h3>書類に載る自社の名前</h3>
+            <p class="plan-price"><span data-price="pro">¥1,500</span><small>一度きり &middot; 解約するものはありません</small></p>
+            <p class="plan-bill">一度買えば、ずっと自分のもの。驚かされる更新日はありません。</p>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>自社ブランド</strong> — 各ページにロゴ、会社名、登録番号、連絡先</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>端末間の iCloud 同期</strong> — 自分の iCloud であって、当社のサーバーではありません</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>無料版のすべて</li>
+            </ul>
+            <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+              <img src="../assets/img/appstore-badge.svg" alt="App Store からダウンロード" width="120" height="40" />
+            </a>
+            <p class="plan-note">Pro はアプリ内で購入します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">よくある質問</span>
+          <h2>まず聞かれること</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>本当に電波がなくても使えますか？</summary>
+            <p>はい。撮影もマークアップも PDF の作成も、すべて手元の iPhone の中で完結します。何もアップロードされず、どの手順も通信を待ちません。報告書は電波の届く場所に戻ってから送っても、玄関先でお客さまの Wi-Fi から送ってもかまいません。</p>
+          </details>
+          <details>
+            <summary>無料版は体験版ですか？</summary>
+            <p>いいえ。無料版で現場のひと通り——撮影、マークアップ、書き出し、共有——ができ、期限もありません。Pro は <span data-price="pro">¥1,500</span> の一度きりの支払いで、報告書に自社ブランドが入り、iCloud 同期が有効になります。更新もなければ、解約するものもありません。</p>
+          </details>
+          <details>
+            <summary>アカウントは必要ですか？</summary>
+            <p>いいえ。登録も、差し出すメールアドレスも、パスワードもありません。アプリを開いて、報告書を作り始めるだけです。</p>
+          </details>
+          <details>
+            <summary>先に顧客を登録する必要がありますか？</summary>
+            <p>いいえ。Provaro に顧客リストはなく、連絡先へのアクセスを求めることもありません。断るための許可ダイアログすら出ません。仕上がった PDF はいつもの共有シートに渡し、すでにやり取りしているアプリの中から、すでに持っている連絡先で相手を選ぶだけです。氏名と住所を報告書に印字したい場合は、その案件に入力します。その1枚の書類に載るインクであって、誰かについて残す記録ではありません。</p>
+          </details>
+          <details>
+            <summary>どんな職種向けですか？</summary>
+            <p>やった仕事を見せる必要のある人すべてに。配管、電気、屋根、大工、塗装、左官、防カビ・防湿の専門業者、土木、そして入退去の立ち会いをする不動産管理会社まで。</p>
+          </details>
+          <details>
+            <summary>写真はどこに保存されますか？</summary>
+            <p>自分の端末の中だけです。報告書を自分で送らないかぎり、ほかのどこにも行きません。Pro では自分の iCloud アカウント経由でも同期しますが、当社のサーバーは通りません。アプリに広告 ID も広告ネットワークもありません。</p>
+          </details>
+          <details>
+            <summary>1回の購入で iPhone と iPad の両方に使えますか？</summary>
+            <p>はい。現場では iPhone で報告書を作り始め、車の中で iPad で仕上げられます。Pro なら自分の iCloud を通じて両方が同じ状態に保たれます。</p>
+          </details>
+          <details>
+            <summary>何か国語に対応していますか？</summary>
+            <p>50 以上です。日本語、英語、ドイツ語、フランス語、スペイン語、イタリア語、オランダ語、ポルトガル語、ポーランド語などに対応しています。Provaro は iPhone にすでに設定されている言語に従うので、選ぶ必要はありません。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSE ================= -->
+    <section id="download" class="section on-dark">
+      <div class="wrap close-inner">
+        <div>
+          <h2>帰る前に、報告書を渡す。</h2>
+          <p class="lede">iPhone と iPad に対応。無料で始めて、自社ブランドは <span data-price="pro">¥1,500</span> の買い切りです。</p>
+        </div>
+        <div class="close-actions">
+          <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <img src="../assets/img/appstore-badge.svg" alt="App Store からダウンロード" width="120" height="40" />
+          </a>
+          <p class="fineprint">このページに広告はありません。訪問数は自社サーバーで、Cookie を使わずに数えています。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name" translate="no">Provaro</span>
+        <span class="footer-tag">職人のための現場写真報告書</span>
+      </div>
+      <nav class="footer-nav" aria-label="フッター">
+        <a href="#how">使い方</a>
+        <a href="#report">報告書</a>
+        <a href="#pricing">価格</a>
+        <a href="#faq">よくある質問</a>
+        <a href="https://provaro.12f.dk/privacy-policy/">プライバシーポリシー</a>
+      </nav>
+      <p class="copyright">&copy; 2026 12F ApS</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* The header sits transparent over the navy hero and turns solid once the
+         hero has scrolled past, so the two never fight for the same contrast. */
+      var header = document.getElementById('site-header');
+      var onScroll = function () {
+        header.classList.toggle('is-stuck', window.scrollY > 24);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---- Device switch ---------------------------------------------------
+         Each .device-pick carries its own radio pair, so the iPhone/iPad swap
+         is done by CSS and survives scripting being off. Choosing a device in
+         one place is meant to mean it everywhere, though, so mirror the choice
+         across the page — and stop a film that is playing on the device the
+         reader just switched away from. */
+      var radios = [].slice.call(document.querySelectorAll('.device-radio'));
+      radios.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          if (!radio.checked) return;
+          radios.forEach(function (other) {
+            if (other !== radio && other.value === radio.value) other.checked = true;
+          });
+          [].slice.call(document.querySelectorAll('.reel-frame video')).forEach(function (v) {
+            if (!v.offsetParent) v.pause();
+          });
+        });
+      });
+
+      /* ---- Callout leaders -------------------------------------------------
+         Drawn from the live layout rather than from coordinates typed into the
+         markup, so they stay on target through any width, font swap or wrap.
+         A leader runs from the label's inner edge to a point just outside the
+         thing it names — except the arrowhead, which is the one place the dot
+         lands on the content, because the content is the point. */
+      var anno = document.querySelector('[data-annotated]');
+      if (anno) drawCallouts(anno);
+
+      function drawCallouts(root) {
+        var svg = root.querySelector('.annotated-lines');
+        var labels = [].slice.call(root.querySelectorAll('.callout'));
+        var wide = window.matchMedia('(min-width: 1120px)');
+
+        var r2 = function (n) { return Math.round(n * 10) / 10; };
+        var ns = 'http://www.w3.org/2000/svg';
+
+        var pairs = labels.map(function (label) {
+          var target = root.querySelector('[data-anno="' + label.dataset.for + '"]');
+          if (!target) return null;
+          var g = document.createElementNS(ns, 'g');
+          var path = document.createElementNS(ns, 'path');
+          var dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('r', '3.2');
+          g.appendChild(path); g.appendChild(dot); svg.appendChild(g);
+          return { label: label, target: target, path: path, dot: dot,
+                   right: label.classList.contains('right'),
+                   lift: +(label.dataset.lift || 0) };
+        }).filter(Boolean);
+
+        /* Where a leader should end. Normally just clear of the element's edge,
+           in the page's own margin. For a photo it is a named point inside the
+           picture, put back through the crop that object-fit: cover applied. */
+        function endPoint(p, box) {
+          var r = p.target.getBoundingClientRect();
+          var fx = p.target.getAttribute('data-anno-x');
+          if (fx === null) {
+            return [(p.right ? r.right + 9 : r.left - 9) - box.left,
+                    r.top + r.height / 2 - box.top];
+          }
+          var iw = p.target.naturalWidth || +p.target.getAttribute('width');
+          var ih = p.target.naturalHeight || +p.target.getAttribute('height');
+          var scale = Math.max(r.width / iw, r.height / ih);
+          return [r.left + r.width / 2 + (+fx - 0.5) * iw * scale - box.left,
+                  r.top + r.height / 2 +
+                    (+p.target.getAttribute('data-anno-y') - 0.5) * ih * scale - box.top];
+        }
+
+        function update() {
+          if (!wide.matches) {
+            root.classList.remove('has-lines');
+            return;
+          }
+          /* the padding that opens the margins only exists once has-lines is on,
+             so set it first and measure after the layout it causes */
+          root.classList.add('has-lines');
+
+          var box = root.getBoundingClientRect();
+          svg.setAttribute('viewBox', '0 0 ' + r2(box.width) + ' ' + r2(box.height));
+
+          pairs.forEach(function (p) {
+            var end = endPoint(p, box);
+            var lh = p.label.offsetHeight;
+            var top = Math.max(0, Math.min(box.height - lh, end[1] - lh / 2 - p.lift));
+            p.label.style.top = top + 'px';
+
+            var lr = p.label.getBoundingClientRect();
+            var sx = (p.right ? lr.left - 10 : lr.right + 10) - box.left;
+            var sy = lr.top + lr.height / 2 - box.top;
+            var run = Math.min(26, Math.abs(end[0] - sx) * 0.3);
+            var mx = p.right ? sx - run : sx + run;
+
+            p.path.setAttribute('d', 'M ' + r2(sx) + ' ' + r2(sy) +
+              ' H ' + r2(mx) + ' L ' + r2(end[0]) + ' ' + r2(end[1]));
+            p.dot.setAttribute('cx', r2(end[0]));
+            p.dot.setAttribute('cy', r2(end[1]));
+            p.path.style.setProperty('--len', r2(p.path.getTotalLength()));
+          });
+        }
+
+        update();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+        window.addEventListener('load', update);
+
+        var tick;
+        window.addEventListener('resize', function () {
+          clearTimeout(tick);
+          tick = setTimeout(update, 120);
+        }, { passive: true });
+      }
+
+      var animated = document.querySelectorAll('[data-reveal], [data-annotated]');
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        animated.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+
+      animated.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
