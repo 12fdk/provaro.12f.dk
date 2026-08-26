@@ -34,17 +34,23 @@ jobs:
       - name: Ask Apple what it charges
         run: python3 tools/fetch-appstore-price.py
 
+      # Every translation bakes in the price of the storefront its readers buy
+      # from, so a move in Tokyo has to reach /ja/ as well as the English page.
+      - name: Rebuild the translated pages
+        run: python3 tools/build-i18n.py
+
       - name: Commit if the price moved
         run: |
-          if git diff --quiet -- index.html assets/data/pricing.json; then
+          if git diff --quiet; then
             echo "Apple's prices are unchanged — nothing to commit."
             exit 0
           fi
 
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/data/pricing.json
+          git add -A
           git commit -m "Take the price Apple is actually charging
 
-          Written by tools/fetch-appstore-price.py from the App Store listing."
+          Written by tools/fetch-appstore-price.py from the App Store listing,
+          and carried into the translated pages by tools/build-i18n.py."
           git push

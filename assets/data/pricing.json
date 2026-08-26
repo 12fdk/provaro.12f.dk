@@ -7,22 +7,15 @@
     "ie": {
       "regions": [
         "IE",
-        "AT",
-        "BE",
         "CY",
-        "DE",
         "EE",
-        "ES",
         "FI",
-        "FR",
         "GR",
         "HR",
-        "IT",
         "LT",
         "LU",
         "LV",
         "MT",
-        "NL",
         "PT",
         "SI",
         "SK"
@@ -31,6 +24,71 @@
       "free": "€0",
       "pro": "€9.99",
       "proAmount": 9.99
+    },
+    "de": {
+      "regions": [
+        "DE",
+        "AT"
+      ],
+      "currency": "EUR",
+      "free": "0 €",
+      "pro": "9,99 €",
+      "proAmount": 9.99
+    },
+    "es": {
+      "regions": [
+        "ES"
+      ],
+      "currency": "EUR",
+      "free": "0 €",
+      "pro": "9,99 €",
+      "proAmount": 9.99
+    },
+    "fr": {
+      "regions": [
+        "FR"
+      ],
+      "currency": "EUR",
+      "free": "0 €",
+      "pro": "9,99 €",
+      "proAmount": 9.99
+    },
+    "it": {
+      "regions": [
+        "IT"
+      ],
+      "currency": "EUR",
+      "free": "0 €",
+      "pro": "9,99 €",
+      "proAmount": 9.99
+    },
+    "nl": {
+      "regions": [
+        "NL",
+        "BE"
+      ],
+      "currency": "EUR",
+      "free": "€ 0",
+      "pro": "€ 9,99",
+      "proAmount": 9.99
+    },
+    "br": {
+      "regions": [
+        "BR"
+      ],
+      "currency": "BRL",
+      "free": "R$ 0",
+      "pro": "R$ 59,90",
+      "proAmount": 59.9
+    },
+    "jp": {
+      "regions": [
+        "JP"
+      ],
+      "currency": "JPY",
+      "free": "¥0",
+      "pro": "¥1,500",
+      "proAmount": 1500.0
     },
     "dk": {
       "regions": [

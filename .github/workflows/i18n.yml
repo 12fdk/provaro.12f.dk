@@ -1,0 +1,49 @@
+name: Translations
+
+# index.html is the only page written by hand; /de/, /es/, /fr/, /it/, /ja/,
+# /nl/, /pl/ and /pt-br/ are generated from it and the catalogues in i18n/.
+# Nothing enforces that by itself, so this does: it fails when a catalogue has
+# fallen behind the English source, and when the committed pages are not what
+# tools/build-i18n.py would write today. Either way the fix is the same —
+# run `python3 tools/build-i18n.py --extract`, translate what is missing, then
+# `python3 tools/build-i18n.py`, and commit the result.
+
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'i18n/**'
+      - 'tools/build-i18n.py'
+      - 'assets/data/pricing.json'
+      - '.github/workflows/i18n.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'i18n/**'
+      - 'tools/build-i18n.py'
+      - 'assets/data/pricing.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Is i18n/en.json still what index.html says?
+        run: |
+          python3 tools/build-i18n.py --extract
+          git diff --exit-code -- i18n/en.json \
+            || { echo "::error::index.html changed. Re-run tools/build-i18n.py --extract and translate the new units."; exit 1; }
+
+      - name: Is every catalogue complete?
+        run: python3 tools/build-i18n.py --check
+
+      - name: Are the published pages what the tool would write?
+        run: |
+          python3 tools/build-i18n.py
+          git diff --exit-code \
+            || { echo "::error::A translated page is out of date. Run tools/build-i18n.py and commit."; exit 1; }

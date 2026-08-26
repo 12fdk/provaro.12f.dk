@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="nl" data-price-primary="nl" data-price-secondary="none">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Provaro — Fotografeer de klus, geef het bewijs mee</title>
+  <meta name="description" content="Provaro maakt van de foto's die je net hebt genomen een pdf-rapport met jouw huisstijl: pijlen op wat telt, jouw logo bovenaan, jouw gegevens onderaan. Op locatie gemaakt, in minder dan een minuut, zonder bereik en zonder account. Eén keer betalen. Geen abonnement." />
+  <link rel="canonical" href="https://provaro.12f.dk/nl/" />
+  <meta property="og:locale" content="nl_NL" />
+  <!-- i18n:alternates — every translation points at every other one, self
+       included, which is what Google asks for. tools/build-i18n.py copies this
+       block unchanged; edit it here and rebuild. -->
+  <link rel="alternate" hreflang="x-default" href="https://provaro.12f.dk/" />
+  <link rel="alternate" hreflang="en" href="https://provaro.12f.dk/" />
+  <link rel="alternate" hreflang="de" href="https://provaro.12f.dk/de/" />
+  <link rel="alternate" hreflang="es" href="https://provaro.12f.dk/es/" />
+  <link rel="alternate" hreflang="fr" href="https://provaro.12f.dk/fr/" />
+  <link rel="alternate" hreflang="it" href="https://provaro.12f.dk/it/" />
+  <link rel="alternate" hreflang="ja" href="https://provaro.12f.dk/ja/" />
+  <link rel="alternate" hreflang="nl" href="https://provaro.12f.dk/nl/" />
+  <link rel="alternate" hreflang="pl" href="https://provaro.12f.dk/pl/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://provaro.12f.dk/pt-br/" />
+  <!-- /i18n:alternates -->
+  <meta name="theme-color" content="#0A1D3A" />
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png" />
+
+  <link rel="preload" href="../assets/fonts/archivo-400_800-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/ibm-plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- BUMP ?v= WHENEVER css/styles.css CHANGES. Pages serves the stylesheet with
+       a four-hour cache and no hash in its filename, so without a fresh query the
+       new markup gets styled by the old rules for hours after a deploy. The HTML
+       itself carries a much shorter TTL, so a changed token lands immediately. -->
+  <link rel="stylesheet" href="../css/styles.css?v=2026-08-26c" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Provaro" />
+  <meta property="og:title" content="Provaro — Fotografeer de klus, geef het bewijs mee" />
+  <meta property="og:description" content="Gemarkeerde foto's in een pdf met jouw huisstijl, op locatie gemaakt, in minder dan een minuut. Eén keer betalen. Geen abonnement. Geen account. Werkt zonder bereik." />
+  <meta property="og:url" content="https://provaro.12f.dk/nl/" />
+  <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Provaro — Fotografeer de klus, geef het bewijs mee" />
+  <meta name="twitter:description" content="Gemarkeerde foto's in een pdf met jouw huisstijl, op locatie gemaakt, in minder dan een minuut. Eén keer betalen. Geen abonnement." />
+  <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
+
+  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+       reads them off the App Store and bakes the euro price into the markup
+       above, so a crawler and a visitor with no JavaScript both read the real
+       number. This then swaps in the visitor's own storefront price, because a
+       Dane charged 99 kr should not be quoted euros. pricing.json is served
+       from this domain, so the promise in the closing fineprint still holds:
+       nothing here talks to anyone but us. -->
+  <script>
+    (function () {
+      var url = '../assets/data/pricing.json?v=802b44ac';
+
+      // A regional locale is the honest signal — someone in Denmark almost
+      // always carries a -DK tag even when the interface language is English.
+      // Failing that, the time zone names the country well enough to price it.
+      var ZONES = {
+        'Europe/Copenhagen': 'dk', 'Europe/Stockholm': 'se',
+        'Europe/Oslo': 'no', 'Europe/London': 'gb', 'Europe/Zurich': 'ch',
+        'Europe/Warsaw': 'pl', 'Europe/Prague': 'cz', 'Pacific/Auckland': 'nz',
+        'Europe/Berlin': 'de', 'Europe/Vienna': 'de', 'Europe/Madrid': 'es',
+        'Europe/Paris': 'fr', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl',
+        'Europe/Brussels': 'nl', 'Asia/Tokyo': 'jp',
+        'America/Sao_Paulo': 'br', 'America/Bahia': 'br',
+        'America/Fortaleza': 'br', 'America/Recife': 'br',
+        'America/Toronto': 'ca', 'America/Vancouver': 'ca',
+        'America/Edmonton': 'ca', 'America/Winnipeg': 'ca',
+        'America/Halifax': 'ca', 'America/St_Johns': 'ca'
+      };
+
+      function regions() {
+        var tags = (navigator.languages || [navigator.language || '']).slice(0);
+        var out = [];
+        tags.forEach(function (tag) {
+          var m = /^[a-z]{2,3}[-_](?:[A-Za-z]{4}[-_])?([A-Za-z]{2})\b/.exec(tag);
+          if (m) out.push(m[1].toUpperCase());
+        });
+        return out;
+      }
+
+      function zone() {
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          if (ZONES[tz]) return ZONES[tz];
+          if (/^(America|US)\//.test(tz)) return 'us';
+          if (/^Australia\//.test(tz)) return 'au';
+        } catch (e) {}
+        return null;
+      }
+
+      // Which storefront this page is written for. The English page is
+      // priced in euros and quotes kroner beside it; /de/ is priced in euros
+      // the German way and quotes francs; /ja/ is priced in yen and quotes
+      // nothing, because a third currency is noise. Absent, pricing.json
+      // decides, which is what a page with no attributes gets.
+      var root = document.documentElement;
+      var PRIMARY = root.getAttribute('data-price-primary');
+      var SECONDARY = root.getAttribute('data-price-secondary');
+
+      function pick(data) {
+        var sf = data.storefronts || {};
+        var wanted = regions();
+        for (var i = 0; i < wanted.length; i++) {
+          for (var key in sf) {
+            if (sf[key].regions.indexOf(wanted[i]) !== -1) return key;
+          }
+        }
+        var byZone = zone();
+        return sf[byZone] ? byZone : primary(data);
+      }
+
+      function primary(data) { return PRIMARY || data.primary; }
+      function secondary(data) { return SECONDARY || data.secondary; }
+
+      function apply(data) {
+        var sf = data.storefronts || {};
+        var hereKey = pick(data);
+        var here = sf[hereKey];
+        if (!here) return;
+        var mine = primary(data), theirs = secondary(data);
+        var home = sf[theirs] || null;
+
+        // The small print quotes a second currency so the number can be
+        // checked against a familiar one — kroner for the euro page, euros for
+        // a Danish visitor. To anyone billed in a third currency it is just
+        // noise, so they get the aside dropped rather than translated. A page
+        // that names no second currency drops it for everyone.
+        var other = hereKey === theirs ? sf[mine]
+                  : hereKey === mine ? home : null;
+
+        var aside = document.querySelector('[data-price-aside]');
+        if (aside) aside.hidden = !other;
+
+        var text = {
+          free: here.free,
+          pro: here.pro,
+          'pro-secondary': other ? other.pro : null
+        };
+
+        var spans = document.querySelectorAll('[data-price]');
+        for (var i = 0; i < spans.length; i++) {
+          var value = text[spans[i].getAttribute('data-price')];
+          if (value) spans[i].textContent = value;
+        }
+      }
+
+      var loaded = fetch(url, { cache: 'no-cache' }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      });
+
+      function run() { loaded.then(apply).catch(function () {}); }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+      } else {
+        run();
+      }
+    })();
+  </script>
+
+  <!-- Umami: self-hosted on our own box, cookie-less, no cross-site identifier.
+       It is the only request this page makes to anywhere but itself, which is
+       why the fonts below it are self-hosted and the closing fineprint says
+       plainly that visits are counted. -->
+  <script defer src="https://umami.robert-jensen.dk/script.js" data-website-id="007e0c65-405a-4881-99a3-ca9bb0895715"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Provaro",
+    "operatingSystem": "iOS",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://provaro.12f.dk/nl/",
+    "installUrl": "https://apps.apple.com/nl/app/provaro-job-photo-reports/id6800068309",
+    "author": {
+      "@type": "Organization",
+      "name": "12F ApS"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "12F ApS"
+    },
+    "description": "Maak van een afgeronde klus een professioneel fotorapport: van markeringen voorziene foto's in een pdf met jouw huisstijl, op locatie gemaakt, in minder dan een minuut. Werkt offline, zonder account, zonder advertenties.",
+    "featureList": [
+      "Een hele klus fotograferen zonder de camera te verlaten",
+      "Pijlen, cirkels, stippen, vrije hand en tekstlabels op elke foto",
+      "Pdf met jouw logo, KvK-nummer en contactgegevens",
+      "Werkt volledig offline",
+      "iCloud-synchronisatie tussen je eigen apparaten"
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Gratis: fotograferen, markeren, exporteren en delen. Geen proefversie."
+      },
+      {
+        "@type": "Offer",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "description": "Pro (voor altijd): je eigen huisstijl op het rapport en iCloud-synchronisatie tussen je apparaten. Eenmalige aankoop."
+      }
+    ],
+    "inLanguage": "nl"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Werkt Provaro echt zonder bereik?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Fotograferen, markeren en de pdf gebeuren allemaal op de telefoon in je hand. Er wordt niets geüpload en geen enkele stap wacht op een verbinding. Stuur het rapport als je weer bereik hebt, of via de wifi van de klant bij de deur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is de gratis versie een proefversie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. Gratis is de hele klus — fotograferen, markeren, exporteren, delen — en het verloopt niet. Pro is een eenmalige betaling van € 9,99 die jouw huisstijl op het rapport zet en iCloud-synchronisatie aanzet. Er is geen verlenging en niets op te zeggen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Heb ik een account nodig?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. Geen registratie, geen e-mailadres om af te staan en geen wachtwoord. Open de app en begin een rapport."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Moet ik mijn klanten eerst in Provaro zetten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. Er is geen klantenlijst in Provaro, en de app vraagt nooit om je adresboek. De afgeronde pdf geef je door aan het gewone iOS-deelmenu en je kiest de persoon in de app waarin je toch al met hem praat, uit de contacten die je al hebt. Wil je zijn naam en adres op het rapport gedrukt, dan typ je die bij die klus: het is inkt op dat ene document, geen kaart die over iemand wordt bijgehouden."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Voor welke vakmensen is Provaro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Voor iedereen die moet laten zien wat hij heeft gedaan: loodgieters, elektriciens, dakdekkers, aannemers, schilders, stukadoors, vocht- en schimmelspecialisten, grondwerkers en verhuurmakelaars die inspecties doen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waar gaan mijn foto's heen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Naar je apparaat, en nergens anders, tenzij je het rapport zelf verstuurt. Met Pro synchroniseren ze ook via je eigen iCloud-account, niet via een server van ons. Er zit geen advertentie-id en geen advertentienetwerk in de app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dekt één aankoop iPhone en iPad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Begin het rapport op de telefoon bij de klus en maak het af op de iPad in de bus. Met Pro blijven die twee gelijk via je eigen iCloud."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "In welke talen is Provaro beschikbaar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In meer dan vijftig, waaronder Nederlands, Engels, Duits, Frans, Spaans, Italiaans, Portugees, Pools en Japans. Provaro volgt de taal waarop je iPhone al staat."
+        }
+      }
+    ],
+    "inLanguage": "nl"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" translate="no">
+        <img src="../assets/img/logo.png" alt="" width="30" height="30" />
+        <span class="brand-name">Provaro</span>
+      </a>
+      <nav class="site-nav" aria-label="Onderdelen">
+        <a href="#how">Hoe het werkt</a>
+        <a href="#report">Het rapport</a>
+        <a href="#pricing">Prijs</a>
+        <a href="#faq">Vragen</a>
+      </nav>
+      <!-- i18n:langpick — tools/build-i18n.py replaces this whole block, so the
+           list of languages is edited here and nowhere else. -->
+      <details class="lang-pick" translate="no">
+        <summary aria-label="Taal"><span class="lang-face">NL<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+        <nav class="lang-menu" aria-label="Taal">
+          <a href="/" hreflang="en" lang="en">English</a>
+          <a href="/de/" hreflang="de" lang="de">Deutsch</a>
+          <a href="/es/" hreflang="es" lang="es">Español</a>
+          <a href="/fr/" hreflang="fr" lang="fr">Français</a>
+          <a href="/it/" hreflang="it" lang="it">Italiano</a>
+          <a href="/ja/" hreflang="ja" lang="ja">日本語</a>
+          <a href="/nl/" hreflang="nl" lang="nl" aria-current="true">Nederlands</a>
+          <a href="/pl/" hreflang="pl" lang="pl">Polski</a>
+          <a href="/pt-br/" hreflang="pt-BR" lang="pt-BR">Português (BR)</a>
+        </nav>
+      </details>
+      <!-- /i18n:langpick -->
+      <a class="header-cta" href="https://apps.apple.com/nl/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Download Provaro</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">Fotorapporten voor vakmensen &middot; iPhone &amp; iPad</p>
+          <h1><span class="ln">Fotografeer de klus.</span> <span class="ln">Geef het bewijs mee.</span></h1>
+          <p class="lede">Provaro maakt van de foto's die je net hebt genomen een pdf met jouw huisstijl: pijlen op wat telt, jouw logo bovenaan, jouw gegevens onderaan. Op locatie gemaakt, in minder dan een minuut, zonder bereik en zonder account.</p>
+          <div class="actions">
+            <a class="appstore" href="https://apps.apple.com/nl/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+              <img src="../assets/img/appstore-badge.svg" alt="Download in de App Store" width="120" height="40" />
+            </a>
+            <a class="btn btn-line" href="#report">Bekijk wat je klant krijgt</a>
+          </div>
+          <ul class="hero-ticks">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Eén keer betalen</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Geen abonnement</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg> Werkt offline</li>
+          </ul>
+        </div>
+
+        <div class="handover">
+          <article class="doc" aria-label="Een afgeronde pagina van een Provaro-rapport">
+            <div class="doc-head">
+              <img src="../assets/img/logo.png" alt="" width="20" height="20" />
+              <span class="doc-firm">Wernink Bouw &amp; Sanitair</span>
+            </div>
+            <p class="doc-title">Badkamerrenovatie &mdash; Selbornestraat 14</p>
+            <p class="doc-meta">Fam. Aardema<br /> Selbornestraat 14, 1053 AB Amsterdam<br /> 14 augustus 2026</p>
+            <p class="doc-caption">Oud sanitair gesloopt en wanden voorbereid</p>
+            <div class="doc-plate">
+              <div class="doc-shot empty">
+                <figure class="capture">
+                  <img src="../assets/photos/job-strip-out.jpg" alt="Een gesloopte badkamer met een rode pijl dwars over de muur, die op de rapportpagina valt" width="1206" height="904" />
+                  <figcaption class="capture-tag">Op locatie gemarkeerd &middot; 09:41</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="doc-foot">
+              <div><strong>Wernink Bouw &amp; Sanitair</strong>KvK 12345678</div>
+              <div>+31 20 794 6095<br />hallo@wernink.example</div>
+              <div>wernink.example<br />Pagina 1 van 3</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LEDGER ================= -->
+    <section class="ledger" aria-label="In het kort">
+      <div class="wrap ledger-grid">
+        <div class="ledger-item"><strong>Minder dan een minuut</strong> <span>van de laatste foto naar een afgeronde pdf, staand op de klus</span></div>
+        <div class="ledger-item"><strong><span data-price="pro">€ 9,99</span> eenmalig</strong> <span>niet per maand en niet per gebruiker — er is niets te verlengen</span></div>
+        <div class="ledger-item"><strong>Geen account</strong> <span>geen registratie, geen e-mail, geen wachtwoord, geen proefperiode die afloopt</span></div>
+        <div class="ledger-item"><strong>Werkt offline</strong> <span>fotograferen, markeren en exporteren draaien allemaal op het apparaat in je hand</span></div>
+      </div>
+    </section>
+
+    <!-- ================= STAKES ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Waarom die minuut de moeite waard is</span>
+          <h2>De foto's staan allang op je telefoon. Ze zijn alleen nog niets waard.</h2>
+          <p class="lede">Tweehonderd opnamen in je fotorol bewijzen niets. Eén document met jouw naam erop beslecht de vraag.</p>
+        </div>
+        <div class="stakes-grid">
+          <article class="stake" data-reveal>
+            <h3>Een half jaar later vragen ze ernaar</h3>
+            <p>De leidingen zitten achter het stucwerk en het tegelwerk is af. Een gedateerd rapport met de foto erin beëindigt dat gesprek voordat het begint.</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>De offerte zei het één, de klus vond het ander</h3>
+            <p>Fotografeer wat je werkelijk aantrof, beschrijf het in je eigen woorden en stuur het nog hetzelfde uur. Meerwerk is dan geen ruzie meer over wie zich wat herinnert.</p>
+          </article>
+          <article class="stake" data-reveal>
+            <h3>Twee bedrijven offreren, één laat zijn werk zien</h3>
+            <p>Zelfde vak, zelfde prijs. Wie een fatsoenlijk document meegeeft, lijkt het grotere bedrijf — en wordt bij de buren aanbevolen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section id="how" class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">Hoe het werkt</span>
+          <h2>Gemaakt voor handschoenen, slecht licht en één vrije hand</h2>
+          <p class="lede">Drie handelingen, in de volgorde waarin je toch al werkt. Grote knoppen, niets om op te slaan en opnieuw te openen.</p>
+        </div>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row right">
+            <fieldset class="device-switch">
+              <legend class="sr-only">Toon deze schermen op</legend>
+              <input class="device-radio" type="radio" name="how-device" id="how-iphone" value="iphone" checked />
+              <label for="how-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="how-device" id="how-ipad" value="ipad" />
+              <label for="how-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <ol class="steps">
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">1</span>
+              <div class="step-body">
+                <span class="eyebrow">Stap één</span>
+                <h3>Fotografeer de hele klus zonder de camera te verlaten</h3>
+                <p>Blijf in de zoeker en doe een ruimte in één keer, of haal zo veel opnamen uit je fotorol als je wilt. Ze landen meteen in de klus, gegroepeerd in secties, elk met een onderschrift in je eigen woorden.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/report-editor.png" alt="Een klus geopend in Provaro op de iPhone: foto's verzameld in secties, elk met een onderschrift eronder" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/report-editor.png" alt="Dezelfde klus op de iPad, met de lijst met rapporten links en de geopende klus ernaast" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">2</span>
+              <div class="step-body">
+                <span class="eyebrow">Stap twee</span>
+                <h3>Teken in wat de foto zelf niet vertelt</h3>
+                <p>Pijlen, cirkels, stippen, vrije hand en tekstlabels, in zes kleuren en in de dikte die jij instelt — één tik van de foto die je net hebt genomen. Er wordt niets ingebrand: je origineel blijft precies zoals de camera het heeft opgeslagen, en je kunt dagen later terugkomen en meer toevoegen.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/markup.png" alt="Een foto markeren in Provaro op de iPhone met een rode pijl, de gereedschapsbalk eronder" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/markup.png" alt="Dezelfde markering op de iPad, met de foto schermvullend en de gereedschapsbalk eronder" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step-n" aria-hidden="true">3</span>
+              <div class="step-body">
+                <span class="eyebrow">Stap drie</span>
+                <h3>Geef het mee voordat je inpakt</h3>
+                <p>Eén foto per pagina, twee naast elkaar voor voor en na, of een raster. Bekijk de afgeronde pdf en hoe groot het bestand is voordat het weggaat, en stuur het dan zoals de klant toch al met je praat: WhatsApp, iMessage, e-mail, AirDrop of geprint.</p>
+              </div>
+              <div class="step-shot">
+                <img class="on-iphone" src="../assets/screens/iphone/framed/document-preview.png" alt="De afgeronde pdf met jouw huisstijl in Provaro op de iPhone, met het aantal pagina's en de bestandsgrootte voor het delen" width="800" height="1606" loading="lazy" />
+                <img class="on-ipad" src="../assets/screens/ipad/framed/document-preview.png" alt="Hetzelfde exportvenster op de iPad, met de indelingskeuze en de afgeronde pdf over de geopende klus" width="800" height="1043" loading="lazy" />
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REEL ================= -->
+    <section class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Dertig seconden, gefilmd en niet nagebouwd</span>
+          <h2>Fotograferen. Markeren. Versturen.</h2>
+        </div>
+        <div class="device-pick" data-device-pick>
+          <div class="switch-row">
+            <fieldset class="device-switch">
+              <legend class="sr-only">Speel de film af die is opgenomen op</legend>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-iphone" value="iphone" checked />
+              <label for="reel-iphone">iPhone</label>
+              <input class="device-radio" type="radio" name="reel-device" id="reel-ipad" value="ipad" />
+              <label for="reel-ipad">iPad</label>
+            </fieldset>
+          </div>
+          <figure class="reel">
+            <div class="reel-frame on-iphone">
+              <video controls preload="metadata" playsinline poster="../assets/img/poster.png">
+                <source src="../assets/preview.webm" type="video/webm" />
+                <source src="../assets/preview.mp4" type="video/mp4" />
+                Je browser kan deze video niet afspelen.
+              </video>
+              <img class="bezel" src="../assets/img/device-frame.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="reel-frame reel-ipad on-ipad">
+              <video controls preload="metadata" playsinline poster="../assets/img/poster-ipad.png">
+                <source src="../assets/preview-ipad.webm" type="video/webm" />
+                <source src="../assets/preview-ipad.mp4" type="video/mp4" />
+                Je browser kan deze video niet afspelen.
+              </video>
+              <img class="bezel" src="../assets/img/device-frame-ipad.png" alt="" aria-hidden="true" />
+            </div>
+            <figcaption>Een klus vastleggen, pijlen toevoegen, het rapport exporteren</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= THE REPORT (signature) ================= -->
+    <section id="report" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Wat je oplevert</span>
+          <h2>Dit is wat er in zijn inbox belandt</h2>
+          <p class="lede">Geen link naar een galerij en geen schermafbeelding. Een pdf die jouw naam draagt, licht genoeg om te mailen en goed genoeg om te printen.</p>
+        </div>
+
+        <div class="annotated" data-annotated>
+          <svg class="annotated-lines" aria-hidden="true"></svg>
+
+          <p class="callout" data-for="letterhead"><b>Jouw briefhoofd</b>Logo en bedrijfsnaam bovenaan elke pagina.</p>
+          <p class="callout" data-for="caption"><b>Jouw woorden</b>Het onderschrift dat je op locatie typte, of een dat je hebt bewaard.</p>
+          <p class="callout right" data-for="arrow" data-lift="64"><b>De pijl die jij trok</b>Op de klus gemarkeerd. Je originele foto blijft onaangeroerd.</p>
+          <p class="callout right" data-for="foot"><b>Jouw gegevens, elke pagina</b>KvK-nummer, telefoon, e-mail en je reviewlink.</p>
+
+          <div class="doc-frame">
+            <article class="doc" aria-label="Een afgeronde pagina van een Provaro-rapport, met toelichting">
+              <div class="doc-head">
+                <img src="../assets/img/logo.png" alt="" width="20" height="20" data-anno="letterhead" />
+                <span class="doc-firm">Wernink Bouw &amp; Sanitair</span>
+              </div>
+              <p class="doc-title">Badkamerrenovatie &mdash; Selbornestraat 14</p>
+              <p class="doc-meta">Fam. Aardema<br /> Selbornestraat 14, 1053 AB Amsterdam<br /> 14 augustus 2026</p>
+              <p class="doc-caption" data-anno="caption">Oud sanitair gesloopt en wanden voorbereid</p>
+              <div class="doc-plate">
+                <div class="doc-shot">
+                  <!-- data-anno-x/y is where the arrowhead sits in the source file,
+                       measured off the red channel: 0.7017, 0.6210 of 1206x904. -->
+                  <img src="../assets/photos/job-strip-out.jpg"
+                       alt="Gesloopte badkamer met een rode pijl dwars over de muur naar de hoek die is hersteld"
+                       width="1206" height="904" loading="lazy"
+                       data-anno="arrow" data-anno-x="0.7017" data-anno-y="0.6210" />
+                </div>
+              </div>
+              <div class="doc-foot" data-anno="foot">
+                <div><strong>Wernink Bouw &amp; Sanitair</strong>KvK 12345678</div>
+                <div>Sandhurststraat 27, 1053 AB Amsterdam<br />+31 20 794 6095<br />hallo@wernink.example</div>
+                <div>wernink.example<br />Beoordeel ons op Trustpilot<br />Pagina 1 van 3</div>
+              </div>
+            </article>
+          </div>
+
+          <ul class="callout-list">
+            <li><b>Jouw briefhoofd</b>Logo en bedrijfsnaam bovenaan elke pagina.</li>
+            <li><b>Jouw woorden</b>Het onderschrift dat je op locatie typte, of een dat je hebt bewaard.</li>
+            <li><b>De pijl die jij trok</b>Op de klus gemarkeerd. Je originele foto blijft onaangeroerd.</li>
+            <li><b>Jouw gegevens, elke pagina</b>KvK-nummer, telefoon, e-mail en je reviewlink.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section id="features" class="section">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow">De rest ervan</span>
+          <h2>Alles wat een echt zakelijk document hoort te zijn</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13M4 8l3.5-3.5M4 8l3.5 3.5M20 16H7m13 0l-3.5-3.5M20 16l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Rechtstreeks vanaf de foto</h3>
+            <p>Markeer de foto die je net hebt genomen zonder hem op te slaan en opnieuw te openen. Kom dagen later terug en voeg meer toe.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.5-7-10.5A7 7 0 0 1 19 10.5C19 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.3" r="2.2" fill="currentColor"/></svg>
+            <h3>Het adres, plus een kaart</h3>
+            <p>Voeg het adres van de klus toe met één tik en het rapport draagt een kaart van waar je was, zodat het papier de plek laat zien.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v14h-9l-5 4V4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>Bewaarde zinnen</h3>
+            <p>Bewaar de zinnen die je bij elke klus schrijft en zet er een met één tik in een onderschrift.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 12h17M12 12v8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            <h3>Indelingen die bij het vak passen</h3>
+            <p>Eén foto per pagina, twee naast elkaar voor voor en na, of een raster voor dichte documentatie. Voorblad aan of uit.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l7.5 3v5.2c0 4.6-3.1 7.8-7.5 9.3-4.4-1.5-7.5-4.7-7.5-9.3V6.5l7.5-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.4 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Jouw papier, met jouw naam erop</h3>
+            <p>Logo en bedrijfsnaam bovenaan; KvK-nummer, adres, telefoon, e-mail en reviewlink onderaan elke pagina.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 14.5l4.5-4.5 3 3 4-4 4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>De pdf voordat je hem verstuurt</h3>
+            <p>Bekijk het afgeronde document en precies hoe groot het bestand is, zodat niets de klant of je databundel verrast.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.6 15.6L20.5 20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <h3>Een archief van je klussen</h3>
+            <p>Doorzoek, sorteer en archiveer alles wat je hebt vastgelegd — vind snel terug wanneer je voor het laatst in dat huis was.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10v4H7zM4.5 14h15v5.5h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8.5v3.5M9.4 11l2.6-2.6L14.6 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>Stuur het via zijn kanaal</h3>
+            <p>WhatsApp, iMessage, e-mail, AirDrop of geprint — waar de klant toch al mee met je praat.</p>
+          </article>
+          <article class="feature">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9L12 4.3 21.5 9 12 13.7 2.5 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4.5 13l7.5 3.7 7.5-3.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" opacity=".55"/></svg>
+            <h3>Elk apparaat dat van jou is</h3>
+            <p>Met Pro lopen rapporten via je eigen iCloud: begin op de telefoon bij de klus, maak af op de iPad in de bus.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NO CUSTOMER LIST ================= -->
+    <section id="no-list" class="section">
+      <div class="wrap narrow">
+        <div class="prose-inner">
+          <span class="eyebrow">Geen administratie</span>
+          <h2>Er is geen klantenlijst, want je hebt er al een.</h2>
+          <p class="lede">De persoon voor wie je deze klus doet, staat allang in je telefoon — een WhatsApp-gesprek, een nummer in je contacten, een mail die je vanochtend beantwoordde. Het rapport gaat daar rechtstreeks naartoe. Niets in te tikken voordat je kunt beginnen, en niets om daarna bij te houden.</p>
+          <p>Als de pdf klaar is, geef je hem aan het gewone deelmenu en kies je de persoon zoals je dat altijd doet, in de app waarin je toch al met hem praat. Provaro geeft één bestand door en houdt op: naar wie het gaat, gebeurt daar, niet hierbinnen. Er wordt nooit om je adresboek gevraagd, dus er is niet eens een toestemmingsvraag om te weigeren.</p>
+          <p>Zet zijn naam en adres op het document als je die gedrukt wilt hebben. Dat is inkt op dat ene rapport, geen kaart die over iemand wordt bijgehouden. Kom maanden later terug op de klus en je vindt hem door op het adres te zoeken — het archiveren zat al in het werk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OFFLINE ================= -->
+    <section id="offline" class="section on-dark">
+      <div class="wrap">
+        <div class="offline-inner">
+          <span class="eyebrow">Kelders, zolders, half gebouwde huizen</span>
+          <h2>Het doet zijn werk waar geen bereik is.</h2>
+          <p class="lede">Elke stap draait op de telefoon in je hand — fotograferen, markeren, de pdf, alles. Niets wacht op een upload en geen enkel draaiend wieltje staat tussen jou en de klant bij de deur. Als je weer bereik hebt, stuur je het wanneer je wilt.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRIVACY ================= -->
+    <section id="privacy" class="section">
+      <div class="wrap narrow">
+        <div class="privacy-inner">
+          <span class="eyebrow">Privacy</span>
+          <h2>Geen account. Geen registratie. Geen advertenties.</h2>
+          <p>Geen inlog, geen e-mailadres om af te staan, geen proefperiode die afloopt en geen verkooptelefoontje. Je rapporten verlaten je apparaat nooit tenzij je ze zelf verstuurt, en er is geen advertentie-id, geen advertentienetwerk en niets dat aan wie dan ook wordt verkocht.</p>
+          <p>Anonieme gebruikscijfers — welke schermen worden geopend, hoe lang een export duurt — vertellen ons wat we hierna moeten bouwen. Nooit je foto's, notities, klanten of adressen. En <a href="https://provaro.12f.dk/privacy-policy/">in Instellingen zit een schakelaar</a> om ook dat uit te zetten.</p>
+          <div class="receipt">
+            <span data-value="Je apparaat">Waar je foto's staan</span>
+            <span data-value="Je eigen iCloud">Waar Pro ze synchroniseert</span>
+            <span data-value="Alleen als je het verstuurt">Wanneer een rapport weggaat</span>
+            <span data-value="Geen">Advertentie-id's</span>
+            <span data-value="Geen">Vereiste accounts</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section id="pricing" class="section deliverable">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Prijs</span>
+          <h2>Eén keer betalen. Geen abonnement. Nooit.</h2>
+          <p class="lede">Software voor klusfoto's wordt meestal per gebruiker, per maand, voor altijd verkocht. Deze is een aankoop, zoals gereedschap.</p>
+        </div>
+        <div class="pricing">
+          <div class="plan">
+            <span class="plan-flag">Gratis</span>
+            <h3>De hele klus</h3>
+            <p class="plan-price"><span data-price="free">€ 0</span><small>Geen proefversie. Verloopt niet.</small></p>
+            <p class="plan-bill">Alles wat je nodig hebt om een klus vast te leggen en de pdf mee te geven.</p>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Fotograferen of foto's importeren</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Elk markeergereedschap, elke kleur en dikte</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>De pdf exporteren en delen</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Werkt volledig offline</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen account, geen advertenties</li>
+            </ul>
+            <a class="btn btn-line" href="https://apps.apple.com/nl/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Gratis beginnen</a>
+          </div>
+          <div class="plan plan-pro">
+            <span class="plan-flag">Pro &middot; eenmalige aankoop</span>
+            <h3>Jouw naam op het papier</h3>
+            <p class="plan-price"><span data-price="pro">€ 9,99</span><small>Eenmalig &middot; niets op te zeggen</small></p>
+            <p class="plan-bill">Eén keer gekocht, voorgoed van jou — geen verlengdatum die je verrast.</p>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>Je eigen huisstijl</strong> — logo, bedrijfsnaam, KvK-nummer en contactgegevens op elke pagina</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>iCloud-synchronisatie tussen je apparaten</strong> — jouw iCloud, geen server van ons</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Alles uit Gratis</li>
+            </ul>
+            <a class="appstore" href="https://apps.apple.com/nl/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+              <img src="../assets/img/appstore-badge.svg" alt="Download in de App Store" width="120" height="40" />
+            </a>
+            <p class="plan-note">Pro koop je in de app.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section">
+      <div class="wrap">
+        <div class="head centered">
+          <span class="eyebrow">Vragen</span>
+          <h2>Wat mensen als eerste vragen</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Werkt het echt zonder bereik?</summary>
+            <p>Ja. Fotograferen, markeren en de pdf gebeuren allemaal op de telefoon in je hand. Er wordt niets geüpload en geen enkele stap wacht op een verbinding. Stuur het rapport als je weer bereik hebt, of via de wifi van de klant bij de deur.</p>
+          </details>
+          <details>
+            <summary>Is de gratis versie een proefversie?</summary>
+            <p>Nee. Gratis is de hele klus — fotograferen, markeren, exporteren, delen — en het verloopt niet. Pro is een eenmalige betaling van <span data-price="pro">€ 9,99</span> die jouw huisstijl op het rapport zet en iCloud-synchronisatie aanzet. Er is geen verlenging en niets op te zeggen.</p>
+          </details>
+          <details>
+            <summary>Heb ik een account nodig?</summary>
+            <p>Nee. Geen registratie, geen e-mailadres om af te staan en geen wachtwoord. Open de app en begin een rapport.</p>
+          </details>
+          <details>
+            <summary>Moet ik mijn klanten er eerst in zetten?</summary>
+            <p>Nee. Er is geen klantenlijst in Provaro, en de app vraagt nooit om je adresboek — er is niet eens een toestemmingsvraag om te weigeren. De afgeronde pdf geef je door aan het gewone deelmenu en je kiest de persoon in de app waarin je toch al met hem praat, uit de contacten die je al hebt. Wil je zijn naam en adres op het rapport gedrukt, dan typ je die bij die klus: inkt op dat ene document, geen kaart die over iemand wordt bijgehouden.</p>
+          </details>
+          <details>
+            <summary>Voor welke vakmensen is het?</summary>
+            <p>Voor iedereen die moet laten zien wat hij heeft gedaan: loodgieters, elektriciens, dakdekkers, aannemers, schilders, stukadoors, vocht- en schimmelspecialisten, grondwerkers en verhuurmakelaars die inspecties doen.</p>
+          </details>
+          <details>
+            <summary>Waar gaan mijn foto's heen?</summary>
+            <p>Naar je apparaat, en nergens anders — tenzij je het rapport zelf verstuurt. Met Pro synchroniseren ze ook via je eigen iCloud-account, niet via een server van ons. Er zit geen advertentie-id en geen advertentienetwerk in de app.</p>
+          </details>
+          <details>
+            <summary>Dekt één aankoop iPhone en iPad?</summary>
+            <p>Ja. Begin het rapport op de telefoon bij de klus en maak het af op de iPad in de bus. Met Pro blijven die twee gelijk via je eigen iCloud.</p>
+          </details>
+          <details>
+            <summary>In welke talen is het?</summary>
+            <p>In meer dan vijftig, waaronder Nederlands, Engels, Duits, Frans, Spaans, Italiaans, Portugees, Pools en Japans. Provaro volgt de taal waarop je iPhone al staat — er valt niets te kiezen.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSE ================= -->
+    <section id="download" class="section on-dark">
+      <div class="wrap close-inner">
+        <div>
+          <h2>Geef het rapport mee voordat je wegrijdt.</h2>
+          <p class="lede">iPhone en iPad. Gratis om te beginnen, <span data-price="pro">€ 9,99</span> eenmalig voor je huisstijl.</p>
+        </div>
+        <div class="close-actions">
+          <a class="appstore" href="https://apps.apple.com/nl/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <img src="../assets/img/appstore-badge.svg" alt="Download in de App Store" width="120" height="40" />
+          </a>
+          <p class="fineprint">Niets op deze pagina is een advertentie. Bezoeken worden geteld op onze eigen server, zonder cookies.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name" translate="no">Provaro</span>
+        <span class="footer-tag">Fotorapporten voor vakmensen</span>
+      </div>
+      <nav class="footer-nav" aria-label="Voettekst">
+        <a href="#how">Hoe het werkt</a>
+        <a href="#report">Het rapport</a>
+        <a href="#pricing">Prijs</a>
+        <a href="#faq">Vragen</a>
+        <a href="https://provaro.12f.dk/privacy-policy/">Privacybeleid</a>
+      </nav>
+      <p class="copyright">&copy; 2026 12F ApS</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* The header sits transparent over the navy hero and turns solid once the
+         hero has scrolled past, so the two never fight for the same contrast. */
+      var header = document.getElementById('site-header');
+      var onScroll = function () {
+        header.classList.toggle('is-stuck', window.scrollY > 24);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---- Device switch ---------------------------------------------------
+         Each .device-pick carries its own radio pair, so the iPhone/iPad swap
+         is done by CSS and survives scripting being off. Choosing a device in
+         one place is meant to mean it everywhere, though, so mirror the choice
+         across the page — and stop a film that is playing on the device the
+         reader just switched away from. */
+      var radios = [].slice.call(document.querySelectorAll('.device-radio'));
+      radios.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          if (!radio.checked) return;
+          radios.forEach(function (other) {
+            if (other !== radio && other.value === radio.value) other.checked = true;
+          });
+          [].slice.call(document.querySelectorAll('.reel-frame video')).forEach(function (v) {
+            if (!v.offsetParent) v.pause();
+          });
+        });
+      });
+
+      /* ---- Callout leaders -------------------------------------------------
+         Drawn from the live layout rather than from coordinates typed into the
+         markup, so they stay on target through any width, font swap or wrap.
+         A leader runs from the label's inner edge to a point just outside the
+         thing it names — except the arrowhead, which is the one place the dot
+         lands on the content, because the content is the point. */
+      var anno = document.querySelector('[data-annotated]');
+      if (anno) drawCallouts(anno);
+
+      function drawCallouts(root) {
+        var svg = root.querySelector('.annotated-lines');
+        var labels = [].slice.call(root.querySelectorAll('.callout'));
+        var wide = window.matchMedia('(min-width: 1120px)');
+
+        var r2 = function (n) { return Math.round(n * 10) / 10; };
+        var ns = 'http://www.w3.org/2000/svg';
+
+        var pairs = labels.map(function (label) {
+          var target = root.querySelector('[data-anno="' + label.dataset.for + '"]');
+          if (!target) return null;
+          var g = document.createElementNS(ns, 'g');
+          var path = document.createElementNS(ns, 'path');
+          var dot = document.createElementNS(ns, 'circle');
+          dot.setAttribute('r', '3.2');
+          g.appendChild(path); g.appendChild(dot); svg.appendChild(g);
+          return { label: label, target: target, path: path, dot: dot,
+                   right: label.classList.contains('right'),
+                   lift: +(label.dataset.lift || 0) };
+        }).filter(Boolean);
+
+        /* Where a leader should end. Normally just clear of the element's edge,
+           in the page's own margin. For a photo it is a named point inside the
+           picture, put back through the crop that object-fit: cover applied. */
+        function endPoint(p, box) {
+          var r = p.target.getBoundingClientRect();
+          var fx = p.target.getAttribute('data-anno-x');
+          if (fx === null) {
+            return [(p.right ? r.right + 9 : r.left - 9) - box.left,
+                    r.top + r.height / 2 - box.top];
+          }
+          var iw = p.target.naturalWidth || +p.target.getAttribute('width');
+          var ih = p.target.naturalHeight || +p.target.getAttribute('height');
+          var scale = Math.max(r.width / iw, r.height / ih);
+          return [r.left + r.width / 2 + (+fx - 0.5) * iw * scale - box.left,
+                  r.top + r.height / 2 +
+                    (+p.target.getAttribute('data-anno-y') - 0.5) * ih * scale - box.top];
+        }
+
+        function update() {
+          if (!wide.matches) {
+            root.classList.remove('has-lines');
+            return;
+          }
+          /* the padding that opens the margins only exists once has-lines is on,
+             so set it first and measure after the layout it causes */
+          root.classList.add('has-lines');
+
+          var box = root.getBoundingClientRect();
+          svg.setAttribute('viewBox', '0 0 ' + r2(box.width) + ' ' + r2(box.height));
+
+          pairs.forEach(function (p) {
+            var end = endPoint(p, box);
+            var lh = p.label.offsetHeight;
+            var top = Math.max(0, Math.min(box.height - lh, end[1] - lh / 2 - p.lift));
+            p.label.style.top = top + 'px';
+
+            var lr = p.label.getBoundingClientRect();
+            var sx = (p.right ? lr.left - 10 : lr.right + 10) - box.left;
+            var sy = lr.top + lr.height / 2 - box.top;
+            var run = Math.min(26, Math.abs(end[0] - sx) * 0.3);
+            var mx = p.right ? sx - run : sx + run;
+
+            p.path.setAttribute('d', 'M ' + r2(sx) + ' ' + r2(sy) +
+              ' H ' + r2(mx) + ' L ' + r2(end[0]) + ' ' + r2(end[1]));
+            p.dot.setAttribute('cx', r2(end[0]));
+            p.dot.setAttribute('cy', r2(end[1]));
+            p.path.style.setProperty('--len', r2(p.path.getTotalLength()));
+          });
+        }
+
+        update();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+        window.addEventListener('load', update);
+
+        var tick;
+        window.addEventListener('resize', function () {
+          clearTimeout(tick);
+          tick = setTimeout(update, 120);
+        }, { passive: true });
+      }
+
+      var animated = document.querySelectorAll('[data-reveal], [data-annotated]');
+
+      if (reduced || !('IntersectionObserver' in window)) {
+        animated.forEach(function (el) { el.classList.add('is-in'); });
+        return;
+      }
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+
+      animated.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
