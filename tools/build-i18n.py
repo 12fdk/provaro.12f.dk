@@ -25,6 +25,10 @@ Two things are deliberately kept out of the catalogues:
   * Language names. The switcher lists every translation in its own language,
     which is the same list on every page, so it is built here rather than
     translated nine times.
+
+The App Store badge is artwork, not copy, so it is not in the catalogues
+either: each page is pointed at Apple's own badge for its language, at whatever
+size that badge happens to be. tools/fetch-appstore-badges.py fetches them.
 """
 
 import argparse
@@ -344,6 +348,36 @@ def alternates_block(text):
     return match.group(0)
 
 
+def badge(doc, lang):
+    """Point the page at Apple's badge in its own language.
+
+    The badges are not all one shape — French runs wider than English, Japanese
+    narrower — and .appstore img is sized in CSS, so the width and height on the
+    <img> exist only to hold the right space open until the SVG lands. Read the
+    size out of the file rather than trusting the number index.html happens to
+    carry. tools/fetch-appstore-badges.py is what puts these files here.
+    """
+    name = "appstore-badge-%s.svg" % lang["dirname"]
+    art = ROOT / "assets" / "img" / name
+    if not art.exists():
+        raise SystemExit("no %s — run tools/fetch-appstore-badges.py" % name)
+    svg = art.read_text(encoding="utf-8")
+    size = re.search(r'<svg[^>]*\bwidth="([\d.]+)"[^>]*\bheight="([\d.]+)"', svg)
+    if not size:
+        raise SystemExit("%s has no intrinsic size" % name)
+    width, height = float(size.group(1)), float(size.group(2))
+
+    doc, n = re.subn(
+        r'<img src="assets/img/appstore-badge\.svg"([^>]*?)'
+        r'width="[\d.]+" height="([\d.]+)"',
+        lambda m: '<img src="assets/img/%s"%swidth="%d" height="%s"' % (
+            name, m.group(1), round(width * float(m.group(2)) / height), m.group(2)),
+        doc)
+    if not n:
+        raise SystemExit("index.html has no App Store badge to localise")
+    return doc
+
+
 def langpick(current):
     order = [ENGLISH] + [LANGUAGES[k] for k in
                          ("de", "es", "fr", "it", "ja", "nl", "pl", "pt-br")]
@@ -402,6 +436,7 @@ def render(extraction, catalogue, lang, prices):
     doc = re.sub(r"      <details class=\"lang-pick\".*?</details>",
                  lambda m: langpick(lang), doc, count=1, flags=re.S)
     doc = doc.replace("apps.apple.com/us/app/", "apps.apple.com/%s/app/" % lang["store"])
+    doc = badge(doc, lang)
 
     # Prices: fill what the msgid blanked, then drop the second-currency aside
     # on a page that quotes only one.
