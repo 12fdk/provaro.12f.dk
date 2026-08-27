@@ -29,6 +29,10 @@ Two things are deliberately kept out of the catalogues:
 The App Store badge is artwork, not copy, so it is not in the catalogues
 either: each page is pointed at Apple's own badge for its language, at whatever
 size that badge happens to be. tools/fetch-appstore-badges.py fetches them.
+
+Nor is the App Store link. Each page points at its own storefront and carries
+its own `ct=` campaign token, so App Store Connect can say which language page
+a download came from rather than filing all nine under "Web referrer".
 """
 
 import argparse
@@ -442,6 +446,13 @@ def render(extraction, catalogue, lang, prices):
     doc = re.sub(r"      <details class=\"lang-pick\".*?</details>",
                  lambda m: langpick(lang), doc, count=1, flags=re.S)
     doc = doc.replace("apps.apple.com/us/app/", "apps.apple.com/%s/app/" % lang["store"])
+
+    # The campaign token carries the language (#35). Tagging every page
+    # `site-provaro` would answer "did the site do anything" and leave "did
+    # translating it do anything" exactly as unanswerable as before — which is
+    # the more expensive question. Prefixed rather than renamed, so a report
+    # that groups on `site-provaro` still sees the site as one thing.
+    doc = doc.replace("ct=site-provaro", "ct=site-provaro-%s" % lang["dirname"])
     doc = badge(doc, lang)
 
     # Prices: fill what the msgid blanked, then drop the second-currency aside

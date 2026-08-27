@@ -46,7 +46,19 @@
   <meta name="twitter:description" content="マークアップした写真を自社ロゴ入りの PDF に。現場で、1分もかからずに。買い切り。サブスクなし。" />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
-  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+  <!-- Every App Store link carries ?ct=site-provaro-ja&mt=8. Without it App Store
+       Connect files each download from here into one undifferentiated "Web
+       referrer" bucket; ct= fills the Campaign column instead, so the question
+       "did the site do anything" has an answer. tools/build-i18n.py appends the
+       language to the token on a translated page — site-provaro-de and the rest
+       — which is what makes the nine translations measurable separately rather
+       than as one number. Attribution only accrues from the day tagging ships;
+       there is no backfill. See issue #35.
+
+       ct is free text and capped at 40 characters, which the longest token
+       here (site-provaro-pt-br, 18) is comfortably inside.
+
+  Prices come from Apple, not from this file. tools/fetch-appstore-price.py
        reads them off the App Store and bakes the euro price into the markup
        above, so a crawler and a visitor with no JavaScript both read the real
        number. This then swaps in the visitor's own storefront price, because a
@@ -179,7 +191,7 @@
     "operatingSystem": "iOS",
     "applicationCategory": "BusinessApplication",
     "url": "https://provaro.12f.dk/ja/",
-    "installUrl": "https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309",
+    "installUrl": "https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-ja&mt=8",
     "author": {
       "@type": "Organization",
       "name": "12F ApS",
@@ -385,7 +397,7 @@
         </nav>
       </details>
       <!-- /i18n:langpick -->
-      <a class="header-cta" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Provaro を入手</a>
+      <a class="header-cta" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-ja&amp;mt=8" target="_blank" rel="noopener">Provaro を入手</a>
     </div>
   </header>
 
@@ -398,7 +410,7 @@
           <h1><span class="ln">工事写真の報告書。</span> <span class="ln">現場を撮って、証拠を渡す。</span></h1>
           <p class="lede">Provaro は、職人のための工事写真・現場写真の報告書アプリです。撮ったばかりの写真を自社ロゴ入りの PDF に変えます。要点には矢印、上にはロゴ、下には連絡先。現場で、1分もかからずに、電波もアカウントもなしで仕上がります。</p>
           <div class="actions">
-            <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-ja&amp;mt=8" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-ja.svg" alt="App Store からダウンロード" width="109" height="40" />
             </a>
             <a class="btn btn-line" href="#report">お客さまに届くものを見る</a>
@@ -748,7 +760,7 @@
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>完全にオフラインで動作</li>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>アカウントなし、広告なし</li>
             </ul>
-            <a class="btn btn-line" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">無料で始める</a>
+            <a class="btn btn-line" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-ja&amp;mt=8" target="_blank" rel="noopener">無料で始める</a>
           </div>
           <div class="plan plan-pro">
             <span class="plan-flag">Pro &middot; 買い切り</span>
@@ -760,7 +772,7 @@
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>端末間の iCloud 同期</strong> — 自分の iCloud であって、当社のサーバーではありません</li>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>無料版のすべて</li>
             </ul>
-            <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-ja&amp;mt=8" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-ja.svg" alt="App Store からダウンロード" width="109" height="40" />
             </a>
             <p class="plan-note">Pro はアプリ内で購入します。</p>
@@ -874,7 +886,7 @@
           <p class="lede">iPhone と iPad に対応。無料で始めて、自社ブランドは <span data-price="pro">¥1,500</span> の買い切りです。</p>
         </div>
         <div class="close-actions">
-          <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+          <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-ja&amp;mt=8" target="_blank" rel="noopener">
             <img src="../assets/img/appstore-badge-ja.svg" alt="App Store からダウンロード" width="109" height="40" />
           </a>
           <p class="fineprint">このページに広告はありません。訪問数は自社サーバーで、Cookie を使わずに数えています。</p>

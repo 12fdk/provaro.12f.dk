@@ -46,7 +46,19 @@
   <meta name="twitter:description" content="Markierte Fotos in einem PDF mit Ihrem Logo, vor Ort erstellt, in unter einer Minute. Einmal zahlen. Kein Abo." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
-  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+  <!-- Every App Store link carries ?ct=site-provaro-de&mt=8. Without it App Store
+       Connect files each download from here into one undifferentiated "Web
+       referrer" bucket; ct= fills the Campaign column instead, so the question
+       "did the site do anything" has an answer. tools/build-i18n.py appends the
+       language to the token on a translated page — site-provaro-de and the rest
+       — which is what makes the nine translations measurable separately rather
+       than as one number. Attribution only accrues from the day tagging ships;
+       there is no backfill. See issue #35.
+
+       ct is free text and capped at 40 characters, which the longest token
+       here (site-provaro-pt-br, 18) is comfortably inside.
+
+  Prices come from Apple, not from this file. tools/fetch-appstore-price.py
        reads them off the App Store and bakes the euro price into the markup
        above, so a crawler and a visitor with no JavaScript both read the real
        number. This then swaps in the visitor's own storefront price, because a
@@ -179,7 +191,7 @@
     "operatingSystem": "iOS",
     "applicationCategory": "BusinessApplication",
     "url": "https://provaro.12f.dk/de/",
-    "installUrl": "https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309",
+    "installUrl": "https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-de&mt=8",
     "author": {
       "@type": "Organization",
       "name": "12F ApS",
@@ -385,7 +397,7 @@
         </nav>
       </details>
       <!-- /i18n:langpick -->
-      <a class="header-cta" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Provaro holen</a>
+      <a class="header-cta" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-de&amp;mt=8" target="_blank" rel="noopener">Provaro holen</a>
     </div>
   </header>
 
@@ -398,7 +410,7 @@
           <h1><span class="ln">Fotoberichte fürs Handwerk.</span> <span class="ln">Auftrag fotografieren, Nachweis übergeben.</span></h1>
           <p class="lede">Provaro ist eine App für die Fotodokumentation im Handwerk. Sie macht aus den Fotos, die Sie gerade aufgenommen haben, ein PDF mit Ihrem Logo — Pfeile auf das, worauf es ankommt, Ihr Logo oben, Ihre Daten unten. Vor Ort erstellt, in unter einer Minute, ohne Netz und ohne Konto.</p>
           <div class="actions">
-            <a class="appstore" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <a class="appstore" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-de&amp;mt=8" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-de.svg" alt="Laden im App Store" width="120" height="40" />
             </a>
             <a class="btn btn-line" href="#report">Sehen, was Ihr Kunde bekommt</a>
@@ -748,7 +760,7 @@
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Funktioniert vollständig offline</li>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Kein Konto, keine Werbung</li>
             </ul>
-            <a class="btn btn-line" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Gratis anfangen</a>
+            <a class="btn btn-line" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-de&amp;mt=8" target="_blank" rel="noopener">Gratis anfangen</a>
           </div>
           <div class="plan plan-pro">
             <span class="plan-flag">Pro &middot; einmaliger Kauf</span>
@@ -760,7 +772,7 @@
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>iCloud-Sync über Ihre Geräte</strong> — Ihr iCloud, kein Server von uns</li>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Alles aus Gratis</li>
             </ul>
-            <a class="appstore" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <a class="appstore" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-de&amp;mt=8" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-de.svg" alt="Laden im App Store" width="120" height="40" />
             </a>
             <p class="plan-note">Pro wird in der App gekauft.</p>
@@ -874,7 +886,7 @@
           <p class="lede">iPhone und iPad. Gratis anfangen, <span data-price="pro">9,99 €</span> einmalig für Ihr Branding.</p>
         </div>
         <div class="close-actions">
-          <a class="appstore" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+          <a class="appstore" href="https://apps.apple.com/de/app/provaro-job-photo-reports/id6800068309?ct=site-provaro-de&amp;mt=8" target="_blank" rel="noopener">
             <img src="../assets/img/appstore-badge-de.svg" alt="Laden im App Store" width="120" height="40" />
           </a>
           <p class="fineprint">Nichts auf dieser Seite ist Werbung. Besuche werden auf unserem eigenen Server gezählt, ohne Cookies.</p>
