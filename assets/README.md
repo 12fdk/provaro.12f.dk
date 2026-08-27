@@ -19,9 +19,15 @@ The `<video>` prefers the WebM and falls back to the MP4. Re-encode with:
 
 That turns 15 MB and 6.8 MB of App Store master into roughly 1 MB each.
 
-`img/poster.png` and `img/poster-ipad.png` are single frames pulled from those
-films — the report editor, a few seconds in, rather than frame zero, which on
-the iPad is the empty "Pick a report" state and sells nothing.
+`img/poster.webp` and `img/poster-ipad.webp` are single frames pulled from
+those films — the report editor, a few seconds in, rather than frame zero,
+which on the iPad is the empty "Pick a report" state and sells nothing.
 
-The bezels the films play behind, `img/device-frame*.png`, are written by
+The bezels the films play behind, `img/device-frame*.webp`, are written by
 `tools/frame-screens.py`; see `screens/README.md`.
+
+**Everything the page serves is WebP, apart from the logo and the App Store
+badge** (#17). These are photographs, and the framed shots are photographs
+behind a transparent silhouette, which is the case PNG is worst at: the served
+image set went from 3.4 MB to 499 KB on the same pixels. Apple's badge stays
+SVG because it is Apple's artwork and not ours to re-encode.

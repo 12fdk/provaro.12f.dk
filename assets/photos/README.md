@@ -7,8 +7,12 @@ not a redraw.
 
 | File | Cut from | Region |
 |---|---|---|
-| `job-strip-out.jpg` | `screens/iphone/markup.png` | the full-bleed photo band on the mark-up canvas, rows 661–1565 |
+| `job-strip-out.webp` | `screens/iphone/markup.png` | the full-bleed photo band on the mark-up canvas, rows 661–1565 |
 | `job-shower-marked.jpg` | `screens/iphone/document-preview.png` | the upper photo in the PDF preview, `(248, 852)` → `(957, 1360)` |
+
+`job-strip-out` is the one the page serves, so it is WebP like the rest of the
+served set (#17). `job-shower-marked` is not on the page — it is here as the
+record of a cut — so it stays as it was.
 
 The bands were found by looking for the contiguous run of non-black rows in the
 mark-up screenshot rather than by eye, so a re-cut after new screenshots is a

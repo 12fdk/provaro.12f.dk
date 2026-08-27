@@ -10,8 +10,10 @@ because the app is sold as iPhone *and* iPad and the page carries both:
 | `ipad/` | 2064x2752 | iPad Pro 13" M4 @2x |
 
 `<device>/framed/` holds the same shots composited into that device's frame by
-`tools/frame-screens.py`; the script globs `*.png` per device, so a rename here
-only needs a re-run (and a delete of the old file in `framed/`). Run it with no
+`tools/frame-screens.py`, **written as `.webp`** (#17) — the raw shots in here
+stay PNG because they are the input, not what the page serves. The script globs
+`*.png` per device, so a rename here only needs a re-run (and a delete of the
+old file in `framed/`). Run it with no
 arguments for both devices, or name one — `python3 tools/frame-screens.py ipad`.
 
 Framed output is downscaled on the way out. The frames are 1406 and 2264 pixels
