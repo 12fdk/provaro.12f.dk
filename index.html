@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Provaro — Photograph the job, hand over the proof</title>
-  <meta name="description" content="Provaro turns the photos you just took into a branded PDF report — arrows on what matters, your logo at the top, your details at the foot. Made on site, in under a minute, with no signal and no account. One payment. No subscription." />
+  <title>Job photo report app for trades — Provaro</title>
+  <meta name="description" content="Turn job photos into a branded PDF report on site, in under a minute. Arrows on what matters, your logo at the top. Works offline. Pay once, no subscription." />
   <link rel="canonical" href="https://provaro.12f.dk/" />
   <meta property="og:locale" content="en_GB" />
   <!-- i18n:alternates — every translation points at every other one, self
@@ -31,18 +31,18 @@
        a four-hour cache and no hash in its filename, so without a fresh query the
        new markup gets styled by the old rules for hours after a deploy. The HTML
        itself carries a much shorter TTL, so a changed token lands immediately. -->
-  <link rel="stylesheet" href="css/styles.css?v=2026-08-26c" />
+  <link rel="stylesheet" href="css/styles.css?v=2026-08-27a" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Provaro" />
-  <meta property="og:title" content="Provaro — Photograph the job, hand over the proof" />
+  <meta property="og:title" content="Job photo report app for trades — Provaro" />
   <meta property="og:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. One payment. No subscription. No account. Works with no signal." />
   <meta property="og:url" content="https://provaro.12f.dk/" />
   <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Provaro — Photograph the job, hand over the proof" />
+  <meta name="twitter:title" content="Job photo report app for trades — Provaro" />
   <meta name="twitter:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. One payment. No subscription." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
@@ -180,8 +180,10 @@
     "applicationCategory": "BusinessApplication",
     "url": "https://provaro.12f.dk/",
     "installUrl": "https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309",
-    "author": { "@type": "Organization", "name": "12F ApS" },
-    "publisher": { "@type": "Organization", "name": "12F ApS" },
+    "author": { "@type": "Organization", "name": "12F ApS", "url": "https://www.12f.dk/", "email": "provaro@12f.dk", "sameAs": ["https://www.12f.dk/provaro/", "https://apps.apple.com/gb/developer/robert-jensen/id1786807724"] },
+    "publisher": { "@type": "Organization", "name": "12F ApS", "url": "https://www.12f.dk/", "email": "provaro@12f.dk" },
+    "dateModified": "2026-08-27",
+    "operatingSystemVersion": "iOS 17.0 or later",
     "description": "Turn a finished job into a professional photo report: marked-up photos in a branded PDF, made on site, in under a minute. Works offline, no account, no ads.",
     "featureList": [
       "Photograph a whole job without leaving the camera",
@@ -193,6 +195,41 @@
     "offers": [
       { "@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Free: photograph, mark up, export and share. Not a trial." },
       { "@type": "Offer", "price": "9.99", "priceCurrency": "EUR", "description": "Pro (Lifetime): your own branding on the report and iCloud sync across your devices. One-time purchase." }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to make a job photo report on site",
+    "description": "Photograph a finished job, mark up what matters and hand the customer a branded PDF report, without leaving the site.",
+    "totalTime": "PT1M",
+    "url": "https://provaro.12f.dk/#how",
+    "tool": [{ "@type": "HowToTool", "name": "An iPhone or iPad running Provaro" }],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Shoot the whole job without leaving the camera",
+        "text": "Stay in the viewfinder and work through a room in one go, or pull in as many shots as you like from the camera roll. They land straight in the job, grouped into sections, each with a caption in your own words.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/report-editor.png",
+        "url": "https://provaro.12f.dk/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Mark up what the photo does not say by itself",
+        "text": "Arrows, circles, dots, freehand and text callouts, in six colours at a size you set, one tap from the photo you just took. Your original photo is left exactly as the camera saved it.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/markup.png",
+        "url": "https://provaro.12f.dk/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Hand the report over before you pack up",
+        "text": "Pick one photo per page, two-up for before and after, or a grid. Check the finished PDF and its file size, then send it the way the customer already talks to you: WhatsApp, iMessage, email, AirDrop or print.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/document-preview.png",
+        "url": "https://provaro.12f.dk/#how"
+      }
     ]
   }
   </script>
@@ -239,8 +276,18 @@
       },
       {
         "@type": "Question",
+        "name": "How much does Provaro cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Free to photograph, mark up, export and share — that is the whole job, and it does not expire. Pro is a single 9.99 EUR payment that puts your own branding on the report and turns on iCloud sync. There is no monthly fee and nothing to cancel." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there an Android version of Provaro?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Provaro is iPhone and iPad only, and needs iOS 17 or later." }
+      },
+      {
+        "@type": "Question",
         "name": "What languages is Provaro available in?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Over fifty, including English, German, French, Spanish, Italian, Dutch, Portuguese, Polish and Japanese. Provaro follows the language your iPhone is already set to." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The app is in English and Danish. Provaro follows the language your iPhone is already set to, so there is nothing to pick." }
       }
     ]
   }
@@ -286,11 +333,12 @@
       <div class="wrap hero-inner">
         <div>
           <p class="eyebrow">Photo reports for trades &middot; iPhone &amp; iPad</p>
-          <h1><span class="ln">Photograph the job.</span> <span class="ln">Hand over the proof.</span></h1>
+          <h1><span class="ln">Job photo reports.</span> <span class="ln">Photograph the job, hand over the proof.</span></h1>
           <p class="lede">
-            Provaro turns the photos you just took into a branded PDF — arrows on what
-            matters, your logo at the head, your details at the foot. Made on site, in
-            under a minute, with no signal and no account.
+            Provaro is a job photo report app for tradespeople. It turns the photos you
+            just took into a branded PDF — arrows on what matters, your logo at the head,
+            your details at the foot. Made on site, in under a minute, with no signal and
+            no account.
           </p>
           <div class="actions">
             <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
@@ -388,7 +436,7 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">How it works</span>
-          <h2>Built for gloves, bad light and one free hand</h2>
+          <h2>How the report gets made: gloves, bad light, one free hand</h2>
           <p class="lede">Three moves, in the order you already work in. Big targets, nothing to save and reopen.</p>
         </div>
         <div class="device-pick" data-device-pick>
@@ -488,7 +536,7 @@
       <div class="wrap">
         <div class="head centered">
           <span class="eyebrow">The deliverable</span>
-          <h2>This is what lands in their inbox</h2>
+          <h2>What your customer gets: a branded PDF report</h2>
           <p class="lede">Not a gallery link and not a screenshot. A PDF that carries your name, small enough to email and good enough to print.</p>
         </div>
 
@@ -546,7 +594,10 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">The rest of it</span>
-          <h2>Everything a real business document should be</h2>
+          <h2>Everything a job report should carry</h2>
+          <p class="lede">Built for plumbers, electricians, roofers, builders, decorators,
+            plasterers, damp and mould specialists, groundworkers and letting agents — anyone
+            who has to show what they did.</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
@@ -632,7 +683,7 @@
       <div class="wrap">
         <div class="offline-inner">
           <span class="eyebrow">Basements, lofts, half-built houses</span>
-          <h2>It does the job where there is no signal.</h2>
+          <h2>Does it work with no signal? The whole report is made offline.</h2>
           <p class="lede">
             Every step runs on the phone in your hand — capture, mark-up, the PDF, the lot.
             Nothing waits on an upload and no spinner stands between you and the customer at
@@ -656,7 +707,7 @@
           <p>
             Anonymous usage figures — which screens get opened, how long an export takes — tell
             us what to build next. Never your photos, notes, customers or addresses. And
-            <a href="https://provaro.12f.dk/privacy-policy/">Settings has a switch</a> to turn
+            <a href="https://www.12f.dk/provaro/privacy-policy/">Settings has a switch</a> to turn
             even that off.
           </p>
           <div class="receipt">
@@ -709,6 +760,51 @@
             <p class="plan-note">Pro is bought inside the app.</p>
           </div>
         </div>
+
+        <div class="versus">
+          <h3>Buying it once, against renting it monthly</h3>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">Compared</span></th>
+                <th scope="col">Provaro</th>
+                <th scope="col">Sold by subscription</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">What you pay</th>
+                <td><span data-price="pro">€9.99</span> once</td>
+                <td>Per user, per month</td>
+              </tr>
+              <tr>
+                <th scope="row">When it renews</th>
+                <td>Never — there is nothing to renew</td>
+                <td>Every month, or every year</td>
+              </tr>
+              <tr>
+                <th scope="row">If you stop paying</th>
+                <td>Nothing changes</td>
+                <td>Access ends</td>
+              </tr>
+              <tr>
+                <th scope="row">Account required</th>
+                <td>No</td>
+                <td>Normally yes</td>
+              </tr>
+              <tr>
+                <th scope="row">Where the photos sit</th>
+                <td>Your device, and your own iCloud</td>
+                <td>The vendor's servers</td>
+              </tr>
+              <tr>
+                <th scope="row">With no signal</th>
+                <td>Every step still works</td>
+                <td>Usually needs a connection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -749,8 +845,16 @@
             <p>Yes. Start the report on the phone at the job and finish it on the iPad in the van. With Pro the two stay in step through your own iCloud.</p>
           </details>
           <details>
+            <summary>How much does it cost?</summary>
+            <p>Free to photograph, mark up, export and share — that is the whole job, and it does not expire. <span data-price="pro">€9.99</span> once puts your own branding on the report and turns on iCloud sync. There is no monthly fee and nothing to cancel.</p>
+          </details>
+          <details>
+            <summary>Is there an Android version?</summary>
+            <p>No. Provaro is iPhone and iPad only, and needs iOS 17 or later. Building it for one platform is why the camera and mark-up feel like part of the phone rather than a web page in a wrapper.</p>
+          </details>
+          <details>
             <summary>What languages is it in?</summary>
-            <p>Over fifty, including English, German, French, Spanish, Italian, Dutch, Portuguese, Polish and Japanese. Provaro follows the language your iPhone is already set to — there is nothing to pick.</p>
+            <p>The app is in English and Danish. It follows the language your iPhone is already set to, so there is nothing to pick. This website is in nine.</p>
           </details>
         </div>
       </div>
@@ -784,9 +888,9 @@
         <a href="#report">The report</a>
         <a href="#pricing">Pricing</a>
         <a href="#faq">Questions</a>
-        <a href="https://provaro.12f.dk/privacy-policy/">Privacy policy</a>
+        <a href="https://www.12f.dk/provaro/privacy-policy/">Privacy policy</a>
       </nav>
-      <p class="copyright">&copy; 2026 12F ApS</p>
+      <p class="copyright">&copy; 2026 <a href="https://www.12f.dk/">12F ApS</a> &middot; CVR 45362957 &middot; <a href="mailto:provaro@12f.dk">provaro@12f.dk</a> &middot; Updated August 2026</p>
     </div>
   </footer>
 

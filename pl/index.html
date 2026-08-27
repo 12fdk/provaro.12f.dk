@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Provaro — Sfotografuj zlecenie, oddaj dowód</title>
-  <meta name="description" content="Provaro zamienia właśnie zrobione zdjęcia w raport PDF z Twoim logo: strzałki na tym, co ważne, logo u góry, dane firmy na dole. Powstaje na miejscu, w mniej niż minutę, bez zasięgu i bez konta. Jedna płatność. Bez abonamentu." />
+  <title>Dokumentacja fotograficzna i raport z budowy — Provaro</title>
+  <meta name="description" content="Zamień zdjęcia z budowy w raport PDF z Twoim logo, na miejscu, w mniej niż minutę. Działa offline. Płacisz raz, bez abonamentu." />
   <link rel="canonical" href="https://provaro.12f.dk/pl/" />
   <meta property="og:locale" content="pl_PL" />
   <!-- i18n:alternates — every translation points at every other one, self
@@ -31,18 +31,18 @@
        a four-hour cache and no hash in its filename, so without a fresh query the
        new markup gets styled by the old rules for hours after a deploy. The HTML
        itself carries a much shorter TTL, so a changed token lands immediately. -->
-  <link rel="stylesheet" href="../css/styles.css?v=2026-08-26c" />
+  <link rel="stylesheet" href="../css/styles.css?v=2026-08-27a" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Provaro" />
-  <meta property="og:title" content="Provaro — Sfotografuj zlecenie, oddaj dowód" />
+  <meta property="og:title" content="Dokumentacja fotograficzna i raport z budowy — Provaro" />
   <meta property="og:description" content="Zdjęcia z zaznaczeniami w PDF-ie z Twoim logo, zrobionym na miejscu, w mniej niż minutę. Jedna płatność. Bez abonamentu. Bez konta. Działa bez zasięgu." />
   <meta property="og:url" content="https://provaro.12f.dk/pl/" />
   <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Provaro — Sfotografuj zlecenie, oddaj dowód" />
+  <meta name="twitter:title" content="Dokumentacja fotograficzna i raport z budowy — Provaro" />
   <meta name="twitter:description" content="Zdjęcia z zaznaczeniami w PDF-ie z Twoim logo, zrobionym na miejscu, w mniej niż minutę. Jedna płatność. Bez abonamentu." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
@@ -182,12 +182,22 @@
     "installUrl": "https://apps.apple.com/pl/app/provaro-job-photo-reports/id6800068309",
     "author": {
       "@type": "Organization",
-      "name": "12F ApS"
+      "name": "12F ApS",
+      "url": "https://www.12f.dk/",
+      "email": "provaro@12f.dk",
+      "sameAs": [
+        "https://www.12f.dk/provaro/",
+        "https://apps.apple.com/gb/developer/robert-jensen/id1786807724"
+      ]
     },
     "publisher": {
       "@type": "Organization",
-      "name": "12F ApS"
+      "name": "12F ApS",
+      "url": "https://www.12f.dk/",
+      "email": "provaro@12f.dk"
     },
+    "dateModified": "2026-08-27",
+    "operatingSystemVersion": "iOS 17.0 or later",
     "description": "Zamień skończone zlecenie w profesjonalny raport fotograficzny: zdjęcia z zaznaczeniami w PDF-ie z Twoim logo, zrobionym na miejscu, w mniej niż minutę. Działa offline, bez konta, bez reklam.",
     "featureList": [
       "Sfotografuj całe zlecenie bez wychodzenia z aparatu",
@@ -208,6 +218,47 @@
         "price": "49.99",
         "priceCurrency": "PLN",
         "description": "Pro (na zawsze): Twoje logo i dane na raporcie oraz synchronizacja iCloud między urządzeniami. Jednorazowy zakup."
+      }
+    ],
+    "inLanguage": "pl"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Jak zrobić raport fotograficzny z budowy na miejscu",
+    "description": "Sfotografuj skończone zlecenie, zaznacz to, co ważne, i przekaż klientowi raport PDF z Twoim logo, nie schodząc z budowy.",
+    "totalTime": "PT1M",
+    "url": "https://provaro.12f.dk/pl/#how",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "iPhone lub iPad z Provaro"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Sfotografuj całe zlecenie bez wychodzenia z aparatu",
+        "text": "Zostań w kadrze i zrób całe pomieszczenie jednym ciągiem albo dobierz z galerii tyle ujęć, ile chcesz. Trafiają prosto do zlecenia, pogrupowane w sekcje, każde z podpisem Twoimi słowami.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/report-editor.png",
+        "url": "https://provaro.12f.dk/pl/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Zaznacz to, czego zdjęcie samo nie mówi",
+        "text": "Strzałki, kółka, kropki, rysowanie odręczne i opisy, w sześciu kolorach i w grubości, którą sam ustawiasz, jedno dotknięcie od zdjęcia, które właśnie powstało. Oryginalne zdjęcie zostaje dokładnie takie, jakie zapisał aparat.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/markup.png",
+        "url": "https://provaro.12f.dk/pl/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Przekaż raport, zanim się spakujesz",
+        "text": "Jedno zdjęcie na stronę, dwa obok siebie na „przed i po” albo siatka. Sprawdź gotowy PDF i jego rozmiar, a potem wyślij tak, jak klient i tak z Tobą rozmawia: WhatsApp, iMessage, e-mail, AirDrop albo wydruk.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/document-preview.png",
+        "url": "https://provaro.12f.dk/pl/#how"
       }
     ],
     "inLanguage": "pl"
@@ -277,10 +328,26 @@
       },
       {
         "@type": "Question",
+        "name": "Ile kosztuje Provaro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Za darmo fotografujesz, zaznaczasz, eksportujesz i wysyłasz — to całe zlecenie i nic nie wygasa. Pro to jednorazowa płatność 49,99 zł, która umieszcza Twoje logo na raporcie i włącza synchronizację iCloud. Nie ma opłaty miesięcznej i nie ma czego anulować."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy jest wersja Provaro na Androida?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nie. Provaro działa tylko na iPhonie i iPadzie i wymaga iOS 17 lub nowszego."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "W jakich językach dostępne jest Provaro?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "W ponad pięćdziesięciu, w tym po polsku, angielsku, niemiecku, francusku, hiszpańsku, włosku, niderlandzku, portugalsku i japońsku. Provaro używa języka, który masz już ustawiony w iPhonie."
+          "text": "Aplikacja jest po angielsku i po duńsku. Provaro używa języka, który masz już ustawiony w iPhonie, więc nie ma czego wybierać."
         }
       }
     ],
@@ -328,8 +395,8 @@
       <div class="wrap hero-inner">
         <div>
           <p class="eyebrow">Raporty fotograficzne dla fachowców &middot; iPhone &amp; iPad</p>
-          <h1><span class="ln">Sfotografuj zlecenie.</span> <span class="ln">Oddaj dowód.</span></h1>
-          <p class="lede">Provaro zamienia właśnie zrobione zdjęcia w PDF z Twoim logo: strzałki na tym, co ważne, logo u góry, dane firmy na dole. Powstaje na miejscu, w mniej niż minutę, bez zasięgu i bez konta.</p>
+          <h1><span class="ln">Raporty fotograficzne z budowy.</span> <span class="ln">Sfotografuj zlecenie, oddaj dowód.</span></h1>
+          <p class="lede">Provaro to aplikacja do dokumentacji fotograficznej i raportów z budowy, zrobiona dla fachowców. Zamienia właśnie zrobione zdjęcia w PDF z Twoim logo: strzałki na tym, co ważne, logo u góry, dane firmy na dole. Powstaje na miejscu, w mniej niż minutę, bez zasięgu i bez konta.</p>
           <div class="actions">
             <a class="appstore" href="https://apps.apple.com/pl/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-pl.svg" alt="Pobierz z App Store" width="120" height="40" />
@@ -410,7 +477,7 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">Jak to działa</span>
-          <h2>Zrobione pod rękawice, słabe światło i jedną wolną rękę</h2>
+          <h2>Jak powstaje raport: rękawice, słabe światło, jedna wolna ręka</h2>
           <p class="lede">Trzy ruchy, w kolejności, w której i tak pracujesz. Duże pola do dotknięcia, nic do zapisywania i otwierania od nowa.</p>
         </div>
         <div class="device-pick" data-device-pick>
@@ -510,7 +577,7 @@
       <div class="wrap">
         <div class="head centered">
           <span class="eyebrow">To, co oddajesz</span>
-          <h2>Oto co ląduje w jego skrzynce</h2>
+          <h2>Co dostaje klient: raport PDF z Twoim logo</h2>
           <p class="lede">Nie link do galerii i nie zrzut ekranu. PDF z Twoją nazwą, dość lekki na e-mail i dość dobry na wydruk.</p>
         </div>
 
@@ -564,7 +631,8 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">Cała reszta</span>
-          <h2>Wszystko, czym powinien być prawdziwy dokument firmowy</h2>
+          <h2>Wszystko, co powinien nieść protokół odbioru</h2>
+          <p class="lede">Zrobione dla hydraulików, elektryków, dekarzy, murarzy, malarzy, tynkarzy, specjalistów od wilgoci i pleśni, firm ziemnych i zarządców najmu — dla każdego, kto musi pokazać, co zrobił.</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
@@ -634,7 +702,7 @@
       <div class="wrap">
         <div class="offline-inner">
           <span class="eyebrow">Piwnice, poddasza, domy w stanie surowym</span>
-          <h2>Robi swoje tam, gdzie nie ma zasięgu.</h2>
+          <h2>Czy działa bez zasięgu? Cały raport powstaje offline.</h2>
           <p class="lede">Każdy krok dzieje się na telefonie w Twojej ręce: zdjęcia, zaznaczenia, PDF, wszystko. Nic nie czeka na wysyłkę i żadne kółeczko nie staje między Tobą a klientem w drzwiach. Kiedy wrócisz w zasięg, wyślij, kiedy chcesz.</p>
         </div>
       </div>
@@ -647,7 +715,7 @@
           <span class="eyebrow">Prywatność</span>
           <h2>Bez konta. Bez rejestracji. Bez reklam.</h2>
           <p>Bez logowania, bez podawania e-maila, bez odliczanego okresu próbnego i bez telefonu od handlowca. Twoje raporty nie opuszczają urządzenia, dopóki sam ich nie wyślesz, a w aplikacji nie ma identyfikatora reklamowego, sieci reklamowej ani niczego sprzedawanego komukolwiek.</p>
-          <p>Anonimowe liczby o użyciu — które ekrany są otwierane, ile trwa eksport — mówią nam, co budować dalej. Nigdy Twoje zdjęcia, notatki, klienci ani adresy. A <a href="https://provaro.12f.dk/privacy-policy/">w Ustawieniach jest przełącznik</a>, żeby wyłączyć nawet to.</p>
+          <p>Anonimowe liczby o użyciu — które ekrany są otwierane, ile trwa eksport — mówią nam, co budować dalej. Nigdy Twoje zdjęcia, notatki, klienci ani adresy. A <a href="https://www.12f.dk/provaro/privacy-policy/">w Ustawieniach jest przełącznik</a>, żeby wyłączyć nawet to.</p>
           <div class="receipt">
             <span data-value="Twoje urządzenie">Gdzie leżą Twoje zdjęcia</span>
             <span data-value="Twoje własne iCloud">Gdzie synchronizuje je Pro</span>
@@ -698,6 +766,51 @@
             <p class="plan-note">Pro kupuje się w aplikacji.</p>
           </div>
         </div>
+
+        <div class="versus">
+          <h3>Kupić raz, zamiast wynajmować co miesiąc</h3>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">Porównanie</span></th>
+                <th scope="col">Provaro</th>
+                <th scope="col">Sprzedawane w abonamencie</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Ile płacisz</th>
+                <td><span data-price="pro">49,99 zł</span> raz</td>
+                <td>Za użytkownika, co miesiąc</td>
+              </tr>
+              <tr>
+                <th scope="row">Kiedy się odnawia</th>
+                <td>Nigdy — nie ma czego odnawiać</td>
+                <td>Co miesiąc albo co rok</td>
+              </tr>
+              <tr>
+                <th scope="row">Jeśli przestaniesz płacić</th>
+                <td>Nic się nie zmienia</td>
+                <td>Dostęp się kończy</td>
+              </tr>
+              <tr>
+                <th scope="row">Wymagane konto</th>
+                <td>Nie</td>
+                <td>Zwykle tak</td>
+              </tr>
+              <tr>
+                <th scope="row">Gdzie są zdjęcia</th>
+                <td>Na Twoim urządzeniu i w Twoim własnym iCloud</td>
+                <td>Na serwerach dostawcy</td>
+              </tr>
+              <tr>
+                <th scope="row">Bez zasięgu</th>
+                <td>Każdy krok działa dalej</td>
+                <td>Zwykle potrzebne jest połączenie</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -738,8 +851,16 @@
             <p>Tak. Zacznij raport na telefonie na budowie i dokończ go na iPadzie w aucie. W Pro oba pozostają zgodne przez Twoje własne iCloud.</p>
           </details>
           <details>
+            <summary>Ile to kosztuje?</summary>
+            <p>Za darmo fotografujesz, zaznaczasz, eksportujesz i wysyłasz — to całe zlecenie i nic nie wygasa. <span data-price="pro">49,99 zł</span> raz umieszcza Twoje logo na raporcie i włącza synchronizację iCloud. Nie ma opłaty miesięcznej i nie ma czego anulować.</p>
+          </details>
+          <details>
+            <summary>Czy jest wersja na Androida?</summary>
+            <p>Nie. Provaro działa tylko na iPhonie i iPadzie i wymaga iOS 17 lub nowszego. To, że powstało na jedną platformę, sprawia, że aparat i zaznaczanie są częścią telefonu, a nie stroną internetową w obudowie.</p>
+          </details>
+          <details>
             <summary>W jakich jest językach?</summary>
-            <p>W ponad pięćdziesięciu, w tym po polsku, angielsku, niemiecku, francusku, hiszpańsku, włosku, niderlandzku, portugalsku i japońsku. Provaro używa języka, który masz już ustawiony w iPhonie — nie ma czego wybierać.</p>
+            <p>Aplikacja jest po angielsku i po duńsku. Używa języka, który masz już ustawiony w iPhonie, więc nie ma czego wybierać. Ta strona jest w dziewięciu językach.</p>
           </details>
         </div>
       </div>
@@ -773,9 +894,9 @@
         <a href="#report">Raport</a>
         <a href="#pricing">Cena</a>
         <a href="#faq">Pytania</a>
-        <a href="https://provaro.12f.dk/privacy-policy/">Polityka prywatności</a>
+        <a href="https://www.12f.dk/provaro/privacy-policy/">Polityka prywatności</a>
       </nav>
-      <p class="copyright">&copy; 2026 12F ApS</p>
+      <p class="copyright">&copy; 2026 <a href="https://www.12f.dk/">12F ApS</a> &middot; CVR 45362957 &middot; <a href="mailto:provaro@12f.dk">provaro@12f.dk</a> &middot; Zaktualizowano w sierpniu 2026</p>
     </div>
   </footer>
 

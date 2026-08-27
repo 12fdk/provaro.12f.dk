@@ -54,28 +54,28 @@ SITE = "https://provaro.12f.dk/"
 # are billed in it.
 LANGUAGES = {
     "de": dict(dirname="de", tag="de", locale="de_DE", code="DE", name="Deutsch",
-               aria="Sprache", store="de", primary="de", second="ch"),
+               aria="Sprache", cjk=False, store="de", primary="de", second="ch"),
     "es": dict(dirname="es", tag="es", locale="es_ES", code="ES", name="Español",
-               aria="Idioma", store="es", primary="es", second=None),
+               aria="Idioma", cjk=False, store="es", primary="es", second=None),
     "fr": dict(dirname="fr", tag="fr", locale="fr_FR", code="FR", name="Français",
-               aria="Langue", store="fr", primary="fr", second="ch"),
+               aria="Langue", cjk=False, store="fr", primary="fr", second="ch"),
     "it": dict(dirname="it", tag="it", locale="it_IT", code="IT", name="Italiano",
-               aria="Lingua", store="it", primary="it", second="ch"),
+               aria="Lingua", cjk=False, store="it", primary="it", second="ch"),
     "ja": dict(dirname="ja", tag="ja", locale="ja_JP", code="JA", name="日本語",
-               aria="言語", store="jp", primary="jp", second=None),
+               aria="言語", cjk=True, store="jp", primary="jp", second=None),
     "nl": dict(dirname="nl", tag="nl", locale="nl_NL", code="NL", name="Nederlands",
-               aria="Taal", store="nl", primary="nl", second=None),
+               aria="Taal", cjk=False, store="nl", primary="nl", second=None),
     "pl": dict(dirname="pl", tag="pl", locale="pl_PL", code="PL", name="Polski",
-               aria="Język", store="pl", primary="pl", second=None),
+               aria="Język", cjk=False, store="pl", primary="pl", second=None),
     "pt-br": dict(dirname="pt-br", tag="pt-BR", locale="pt_BR", code="PT",
-                  name="Português (BR)", aria="Idioma", store="br",
+                  name="Português (BR)", aria="Idioma", cjk=False, store="br",
                   primary="br", second=None),
 }
 
 # The English page is one of the nine the switcher lists, and it is the
 # x-default, so it belongs in the same table when the menu is built.
 ENGLISH = dict(dirname="", tag="en", locale="en_GB", code="EN", name="English",
-               aria="Language", store="us", primary="ie", second="dk")
+               aria="Language", cjk=False, store="us", primary="ie", second="dk")
 
 
 # --- What counts as a translatable unit --------------------------------------
@@ -314,13 +314,19 @@ class Extraction:
                            len(self.ld) - 1))
 
 
+# Types whose "name" is a sentence to translate rather than a brand or a term.
+# MobileApplication's name is "Provaro" and Organization's is "12F ApS"; both
+# stay in every language, which is why this is an allowlist and not a rule.
+NAMED_PROSE = ("Question", "HowTo", "HowToStep", "HowToTool")
+
+
 def ld_strings(obj, path=(), parent=None):
     """The string fields of a schema.org block that are prose, not data."""
     if isinstance(obj, dict):
         for key, value in obj.items():
             if isinstance(value, str):
                 if key in ("description", "text") or (
-                        key == "name" and obj.get("@type") == "Question"):
+                        key == "name" and obj.get("@type") in NAMED_PROSE):
                     yield path + (key,), value
             else:
                 yield from ld_strings(value, path + (key,), obj)
@@ -453,6 +459,25 @@ def render(extraction, catalogue, lang, prices):
     return doc, missing
 
 
+# Google shows roughly this much of a description before cutting it off. CJK
+# packs far more meaning per character, so it gets its own, shorter budget.
+META_LIMIT = 160
+META_LIMIT_CJK = 90
+
+
+def over_length(doc, lang):
+    """Descriptions long enough that the payload gets cut out of the result."""
+    limit = META_LIMIT_CJK if lang["cjk"] else META_LIMIT
+    out = []
+    for label, pattern in (
+            ("meta description", r'<meta name="description" content="([^"]*)"'),
+            ("og:description", r'<meta property="og:description" content="([^"]*)"')):
+        m = re.search(pattern, doc)
+        if m and len(m.group(1)) > limit:
+            out.append((label, len(m.group(1))))
+    return out
+
+
 def price_for(key, lang, prices):
     sf = prices["storefronts"]
     if key == "pro-secondary":
@@ -472,6 +497,13 @@ def localise_ld(data, lang, store):
             offer["priceCurrency"] = store["currency"]
     elif data.get("@type") == "FAQPage":
         data["inLanguage"] = lang["tag"]
+    elif data.get("@type") == "HowTo":
+        data["inLanguage"] = lang["tag"]
+        here = SITE + lang["dirname"] + "/"
+        data["url"] = here + "#how"
+        for step in data.get("step", []):
+            if "url" in step:
+                step["url"] = here + "#how"
 
 
 def translate(catalogue, msgid, missing):
@@ -537,6 +569,12 @@ def main():
         doc, missing = render(extraction, catalogue, lang, prices)
         stale = [m for m in catalogue if m not in extraction.seen]
         note = ""
+        long_meta = over_length(doc, lang)
+        for where, n in long_meta:
+            print("%-6s %s is %d chars — Google truncates near %d"
+                  % (code, where, n, META_LIMIT_CJK if lang["cjk"] else META_LIMIT))
+        if long_meta:
+            problems += 1
         if missing:
             note += "  %d untranslated" % len(set(missing))
         if stale:

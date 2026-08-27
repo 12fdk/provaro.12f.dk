@@ -938,6 +938,56 @@ p { margin: 0; }
 .plan .btn, .plan .appstore { align-self: flex-start; }
 .plan-note { margin-top: 14px; font-size: .82rem; color: var(--ink-3); }
 
+/* ---------- Buy once vs rent monthly -------------------------------------- */
+/* A table, because the comparison is the shape a search engine can lift whole
+   and because a tradesperson comparing two quotes reads rows, not paragraphs.
+   It scrolls inside itself on a phone rather than pushing the page sideways. */
+.versus {
+  max-width: 780px;
+  margin: 46px auto 0;
+  overflow-x: auto;
+}
+.versus h3 {
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+  text-align: center;
+  color: var(--ink-2);
+}
+.versus table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  font-size: .93rem;
+}
+.versus thead th {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.versus thead th:nth-child(2) { color: var(--ink); }
+.versus tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink-2);
+  padding: 12px 16px;
+  border-top: 1px solid var(--rule-2);
+  width: 34%;
+}
+.versus tbody td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--rule-2);
+  color: var(--ink-2);
+}
+.versus tbody td:first-of-type { color: var(--ink); font-weight: 600; }
+
 /* ---------- FAQ ----------------------------------------------------------- */
 .faq { max-width: 780px; margin: 0 auto; }
 .faq details {

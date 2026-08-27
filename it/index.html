@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Provaro — Fotografa il lavoro, consegna la prova</title>
-  <meta name="description" content="Provaro trasforma le foto che hai appena scattato in un rapporto PDF con il tuo marchio: frecce su ciò che conta, il tuo logo in alto, i tuoi dati in fondo. Fatto in cantiere, in meno di un minuto, senza campo e senza account. Un pagamento solo. Nessun abbonamento." />
+  <title>Rapportino di lavoro e report fotografico — Provaro</title>
+  <meta name="description" content="Trasforma le foto del cantiere in un report PDF con il tuo marchio, in meno di un minuto. Funziona offline. Si paga una volta, senza abbonamento." />
   <link rel="canonical" href="https://provaro.12f.dk/it/" />
   <meta property="og:locale" content="it_IT" />
   <!-- i18n:alternates — every translation points at every other one, self
@@ -31,18 +31,18 @@
        a four-hour cache and no hash in its filename, so without a fresh query the
        new markup gets styled by the old rules for hours after a deploy. The HTML
        itself carries a much shorter TTL, so a changed token lands immediately. -->
-  <link rel="stylesheet" href="../css/styles.css?v=2026-08-26c" />
+  <link rel="stylesheet" href="../css/styles.css?v=2026-08-27a" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Provaro" />
-  <meta property="og:title" content="Provaro — Fotografa il lavoro, consegna la prova" />
-  <meta property="og:description" content="Foto annotate in un PDF con il tuo marchio, fatto in cantiere, in meno di un minuto. Un pagamento solo. Nessun abbonamento. Nessun account. Funziona senza campo." />
+  <meta property="og:title" content="Rapportino di lavoro e report fotografico — Provaro" />
+  <meta property="og:description" content="Foto annotate in un PDF con il tuo marchio, fatto in cantiere in meno di un minuto. Un pagamento solo, nessun abbonamento, nessun account." />
   <meta property="og:url" content="https://provaro.12f.dk/it/" />
   <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Provaro — Fotografa il lavoro, consegna la prova" />
+  <meta name="twitter:title" content="Rapportino di lavoro e report fotografico — Provaro" />
   <meta name="twitter:description" content="Foto annotate in un PDF con il tuo marchio, fatto in cantiere, in meno di un minuto. Un pagamento solo. Nessun abbonamento." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
@@ -182,12 +182,22 @@
     "installUrl": "https://apps.apple.com/it/app/provaro-job-photo-reports/id6800068309",
     "author": {
       "@type": "Organization",
-      "name": "12F ApS"
+      "name": "12F ApS",
+      "url": "https://www.12f.dk/",
+      "email": "provaro@12f.dk",
+      "sameAs": [
+        "https://www.12f.dk/provaro/",
+        "https://apps.apple.com/gb/developer/robert-jensen/id1786807724"
+      ]
     },
     "publisher": {
       "@type": "Organization",
-      "name": "12F ApS"
+      "name": "12F ApS",
+      "url": "https://www.12f.dk/",
+      "email": "provaro@12f.dk"
     },
+    "dateModified": "2026-08-27",
+    "operatingSystemVersion": "iOS 17.0 or later",
     "description": "Trasforma un lavoro finito in un rapporto fotografico professionale: foto annotate in un PDF con il tuo marchio, fatto in cantiere, in meno di un minuto. Funziona offline, senza account, senza pubblicità.",
     "featureList": [
       "Fotografare un intero lavoro senza uscire dalla fotocamera",
@@ -208,6 +218,47 @@
         "price": "9.99",
         "priceCurrency": "EUR",
         "description": "Pro (per sempre): il tuo marchio sul rapporto e la sincronizzazione iCloud tra i tuoi dispositivi. Acquisto una tantum."
+      }
+    ],
+    "inLanguage": "it"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Come fare un report fotografico di cantiere sul posto",
+    "description": "Fotografa un lavoro finito, segna quello che conta e consegna al cliente un report PDF con il tuo marchio, senza lasciare il cantiere.",
+    "totalTime": "PT1M",
+    "url": "https://provaro.12f.dk/it/#how",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "Un iPhone o un iPad con Provaro"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Fotografa tutto il lavoro senza uscire dalla fotocamera",
+        "text": "Resta nel mirino e fai una stanza tutta d'un fiato, oppure prendi dal rullino tutti gli scatti che vuoi. Finiscono dritti nel lavoro, raggruppati in sezioni, ognuno con una didascalia scritta con parole tue.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/report-editor.png",
+        "url": "https://provaro.12f.dk/it/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Segna quello che la foto da sola non dice",
+        "text": "Frecce, cerchi, punti, tratto libero e note di testo, in sei colori e nello spessore che imposti tu, a un tocco dalla foto che hai appena scattato. La tua foto originale resta esattamente come l'ha salvata la fotocamera.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/markup.png",
+        "url": "https://provaro.12f.dk/it/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Consegna il report prima di smontare",
+        "text": "Una foto per pagina, due affiancate per il prima e il dopo, oppure una griglia. Controlla il PDF finito e quanto pesa, poi mandalo come il cliente ti parla già: WhatsApp, iMessage, email, AirDrop o stampa.",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/document-preview.png",
+        "url": "https://provaro.12f.dk/it/#how"
       }
     ],
     "inLanguage": "it"
@@ -277,10 +328,26 @@
       },
       {
         "@type": "Question",
+        "name": "Quanto costa Provaro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gratis per fotografare, annotare, esportare e condividere: è tutto il lavoro, e non scade. Pro è un pagamento unico di 9,99 € che mette il tuo marchio sul report e accende la sincronizzazione iCloud. Non c'è un canone mensile e non c'è niente da disdire."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Esiste una versione Android di Provaro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Provaro è solo per iPhone e iPad, e richiede iOS 17 o successivo."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "In quali lingue è disponibile Provaro?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "In più di cinquanta, tra cui italiano, inglese, tedesco, francese, spagnolo, olandese, portoghese, polacco e giapponese. Provaro segue la lingua su cui è già impostato il tuo iPhone."
+          "text": "L'app è in inglese e in danese. Provaro segue la lingua su cui è già impostato il tuo iPhone, quindi non c'è niente da scegliere."
         }
       }
     ],
@@ -328,8 +395,8 @@
       <div class="wrap hero-inner">
         <div>
           <p class="eyebrow">Rapporti fotografici per artigiani &middot; iPhone &amp; iPad</p>
-          <h1><span class="ln">Fotografa il lavoro.</span> <span class="ln">Consegna la prova.</span></h1>
-          <p class="lede">Provaro trasforma le foto che hai appena scattato in un PDF con il tuo marchio: frecce su ciò che conta, il tuo logo in alto, i tuoi dati in fondo. Fatto in cantiere, in meno di un minuto, senza campo e senza account.</p>
+          <h1><span class="ln">Rapportini fotografici di cantiere.</span> <span class="ln">Fotografa il lavoro, consegna la prova.</span></h1>
+          <p class="lede">Provaro è un'app per il rapportino fotografico di cantiere, fatta per gli artigiani. Trasforma le foto che hai appena scattato in un PDF con il tuo marchio: frecce su ciò che conta, il tuo logo in alto, i tuoi dati in fondo. Fatto in cantiere, in meno di un minuto, senza campo e senza account.</p>
           <div class="actions">
             <a class="appstore" href="https://apps.apple.com/it/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-it.svg" alt="Scarica su App Store" width="120" height="40" />
@@ -410,7 +477,7 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">Come funziona</span>
-          <h2>Fatto per i guanti, la luce scarsa e una mano sola libera</h2>
+          <h2>Come nasce il report: guanti, luce scarsa, una mano sola libera</h2>
           <p class="lede">Tre mosse, nell'ordine in cui lavori già. Bersagli grandi, niente da salvare e riaprire.</p>
         </div>
         <div class="device-pick" data-device-pick>
@@ -510,7 +577,7 @@
       <div class="wrap">
         <div class="head centered">
           <span class="eyebrow">Il risultato</span>
-          <h2>Ecco che cosa arriva nella sua casella</h2>
+          <h2>Che cosa riceve il cliente: un report PDF con il tuo marchio</h2>
           <p class="lede">Non un link a una galleria e non uno screenshot. Un PDF che porta il tuo nome, abbastanza leggero per l'email e abbastanza buono da stampare.</p>
         </div>
 
@@ -564,7 +631,8 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">Il resto</span>
-          <h2>Tutto quello che un vero documento aziendale dovrebbe essere</h2>
+          <h2>Tutto quello che un rapportino di lavoro deve portare</h2>
+          <p class="lede">Fatto per idraulici, elettricisti, lattonieri, muratori, imbianchini, intonacatori, specialisti di umidità e muffa, imprese di scavo e agenzie immobiliari: chiunque debba far vedere che cosa ha fatto.</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
@@ -634,7 +702,7 @@
       <div class="wrap">
         <div class="offline-inner">
           <span class="eyebrow">Cantine, sottotetti, case a metà</span>
-          <h2>Fa il lavoro dove non c'è campo.</h2>
+          <h2>Funziona senza campo? Il report si fa tutto offline.</h2>
           <p class="lede">Ogni passaggio gira sul telefono che hai in mano: scatto, annotazione, il PDF, tutto quanto. Niente aspetta un caricamento e nessuna rotellina si mette tra te e il cliente sulla porta. Quando torni sotto copertura, mandalo quando vuoi.</p>
         </div>
       </div>
@@ -647,7 +715,7 @@
           <span class="eyebrow">Privacy</span>
           <h2>Nessun account. Nessuna registrazione. Nessuna pubblicità.</h2>
           <p>Nessun accesso, nessuna email da lasciare, nessuna prova che scade e nessuna telefonata commerciale. I tuoi rapporti non lasciano mai il tuo dispositivo a meno che non li mandi tu, e non c'è nessun identificativo pubblicitario, nessun circuito di annunci e niente venduto a nessuno.</p>
-          <p>Numeri d'uso anonimi — quali schermate vengono aperte, quanto ci mette un'esportazione — ci dicono che cosa costruire dopo. Mai le tue foto, note, clienti o indirizzi. E <a href="https://provaro.12f.dk/privacy-policy/">nelle Impostazioni c'è un interruttore</a> per spegnere anche quello.</p>
+          <p>Numeri d'uso anonimi — quali schermate vengono aperte, quanto ci mette un'esportazione — ci dicono che cosa costruire dopo. Mai le tue foto, note, clienti o indirizzi. E <a href="https://www.12f.dk/provaro/privacy-policy/">nelle Impostazioni c'è un interruttore</a> per spegnere anche quello.</p>
           <div class="receipt">
             <span data-value="Il tuo dispositivo">Dove stanno le tue foto</span>
             <span data-value="Il tuo iCloud">Dove le sincronizza Pro</span>
@@ -698,6 +766,51 @@
             <p class="plan-note">Pro si compra dentro l'app.</p>
           </div>
         </div>
+
+        <div class="versus">
+          <h3>Comprarlo una volta, invece di affittarlo ogni mese</h3>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">Confronto</span></th>
+                <th scope="col">Provaro</th>
+                <th scope="col">Venduto in abbonamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Quanto paghi</th>
+                <td><span data-price="pro">9,99 €</span> una volta</td>
+                <td>Per utente, al mese</td>
+              </tr>
+              <tr>
+                <th scope="row">Quando si rinnova</th>
+                <td>Mai — non c'è niente da rinnovare</td>
+                <td>Ogni mese, o ogni anno</td>
+              </tr>
+              <tr>
+                <th scope="row">Se smetti di pagare</th>
+                <td>Non cambia niente</td>
+                <td>L'accesso finisce</td>
+              </tr>
+              <tr>
+                <th scope="row">Account obbligatorio</th>
+                <td>No</td>
+                <td>Di solito sì</td>
+              </tr>
+              <tr>
+                <th scope="row">Dove stanno le foto</th>
+                <td>Sul tuo dispositivo e nel tuo iCloud</td>
+                <td>Sui server del fornitore</td>
+              </tr>
+              <tr>
+                <th scope="row">Senza campo</th>
+                <td>Ogni passaggio funziona lo stesso</td>
+                <td>Di solito serve una connessione</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -738,8 +851,16 @@
             <p>Sì. Comincia il rapporto sul telefono in cantiere e finiscilo sull'iPad in furgone. Con Pro i due restano allineati attraverso il tuo iCloud.</p>
           </details>
           <details>
+            <summary>Quanto costa?</summary>
+            <p>Gratis per fotografare, annotare, esportare e condividere: è tutto il lavoro, e non scade. <span data-price="pro">9,99 €</span> una volta mette il tuo marchio sul report e accende la sincronizzazione iCloud. Non c'è un canone mensile e non c'è niente da disdire.</p>
+          </details>
+          <details>
+            <summary>Esiste una versione Android?</summary>
+            <p>No. Provaro è solo per iPhone e iPad, e richiede iOS 17 o successivo. È perché è fatto per una sola piattaforma che la fotocamera e le annotazioni sembrano parte del telefono, e non una pagina web dentro un guscio.</p>
+          </details>
+          <details>
             <summary>In quali lingue è?</summary>
-            <p>In più di cinquanta, tra cui italiano, inglese, tedesco, francese, spagnolo, olandese, portoghese, polacco e giapponese. Provaro segue la lingua su cui è già impostato il tuo iPhone: non c'è niente da scegliere.</p>
+            <p>L'app è in inglese e in danese. Segue la lingua su cui è già impostato il tuo iPhone, quindi non c'è niente da scegliere. Questo sito è in nove lingue.</p>
           </details>
         </div>
       </div>
@@ -773,9 +894,9 @@
         <a href="#report">Il rapporto</a>
         <a href="#pricing">Prezzo</a>
         <a href="#faq">Domande</a>
-        <a href="https://provaro.12f.dk/privacy-policy/">Informativa sulla privacy</a>
+        <a href="https://www.12f.dk/provaro/privacy-policy/">Informativa sulla privacy</a>
       </nav>
-      <p class="copyright">&copy; 2026 12F ApS</p>
+      <p class="copyright">&copy; 2026 <a href="https://www.12f.dk/">12F ApS</a> &middot; CVR 45362957 &middot; <a href="mailto:provaro@12f.dk">provaro@12f.dk</a> &middot; Aggiornato ad agosto 2026</p>
     </div>
   </footer>
 
