@@ -46,7 +46,19 @@
   <meta name="twitter:description" content="Marked-up photos in a branded PDF, made on site, in under a minute. One payment. No subscription." />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
-  <!-- Prices come from Apple, not from this file. tools/fetch-appstore-price.py
+  <!-- Every App Store link carries ?ct=site-provaro&mt=8. Without it App Store
+       Connect files each download from here into one undifferentiated "Web
+       referrer" bucket; ct= fills the Campaign column instead, so the question
+       "did the site do anything" has an answer. tools/build-i18n.py appends the
+       language to the token on a translated page — site-provaro-de and the rest
+       — which is what makes the nine translations measurable separately rather
+       than as one number. Attribution only accrues from the day tagging ships;
+       there is no backfill. See issue #35.
+
+       ct is free text and capped at 40 characters, which the longest token
+       here (site-provaro-pt-br, 18) is comfortably inside.
+
+  Prices come from Apple, not from this file. tools/fetch-appstore-price.py
        reads them off the App Store and bakes the euro price into the markup
        above, so a crawler and a visitor with no JavaScript both read the real
        number. This then swaps in the visitor's own storefront price, because a
@@ -179,7 +191,7 @@
     "operatingSystem": "iOS",
     "applicationCategory": "BusinessApplication",
     "url": "https://provaro.12f.dk/",
-    "installUrl": "https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309",
+    "installUrl": "https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309?ct=site-provaro&mt=8",
     "author": { "@type": "Organization", "name": "12F ApS", "url": "https://www.12f.dk/", "email": "provaro@12f.dk", "sameAs": ["https://www.12f.dk/provaro/", "https://apps.apple.com/gb/developer/robert-jensen/id1786807724"] },
     "publisher": { "@type": "Organization", "name": "12F ApS", "url": "https://www.12f.dk/", "email": "provaro@12f.dk" },
     "dateModified": "2026-08-27",
@@ -323,7 +335,7 @@
         </nav>
       </details>
       <!-- /i18n:langpick -->
-      <a class="header-cta" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Get Provaro</a>
+      <a class="header-cta" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309?ct=site-provaro&amp;mt=8" target="_blank" rel="noopener">Get Provaro</a>
     </div>
   </header>
 
@@ -341,7 +353,7 @@
             no account.
           </p>
           <div class="actions">
-            <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309?ct=site-provaro&amp;mt=8" target="_blank" rel="noopener">
               <img src="assets/img/appstore-badge.svg" alt="Download on the App Store" width="120" height="40" />
             </a>
             <a class="btn btn-line" href="#report">See what your customer gets</a>
@@ -742,7 +754,7 @@
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Works fully offline</li>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>No account, no ads</li>
             </ul>
-            <a class="btn btn-line" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">Start free</a>
+            <a class="btn btn-line" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309?ct=site-provaro&amp;mt=8" target="_blank" rel="noopener">Start free</a>
           </div>
           <div class="plan plan-pro">
             <span class="plan-flag">Pro &middot; one-time purchase</span>
@@ -754,7 +766,7 @@
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>iCloud sync across your devices</strong> — your iCloud, not a server of ours</li>
               <li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Free</li>
             </ul>
-            <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+            <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309?ct=site-provaro&amp;mt=8" target="_blank" rel="noopener">
               <img src="assets/img/appstore-badge.svg" alt="Download on the App Store" width="120" height="40" />
             </a>
             <p class="plan-note">Pro is bought inside the app.</p>
@@ -868,7 +880,7 @@
           <p class="lede">iPhone and iPad. Free to start, <span data-price="pro">€9.99</span> once for your branding.</p>
         </div>
         <div class="close-actions">
-          <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
+          <a class="appstore" href="https://apps.apple.com/us/app/provaro-job-photo-reports/id6800068309?ct=site-provaro&amp;mt=8" target="_blank" rel="noopener">
             <img src="assets/img/appstore-badge.svg" alt="Download on the App Store" width="120" height="40" />
           </a>
           <p class="fineprint">Nothing on this page is an ad. Visits are counted on our own server, without cookies.</p>
