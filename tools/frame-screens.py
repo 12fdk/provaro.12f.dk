@@ -25,6 +25,14 @@ Output is downscaled on the way out (see MAX_W below). The frames are 1406 and
 2264 pixels wide and the page renders them at 176-430 CSS pixels, so shipping
 them at full resolution costs megabytes that no display can spend.
 
+**Output is WebP, not PNG** (#17). These are photographs inside a device
+silhouette, which is the case PNG is worst at and WebP-with-alpha is best at:
+the same iPhone mark-up shot is 605K as PNG and 46K at q82. It matters more
+than the file sizes suggest, because a browser fetches a `loading="lazy"` image
+that is `display: none`, so every visitor downloads the device set they never
+switch to. QUALITY was checked, not assumed — at 2x the asset's own size the
+app's own UI text is indistinguishable from the PNG.
+
     python3 tools/frame-screens.py
 """
 from __future__ import annotations
@@ -44,6 +52,12 @@ BASE_URL = "https://raw.githubusercontent.com/jamesjingyi/mockup-device-frames/m
 # screens: framed shots peak at 264 CSS px in a step, the bezel at 430 in the reel.
 MAX_W = {"shot": 800, "bezel": 1200}
 
+# q82 with alpha kept near-lossless: the alpha channel is the device silhouette,
+# and artefacts there show up as a fringe against the page rather than as noise
+# inside a photograph.
+QUALITY = 82
+ALPHA_QUALITY = 100
+
 DEVICES = {
     "iphone": {
         "frame": CACHE / "iphone-16-pro-black-titanium.png",
@@ -51,7 +65,7 @@ DEVICES = {
         "aperture": (102, 100),
         "screen": (1206, 2622),
         # Named without a suffix because the page shipped with it before the iPad existed.
-        "overlay": ROOT / "assets" / "img" / "device-frame.png",
+        "overlay": ROOT / "assets" / "img" / "device-frame.webp",
     },
     "ipad": {
         "frame": CACHE / "ipad-pro-13-m4-space-black.png",
@@ -59,7 +73,7 @@ DEVICES = {
                           "iPad%20Pro%2013%20M4%20%26%20M5%20-%20Portrait%20-%20Space%20Black.png",
         "aperture": (100, 100),
         "screen": (2064, 2752),
-        "overlay": ROOT / "assets" / "img" / "device-frame-ipad.png",
+        "overlay": ROOT / "assets" / "img" / "device-frame-ipad.webp",
     },
 }
 
@@ -98,6 +112,12 @@ def zero_transparent(canvas: Image.Image) -> Image.Image:
     )
 
 
+def save_web(canvas: Image.Image, dest: Path) -> None:
+    """One place that decides how a served image is encoded."""
+    canvas.save(dest, format="WEBP", quality=QUALITY,
+                alpha_quality=ALPHA_QUALITY, method=6)
+
+
 def fit(canvas: Image.Image, max_w: int) -> Image.Image:
     if canvas.width <= max_w:
         return canvas
@@ -113,7 +133,7 @@ def frame_device(name: str, device: dict) -> int:
     out.mkdir(parents=True, exist_ok=True)
 
     overlay = fit(zero_transparent(frame), MAX_W["bezel"])
-    overlay.save(device["overlay"], optimize=True)
+    save_web(overlay, device["overlay"])
     print(f"[{name}] bezel overlay {overlay.size} -> {device['overlay'].relative_to(ROOT)}")
 
     shots = sorted(p for p in src.glob("*.png") if p.is_file())
@@ -134,8 +154,8 @@ def frame_device(name: str, device: dict) -> int:
 
         canvas = fit(zero_transparent(canvas), MAX_W["shot"])
 
-        dest = out / shot.name
-        canvas.save(dest, optimize=True)
+        dest = (out / shot.name).with_suffix(".webp")
+        save_web(canvas, dest)
         print(f"[{name}] framed {shot.name} {canvas.size} -> {dest.relative_to(ROOT)}")
 
     return 0
