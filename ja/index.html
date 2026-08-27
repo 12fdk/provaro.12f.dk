@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Provaro — 現場を撮って、証拠を渡す</title>
-  <meta name="description" content="Provaro は撮ったばかりの写真を、自社ロゴ入りの PDF 報告書に変えます。要点には矢印、上にはロゴ、下には連絡先。現場で、1分もかからずに、電波もアカウントもなしで仕上がります。買い切り。サブスクなし。" />
+  <title>工事写真の報告書アプリ — Provaro</title>
+  <meta name="description" content="現場写真を、自社ロゴ入りの PDF 報告書に。現場で1分もかからず、電波がなくても。買い切り、サブスクなし。" />
   <link rel="canonical" href="https://provaro.12f.dk/ja/" />
   <meta property="og:locale" content="ja_JP" />
   <!-- i18n:alternates — every translation points at every other one, self
@@ -31,18 +31,18 @@
        a four-hour cache and no hash in its filename, so without a fresh query the
        new markup gets styled by the old rules for hours after a deploy. The HTML
        itself carries a much shorter TTL, so a changed token lands immediately. -->
-  <link rel="stylesheet" href="../css/styles.css?v=2026-08-26c" />
+  <link rel="stylesheet" href="../css/styles.css?v=2026-08-27a" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Provaro" />
-  <meta property="og:title" content="Provaro — 現場を撮って、証拠を渡す" />
+  <meta property="og:title" content="工事写真の報告書アプリ — Provaro" />
   <meta property="og:description" content="マークアップした写真を自社ロゴ入りの PDF に。現場で、1分もかからずに。買い切り、サブスクなし、アカウントなし。電波がなくても動きます。" />
   <meta property="og:url" content="https://provaro.12f.dk/ja/" />
   <meta property="og:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Provaro — 現場を撮って、証拠を渡す" />
+  <meta name="twitter:title" content="工事写真の報告書アプリ — Provaro" />
   <meta name="twitter:description" content="マークアップした写真を自社ロゴ入りの PDF に。現場で、1分もかからずに。買い切り。サブスクなし。" />
   <meta name="twitter:image" content="https://provaro.12f.dk/assets/og/og-image.png" />
 
@@ -182,12 +182,22 @@
     "installUrl": "https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309",
     "author": {
       "@type": "Organization",
-      "name": "12F ApS"
+      "name": "12F ApS",
+      "url": "https://www.12f.dk/",
+      "email": "provaro@12f.dk",
+      "sameAs": [
+        "https://www.12f.dk/provaro/",
+        "https://apps.apple.com/gb/developer/robert-jensen/id1786807724"
+      ]
     },
     "publisher": {
       "@type": "Organization",
-      "name": "12F ApS"
+      "name": "12F ApS",
+      "url": "https://www.12f.dk/",
+      "email": "provaro@12f.dk"
     },
+    "dateModified": "2026-08-27",
+    "operatingSystemVersion": "iOS 17.0 or later",
     "description": "終わった現場を、そのまま本格的な写真報告書に。マークアップした写真を自社ロゴ入りの PDF にまとめ、現場で1分もかからずに仕上げます。オフラインで動作し、アカウントも広告もありません。",
     "featureList": [
       "カメラから離れずに現場を丸ごと撮影",
@@ -208,6 +218,47 @@
         "price": "1500",
         "priceCurrency": "JPY",
         "description": "Pro（買い切り）：報告書に自社ブランドを載せ、端末間を iCloud で同期します。一度きりの購入です。"
+      }
+    ],
+    "inLanguage": "ja"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "現場で工事写真の報告書をつくる手順",
+    "description": "終わった現場を撮り、要点をマークアップして、自社ロゴ入りの PDF 報告書を、現場から離れずにお客さまへ渡します。",
+    "totalTime": "PT1M",
+    "url": "https://provaro.12f.dk/ja/#how",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "Provaro を入れた iPhone または iPad"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "カメラから離れずに現場を丸ごと撮る",
+        "text": "ファインダーを覗いたまま部屋をひと続きで撮っても、カメラロールから好きなだけ取り込んでもかまいません。写真はそのまま案件に入り、セクションごとにまとまって、それぞれに自分の言葉のキャプションが付きます。",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/report-editor.png",
+        "url": "https://provaro.12f.dk/ja/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "写真だけでは伝わらないことをマークアップする",
+        "text": "矢印、丸、点、フリーハンド、吹き出しを6色から、太さも自分で決めて、撮ったばかりの写真からワンタップで。元の写真はカメラが保存したそのままです。",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/markup.png",
+        "url": "https://provaro.12f.dk/ja/#how"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "片付ける前に報告書を渡す",
+        "text": "1ページ1枚、ビフォー・アフターの2枚並び、あるいはグリッド。仕上がった PDF とファイルサイズを確認して、お客さまがいつも使っている手段で送ります——WhatsApp、iMessage、メール、AirDrop、印刷。",
+        "image": "https://provaro.12f.dk/assets/screens/iphone/framed/document-preview.png",
+        "url": "https://provaro.12f.dk/ja/#how"
       }
     ],
     "inLanguage": "ja"
@@ -277,10 +328,26 @@
       },
       {
         "@type": "Question",
+        "name": "Provaro の料金は？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "撮影、マークアップ、書き出し、共有は無料——それで現場のひと通りができ、期限もありません。Pro は ¥1,500 の一度きりの支払いで、報告書に自社ブランドが入り、iCloud 同期が有効になります。月額はなく、解約するものもありません。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Provaro に Android 版はありますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "いいえ。Provaro は iPhone と iPad 専用で、iOS 17 以降が必要です。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Provaro は何か国語に対応していますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "50 以上です。日本語、英語、ドイツ語、フランス語、スペイン語、イタリア語、オランダ語、ポルトガル語、ポーランド語などに対応しています。Provaro は iPhone にすでに設定されている言語に従います。"
+          "text": "アプリは英語とデンマーク語です。Provaro は iPhone にすでに設定されている言語に従うので、選ぶ必要はありません。"
         }
       }
     ],
@@ -328,8 +395,8 @@
       <div class="wrap hero-inner">
         <div>
           <p class="eyebrow">職人のための写真報告書 &middot; iPhone &amp; iPad</p>
-          <h1><span class="ln">現場を撮る。</span> <span class="ln">証拠を渡す。</span></h1>
-          <p class="lede">Provaro は撮ったばかりの写真を、自社ロゴ入りの PDF に変えます。要点には矢印、上にはロゴ、下には連絡先。現場で、1分もかからずに、電波もアカウントもなしで仕上がります。</p>
+          <h1><span class="ln">工事写真の報告書。</span> <span class="ln">現場を撮って、証拠を渡す。</span></h1>
+          <p class="lede">Provaro は、職人のための工事写真・現場写真の報告書アプリです。撮ったばかりの写真を自社ロゴ入りの PDF に変えます。要点には矢印、上にはロゴ、下には連絡先。現場で、1分もかからずに、電波もアカウントもなしで仕上がります。</p>
           <div class="actions">
             <a class="appstore" href="https://apps.apple.com/jp/app/provaro-job-photo-reports/id6800068309" target="_blank" rel="noopener">
               <img src="../assets/img/appstore-badge-ja.svg" alt="App Store からダウンロード" width="109" height="40" />
@@ -410,7 +477,7 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">使い方</span>
-          <h2>手袋、暗がり、空いた手は片方だけ——そのために作りました</h2>
+          <h2>報告書のつくり方——手袋、暗がり、空いた手は片方だけ</h2>
           <p class="lede">3つの動作だけ。しかもいつも通りの順番です。押す場所は大きく、保存して開き直す手間もありません。</p>
         </div>
         <div class="device-pick" data-device-pick>
@@ -510,7 +577,7 @@
       <div class="wrap">
         <div class="head centered">
           <span class="eyebrow">納品物</span>
-          <h2>お客さまの受信箱に届くのはこれです</h2>
+          <h2>お客さまに届くもの——自社ロゴ入りの PDF 報告書</h2>
           <p class="lede">ギャラリーのリンクでもスクリーンショットでもありません。自社名の入った PDF。メールで送れる軽さで、印刷にも耐えます。</p>
         </div>
 
@@ -564,7 +631,8 @@
       <div class="wrap">
         <div class="head">
           <span class="eyebrow">そのほかの機能</span>
-          <h2>本物の業務書類に必要なもの、すべて</h2>
+          <h2>現場写真の報告書に必要なもの、すべて</h2>
+          <p class="lede">配管、電気、屋根、大工、塗装、左官、防カビ・防湿の専門業者、土木、そして不動産管理まで——やった仕事を見せる必要のある人のために。</p>
         </div>
         <div class="feature-grid">
           <article class="feature">
@@ -634,7 +702,7 @@
       <div class="wrap">
         <div class="offline-inner">
           <span class="eyebrow">地下室、屋根裏、建てかけの家</span>
-          <h2>電波のない場所でも、ちゃんと仕事をします。</h2>
+          <h2>電波がなくても使えますか？ 報告書はすべてオフラインでつくれます。</h2>
           <p class="lede">撮影も、マークアップも、PDF も、すべて手元の iPhone の中で動きます。アップロードを待つものは何もなく、玄関先のお客さまとの間にぐるぐる回る印が挟まることもありません。電波の届く場所に戻ったら、好きなときに送ってください。</p>
         </div>
       </div>
@@ -647,7 +715,7 @@
           <span class="eyebrow">プライバシー</span>
           <h2>アカウントなし。登録なし。広告なし。</h2>
           <p>ログインも、差し出すメールアドレスも、期限の迫る体験版も、営業電話もありません。報告書は自分で送らないかぎり端末から出ませんし、広告 ID も広告ネットワークもなく、誰かに売られるものもありません。</p>
-          <p>匿名の利用状況——どの画面が開かれたか、書き出しに何秒かかったか——だけが、次に何を作るかの手がかりになります。写真、メモ、顧客、住所が送られることはありません。しかも <a href="https://provaro.12f.dk/privacy-policy/">設定にはそれさえ止めるスイッチ</a>があります。</p>
+          <p>匿名の利用状況——どの画面が開かれたか、書き出しに何秒かかったか——だけが、次に何を作るかの手がかりになります。写真、メモ、顧客、住所が送られることはありません。しかも <a href="https://www.12f.dk/provaro/privacy-policy/">設定にはそれさえ止めるスイッチ</a>があります。</p>
           <div class="receipt">
             <span data-value="自分の端末">写真がある場所</span>
             <span data-value="自分の iCloud">Pro が同期する先</span>
@@ -698,6 +766,51 @@
             <p class="plan-note">Pro はアプリ内で購入します。</p>
           </div>
         </div>
+
+        <div class="versus">
+          <h3>買い切りと、月額で借りること</h3>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">比較</span></th>
+                <th scope="col">Provaro</th>
+                <th scope="col">サブスクで売られるアプリ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">支払い</th>
+                <td><span data-price="pro">¥1,500</span> 一度きり</td>
+                <td>ユーザーごとに毎月</td>
+              </tr>
+              <tr>
+                <th scope="row">更新のタイミング</th>
+                <td>なし——更新するものがありません</td>
+                <td>毎月、または毎年</td>
+              </tr>
+              <tr>
+                <th scope="row">支払いをやめたら</th>
+                <td>何も変わりません</td>
+                <td>使えなくなります</td>
+              </tr>
+              <tr>
+                <th scope="row">アカウント</th>
+                <td>不要</td>
+                <td>たいてい必要</td>
+              </tr>
+              <tr>
+                <th scope="row">写真の置き場所</th>
+                <td>自分の端末と、自分の iCloud</td>
+                <td>提供元のサーバー</td>
+              </tr>
+              <tr>
+                <th scope="row">電波がないとき</th>
+                <td>どの手順もそのまま動きます</td>
+                <td>たいてい通信が必要</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -738,8 +851,16 @@
             <p>はい。現場では iPhone で報告書を作り始め、車の中で iPad で仕上げられます。Pro なら自分の iCloud を通じて両方が同じ状態に保たれます。</p>
           </details>
           <details>
+            <summary>料金は？</summary>
+            <p>撮影、マークアップ、書き出し、共有は無料——それで現場のひと通りができ、期限もありません。<span data-price="pro">¥1,500</span> の一度きりで、報告書に自社ブランドが入り、iCloud 同期が有効になります。月額はなく、解約するものもありません。</p>
+          </details>
+          <details>
+            <summary>Android 版はありますか？</summary>
+            <p>いいえ。Provaro は iPhone と iPad 専用で、iOS 17 以降が必要です。ひとつのプラットフォームに絞って作っているからこそ、カメラもマークアップも、ガワをかぶせた Web ページではなく端末の一部のように動きます。</p>
+          </details>
+          <details>
             <summary>何か国語に対応していますか？</summary>
-            <p>50 以上です。日本語、英語、ドイツ語、フランス語、スペイン語、イタリア語、オランダ語、ポルトガル語、ポーランド語などに対応しています。Provaro は iPhone にすでに設定されている言語に従うので、選ぶ必要はありません。</p>
+            <p>アプリは英語とデンマーク語です。iPhone にすでに設定されている言語に従うので、選ぶ必要はありません。このサイトは9言語あります。</p>
           </details>
         </div>
       </div>
@@ -773,9 +894,9 @@
         <a href="#report">報告書</a>
         <a href="#pricing">価格</a>
         <a href="#faq">よくある質問</a>
-        <a href="https://provaro.12f.dk/privacy-policy/">プライバシーポリシー</a>
+        <a href="https://www.12f.dk/provaro/privacy-policy/">プライバシーポリシー</a>
       </nav>
-      <p class="copyright">&copy; 2026 12F ApS</p>
+      <p class="copyright">&copy; 2026 <a href="https://www.12f.dk/">12F ApS</a> &middot; CVR 45362957 &middot; <a href="mailto:provaro@12f.dk">provaro@12f.dk</a> &middot; 2026年8月更新</p>
     </div>
   </footer>
 
