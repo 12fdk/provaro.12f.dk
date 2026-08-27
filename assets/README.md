@@ -26,6 +26,14 @@ which on the iPad is the empty "Pick a report" state and sells nothing.
 The bezels the films play behind, `img/device-frame*.webp`, are written by
 `tools/frame-screens.py`; see `screens/README.md`.
 
+`og/og-image.png` is the Open Graph card — the image that travels when the link
+is pasted into a message or a post. It is drawn by `tools/make-og-card.py`
+(#18); before that it was a committed PNG with nothing that rebuilt it, which
+is how it came to be iPhone-only, off-palette, and carrying a logo badge on top
+of its own headline. The generator asserts that nothing overlaps the headline,
+so that particular bug cannot ship twice. Note that every scraper caches: a
+redraw will not change a link somebody has already shared.
+
 **Everything the page serves is WebP, apart from the logo and the App Store
 badge** (#17). These are photographs, and the framed shots are photographs
 behind a transparent silhouette, which is the case PNG is worst at: the served
