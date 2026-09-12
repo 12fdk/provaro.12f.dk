@@ -22,8 +22,8 @@
       ],
       "currency": "EUR",
       "free": "€0",
-      "pro": "€9.99",
-      "proAmount": 9.99
+      "pro": "€22.99",
+      "proAmount": 22.99
     },
     "de": {
       "regions": [
@@ -32,8 +32,8 @@
       ],
       "currency": "EUR",
       "free": "0 €",
-      "pro": "9,99 €",
-      "proAmount": 9.99
+      "pro": "22,99 €",
+      "proAmount": 22.99
     },
     "es": {
       "regions": [
@@ -41,8 +41,8 @@
       ],
       "currency": "EUR",
       "free": "0 €",
-      "pro": "9,99 €",
-      "proAmount": 9.99
+      "pro": "22,99 €",
+      "proAmount": 22.99
     },
     "fr": {
       "regions": [
@@ -50,8 +50,8 @@
       ],
       "currency": "EUR",
       "free": "0 €",
-      "pro": "9,99 €",
-      "proAmount": 9.99
+      "pro": "22,99 €",
+      "proAmount": 22.99
     },
     "it": {
       "regions": [
@@ -59,8 +59,8 @@
       ],
       "currency": "EUR",
       "free": "0 €",
-      "pro": "9,99 €",
-      "proAmount": 9.99
+      "pro": "22,99 €",
+      "proAmount": 22.99
     },
     "nl": {
       "regions": [
@@ -69,8 +69,8 @@
       ],
       "currency": "EUR",
       "free": "€ 0",
-      "pro": "€ 9,99",
-      "proAmount": 9.99
+      "pro": "€ 22,99",
+      "proAmount": 22.99
     },
     "br": {
       "regions": [
@@ -78,8 +78,8 @@
       ],
       "currency": "BRL",
       "free": "R$ 0",
-      "pro": "R$ 59,90",
-      "proAmount": 59.9
+      "pro": "R$ 129,90",
+      "proAmount": 129.9
     },
     "jp": {
       "regions": [
@@ -87,8 +87,8 @@
       ],
       "currency": "JPY",
       "free": "¥0",
-      "pro": "¥1,500",
-      "proAmount": 1500.0
+      "pro": "¥3,000",
+      "proAmount": 3000.0
     },
     "dk": {
       "regions": [
@@ -96,8 +96,8 @@
       ],
       "currency": "DKK",
       "free": "0 kr",
-      "pro": "99,00 kr",
-      "proAmount": 99.0
+      "pro": "179,00 kr",
+      "proAmount": 179.0
     },
     "se": {
       "regions": [
@@ -105,8 +105,8 @@
       ],
       "currency": "SEK",
       "free": "0 kr",
-      "pro": "129,00 kr",
-      "proAmount": 129.0
+      "pro": "249,00 kr",
+      "proAmount": 249.0
     },
     "no": {
       "regions": [
@@ -114,8 +114,8 @@
       ],
       "currency": "NOK",
       "free": "0 kr",
-      "pro": "129,00 kr",
-      "proAmount": 129.0
+      "pro": "249,00 kr",
+      "proAmount": 249.0
     },
     "gb": {
       "regions": [
@@ -123,8 +123,8 @@
       ],
       "currency": "GBP",
       "free": "£0",
-      "pro": "£9.99",
-      "proAmount": 9.99
+      "pro": "£19.99",
+      "proAmount": 19.99
     },
     "us": {
       "regions": [
@@ -132,8 +132,8 @@
       ],
       "currency": "USD",
       "free": "$0",
-      "pro": "$9.99",
-      "proAmount": 9.99
+      "pro": "$19.99",
+      "proAmount": 19.99
     },
     "ca": {
       "regions": [
@@ -141,8 +141,8 @@
       ],
       "currency": "CAD",
       "free": "$0",
-      "pro": "$12.99",
-      "proAmount": 12.99
+      "pro": "$24.99",
+      "proAmount": 24.99
     },
     "au": {
       "regions": [
@@ -150,8 +150,8 @@
       ],
       "currency": "AUD",
       "free": "$0",
-      "pro": "$14.99",
-      "proAmount": 14.99
+      "pro": "$29.99",
+      "proAmount": 29.99
     },
     "nz": {
       "regions": [
@@ -159,8 +159,8 @@
       ],
       "currency": "NZD",
       "free": "$0",
-      "pro": "$19.99",
-      "proAmount": 19.99
+      "pro": "$39.99",
+      "proAmount": 39.99
     },
     "ch": {
       "regions": [
@@ -168,8 +168,8 @@
       ],
       "currency": "CHF",
       "free": "CHF 0",
-      "pro": "CHF 9.00",
-      "proAmount": 9.0
+      "pro": "CHF 18.00",
+      "proAmount": 18.0
     },
     "pl": {
       "regions": [
@@ -177,8 +177,8 @@
       ],
       "currency": "PLN",
       "free": "0 zł",
-      "pro": "49,99 zł",
-      "proAmount": 49.99
+      "pro": "99,99 zł",
+      "proAmount": 99.99
     },
     "cz": {
       "regions": [
@@ -186,8 +186,8 @@
       ],
       "currency": "CZK",
       "free": "0 Kč",
-      "pro": "249,00 Kč",
-      "proAmount": 249.0
+      "pro": "499,00 Kč",
+      "proAmount": 499.0
     }
   }
 }
