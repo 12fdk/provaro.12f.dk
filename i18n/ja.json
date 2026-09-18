@@ -62,13 +62,9 @@
     "A finished Provaro report page": "仕上がった Provaro の報告書ページ",
     "Wrenfield Building Services": "宮下建設工業",
     "Bathroom refit &mdash; 14 Selborne Road": "浴室改修工事 &mdash; 渋谷1-14-3",
-    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE6 1XN<br /> 14 August 2026": "芦沢 様<br /> 〒150-0002 東京都渋谷区渋谷1-14-3<br /> 2026年8月14日",
     "Old suite stripped out and walls prepared": "既存の衛生設備を撤去し、壁面を下地処理",
     "A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page": "解体した浴室の壁に赤い矢印が引かれ、報告書のページに収まっていく様子",
     "Marked up on site &middot; 09:41": "現場でマークアップ &middot; 09:41",
-    "<strong>Wrenfield Building Services</strong>VAT GB 123 4567 89": "<strong>宮下建設工業</strong>登録番号 T1234567890123",
-    "+44 20 7946 0958<br />hello@wrenfield.example": "03-6427-1420<br />info@miyashita.example",
-    "wrenfield.example<br />Page 1 of 3": "miyashita.example<br />1 / 3 ページ",
     "At a glance": "ひと目で",
     "<strong>Under a minute</strong> <span>from the last photo to a finished PDF, standing on the job</span>": "<strong>1分未満</strong> <span>最後の1枚から仕上がった PDF まで、現場に立ったまま</span>",
     "<strong><span data-price=\"pro\"></span> once</strong> <span>not per month and not per user — there is nothing to renew</span>": "<strong><span data-price=\"pro\"></span> 一度きり</strong> <span>月額でもユーザー単位でもなく、更新するものがありません</span>",
@@ -118,8 +114,8 @@
     "<b>Your details, every page</b>Registration number, phone, email and your review link.": "<b>各ページに自社情報</b>登録番号、電話、メール、口コミへのリンク。",
     "A finished Provaro report page, annotated": "仕上がった Provaro の報告書ページ（注釈付き）",
     "Stripped bathroom with a red arrow drawn across the wall to the corner that was made good": "解体した浴室の壁に赤い矢印が引かれ、補修した隅を指している",
-    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example": "〒150-0002 東京都渋谷区渋谷2-27-1<br />03-6427-1420<br />info@miyashita.example",
-    "wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3": "miyashita.example<br />Trustpilot でご評価ください<br />1 / 3 ページ",
+    "Open a finished report": "完成した報告書を開く",
+    "Three pages, 528&nbsp;kB. Not a picture of a report — the file the app exported, opening the way it opens for your customer.": "3ページ、528&nbsp;kB、英語です。報告書の画像ではなく、アプリが書き出したファイルそのもの。お客さまの手元で開くのと同じように開きます。",
     "The rest of it": "そのほかの機能",
     "Everything a job report should carry": "現場写真の報告書に必要なもの、すべて",
     "Built for plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers and letting agents — anyone who has to show what they did.": "配管、電気、屋根、大工、塗装、左官、防カビ・防湿の専門業者、土木、そして不動産管理まで——やった仕事を見せる必要のある人のために。",
@@ -239,6 +235,12 @@
     "Job photo reports for tradespeople": "職人のための現場写真報告書",
     "Footer": "フッター",
     "Privacy policy": "プライバシーポリシー",
-    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; 2026年8月更新"
+    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; 2026年8月更新",
+    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE13 5QP<br /> 14 August 2026": "芦沢 様<br /> 〒150-0002 東京都渋谷区渋谷1-14-3<br /> 2026年8月14日",
+    "<strong>Wrenfield Building Services</strong>VAT number GB 123 4567 89": "<strong>宮下建設工業</strong>登録番号 T1234567890123",
+    "+44 20 7946 0958<br />hello@wrenfield-building.example": "03-6427-1420<br />info@miyashita.example",
+    "wrenfield-building.example<br />Page 1 of 3": "miyashita.example<br />1 / 3 ページ",
+    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield-building.example": "〒150-0002 東京都渋谷区渋谷2-27-1<br />03-6427-1420<br />info@miyashita.example",
+    "wrenfield-building.example<br />trustpilot.com/review/wrenfield-building.example<br />Page 1 of 3": "miyashita.example<br />Trustpilot でご評価ください<br />1 / 3 ページ"
   }
 }
