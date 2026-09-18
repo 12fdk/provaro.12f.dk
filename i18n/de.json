@@ -62,13 +62,9 @@
     "A finished Provaro report page": "Eine fertige Provaro-Berichtsseite",
     "Wrenfield Building Services": "Wernhardt Bau &amp; Sanitär",
     "Bathroom refit &mdash; 14 Selborne Road": "Badsanierung &mdash; Selbornstraße 14",
-    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE6 1XN<br /> 14 August 2026": "Fam. Aschhoff<br /> Selbornstraße 14, 12043 Berlin<br /> 14. August 2026",
     "Old suite stripped out and walls prepared": "Alte Sanitärobjekte demontiert und Wände vorbereitet",
     "A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page": "Ein entkerntes Bad mit einem roten Pfeil quer über die Wand, der auf die Berichtsseite fällt",
     "Marked up on site &middot; 09:41": "Vor Ort markiert &middot; 09:41",
-    "<strong>Wrenfield Building Services</strong>VAT GB 123 4567 89": "<strong>Wernhardt Bau &amp; Sanitär</strong>USt-IdNr. DE 123 456 789",
-    "+44 20 7946 0958<br />hello@wrenfield.example": "+49 30 901820<br />hallo@wernhardt.example",
-    "wrenfield.example<br />Page 1 of 3": "wernhardt.example<br />Seite 1 von 3",
     "At a glance": "Auf einen Blick",
     "<strong>Under a minute</strong> <span>from the last photo to a finished PDF, standing on the job</span>": "<strong>Unter einer Minute</strong> <span>vom letzten Foto zum fertigen PDF, im Stehen auf der Baustelle</span>",
     "<strong><span data-price=\"pro\"></span> once</strong> <span>not per month and not per user — there is nothing to renew</span>": "<strong><span data-price=\"pro\"></span> einmalig</strong> <span>nicht pro Monat und nicht pro Nutzer — es gibt nichts zu verlängern</span>",
@@ -118,8 +114,8 @@
     "<b>Your details, every page</b>Registration number, phone, email and your review link.": "<b>Ihre Daten, jede Seite</b>USt-IdNr., Telefon, E-Mail und Ihr Bewertungslink.",
     "A finished Provaro report page, annotated": "Eine fertige Provaro-Berichtsseite, kommentiert",
     "Stripped bathroom with a red arrow drawn across the wall to the corner that was made good": "Entkerntes Bad mit einem roten Pfeil quer über die Wand zu der Ecke, die instand gesetzt wurde",
-    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example": "Sandhurstweg 27, 12043 Berlin<br />+49 30 901820<br />hallo@wernhardt.example",
-    "wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3": "wernhardt.example<br />Bewerten Sie uns auf Trustpilot<br />Seite 1 von 3",
+    "Open a finished report": "Fertigen Bericht öffnen",
+    "Three pages, 528&nbsp;kB. Not a picture of a report — the file the app exported, opening the way it opens for your customer.": "Drei Seiten, 528&nbsp;kB, auf Englisch. Kein Bild eines Berichts — die Datei, die die App exportiert hat, geöffnet so, wie sie sich bei Ihrem Kunden öffnet.",
     "The rest of it": "Der Rest davon",
     "Everything a job report should carry": "Alles, was eine Baustellendokumentation tragen muss",
     "Built for plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers and letting agents — anyone who has to show what they did.": "Gebaut für Installateure, Elektriker, Dachdecker, Maurer, Maler, Verputzer, Fachleute für Feuchtigkeit und Schimmel, Tiefbauer und Hausverwaltungen — für alle, die zeigen müssen, was sie gemacht haben.",
@@ -239,6 +235,12 @@
     "Job photo reports for tradespeople": "Fotoberichte für Handwerksbetriebe",
     "Footer": "Fußzeile",
     "Privacy policy": "Datenschutzerklärung",
-    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Aktualisiert August 2026"
+    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Aktualisiert August 2026",
+    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE13 5QP<br /> 14 August 2026": "Fam. Aschhoff<br /> Selbornstraße 14, 12043 Berlin<br /> 14. August 2026",
+    "<strong>Wrenfield Building Services</strong>VAT number GB 123 4567 89": "<strong>Wernhardt Bau &amp; Sanitär</strong>USt-IdNr. DE 123 456 789",
+    "+44 20 7946 0958<br />hello@wrenfield-building.example": "+49 30 901820<br />hallo@wernhardt.example",
+    "wrenfield-building.example<br />Page 1 of 3": "wernhardt.example<br />Seite 1 von 3",
+    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield-building.example": "Sandhurstweg 27, 12043 Berlin<br />+49 30 901820<br />hallo@wernhardt.example",
+    "wrenfield-building.example<br />trustpilot.com/review/wrenfield-building.example<br />Page 1 of 3": "wernhardt.example<br />Bewerten Sie uns auf Trustpilot<br />Seite 1 von 3"
   }
 }

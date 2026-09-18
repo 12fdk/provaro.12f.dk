@@ -62,13 +62,9 @@
     "A finished Provaro report page": "Een afgeronde pagina van een Provaro-rapport",
     "Wrenfield Building Services": "Wernink Bouw &amp; Sanitair",
     "Bathroom refit &mdash; 14 Selborne Road": "Badkamerrenovatie &mdash; Selbornestraat 14",
-    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE6 1XN<br /> 14 August 2026": "Fam. Aardema<br /> Selbornestraat 14, 1053 AB Amsterdam<br /> 14 augustus 2026",
     "Old suite stripped out and walls prepared": "Oud sanitair gesloopt en wanden voorbereid",
     "A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page": "Een gesloopte badkamer met een rode pijl dwars over de muur, die op de rapportpagina valt",
     "Marked up on site &middot; 09:41": "Op locatie gemarkeerd &middot; 09:41",
-    "<strong>Wrenfield Building Services</strong>VAT GB 123 4567 89": "<strong>Wernink Bouw &amp; Sanitair</strong>KvK 12345678",
-    "+44 20 7946 0958<br />hello@wrenfield.example": "+31 20 794 6095<br />hallo@wernink.example",
-    "wrenfield.example<br />Page 1 of 3": "wernink.example<br />Pagina 1 van 3",
     "At a glance": "In het kort",
     "<strong>Under a minute</strong> <span>from the last photo to a finished PDF, standing on the job</span>": "<strong>Minder dan een minuut</strong> <span>van de laatste foto naar een afgeronde pdf, staand op de klus</span>",
     "<strong><span data-price=\"pro\"></span> once</strong> <span>not per month and not per user — there is nothing to renew</span>": "<strong><span data-price=\"pro\"></span> eenmalig</strong> <span>niet per maand en niet per gebruiker — er is niets te verlengen</span>",
@@ -118,8 +114,8 @@
     "<b>Your details, every page</b>Registration number, phone, email and your review link.": "<b>Jouw gegevens, elke pagina</b>KvK-nummer, telefoon, e-mail en je reviewlink.",
     "A finished Provaro report page, annotated": "Een afgeronde pagina van een Provaro-rapport, met toelichting",
     "Stripped bathroom with a red arrow drawn across the wall to the corner that was made good": "Gesloopte badkamer met een rode pijl dwars over de muur naar de hoek die is hersteld",
-    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example": "Sandhurststraat 27, 1053 AB Amsterdam<br />+31 20 794 6095<br />hallo@wernink.example",
-    "wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3": "wernink.example<br />Beoordeel ons op Trustpilot<br />Pagina 1 van 3",
+    "Open a finished report": "Een afgerond rapport openen",
+    "Three pages, 528&nbsp;kB. Not a picture of a report — the file the app exported, opening the way it opens for your customer.": "Drie pagina's, 528&nbsp;kB, in het Engels. Geen plaatje van een rapport — het bestand dat de app heeft geëxporteerd, dat opengaat zoals het bij je klant opengaat.",
     "The rest of it": "De rest ervan",
     "Everything a job report should carry": "Alles wat een werkbon hoort te dragen",
     "Built for plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers and letting agents — anyone who has to show what they did.": "Gemaakt voor loodgieters, elektriciens, dakdekkers, aannemers, schilders, stukadoors, vocht- en schimmelspecialisten, grondwerkers en verhuurmakelaars bij oplevering — iedereen die moet laten zien wat hij heeft gedaan.",
@@ -239,6 +235,12 @@
     "Job photo reports for tradespeople": "Fotorapporten voor vakmensen",
     "Footer": "Voettekst",
     "Privacy policy": "Privacybeleid",
-    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Bijgewerkt in augustus 2026"
+    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Bijgewerkt in augustus 2026",
+    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE13 5QP<br /> 14 August 2026": "Fam. Aardema<br /> Selbornestraat 14, 1053 AB Amsterdam<br /> 14 augustus 2026",
+    "<strong>Wrenfield Building Services</strong>VAT number GB 123 4567 89": "<strong>Wernink Bouw &amp; Sanitair</strong>KvK 12345678",
+    "+44 20 7946 0958<br />hello@wrenfield-building.example": "+31 20 794 6095<br />hallo@wernink.example",
+    "wrenfield-building.example<br />Page 1 of 3": "wernink.example<br />Pagina 1 van 3",
+    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield-building.example": "Sandhurststraat 27, 1053 AB Amsterdam<br />+31 20 794 6095<br />hallo@wernink.example",
+    "wrenfield-building.example<br />trustpilot.com/review/wrenfield-building.example<br />Page 1 of 3": "wernink.example<br />Beoordeel ons op Trustpilot<br />Pagina 1 van 3"
   }
 }
