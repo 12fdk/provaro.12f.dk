@@ -589,6 +589,23 @@ p { margin: 0; }
 .stake h3 { margin-bottom: 12px; }
 .stake p { color: var(--ink-2); font-size: .97rem; }
 
+/* ---------- Mid-page call to action --------------------------------------- */
+/* The hero and the close both ask; between them the page used to run for
+   twelve screens without a way out of reading. These sit at the two places a
+   reader has just finished being convinced of something. */
+.section-cta {
+  margin-top: 46px;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.section-cta-note {
+  font-size: .88rem;
+  color: var(--ink-3);
+  max-width: 46ch;
+}
+
 /* ---------- Device switch ------------------------------------------------- */
 /* The app is sold as iPhone *and* iPad, so every screen on the page exists in
    both. A .device-pick holds a radio pair and the shots they govern; :has()
@@ -938,6 +955,51 @@ p { margin: 0; }
 .plan .btn, .plan .appstore { align-self: flex-start; }
 .plan-note { margin-top: 14px; font-size: .82rem; color: var(--ink-3); }
 
+/* ---------- The promises -------------------------------------------------- */
+/* Five commitments the page made in five different places. Purchase fear is
+   answered by the whole list at once, not by a sentence in the privacy section
+   that most readers never reach, so they are restated together under the
+   price. Two columns, because a single column of five reads as a feature list
+   again. */
+.promises {
+  max-width: 780px;
+  margin: 46px auto 0;
+  padding: 30px 32px 32px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.promises h3 {
+  font-size: 1.05rem;
+  margin: 0 0 18px;
+  text-align: center;
+  color: var(--ink-2);
+}
+.promises ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 32px;
+}
+.promises li {
+  position: relative;
+  padding-left: 26px;
+  font-size: .93rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+/* Five into two columns leaves a hole bottom-right; the last one takes the row. */
+.promises li:last-child { grid-column: 1 / -1; }
+.promises li strong { color: var(--ink); }
+.promises li svg {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  color: var(--ink);
+}
+
 /* ---------- Buy once vs rent monthly -------------------------------------- */
 /* A table, because the comparison is the shape a search engine can lift whole
    and because a tradesperson comparing two quotes reads rows, not paragraphs.
@@ -1166,6 +1228,7 @@ p { margin: 0; }
   .device-pick:has(.device-radio[value="ipad"]:checked) { --shot-w: 228px; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .pricing { grid-template-columns: 1fr; }
+  .promises ul { grid-template-columns: 1fr; }
   .close-inner { grid-template-columns: 1fr; }
 }
 
