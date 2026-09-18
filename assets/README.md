@@ -34,6 +34,41 @@ of its own headline. The generator asserts that nothing overlaps the headline,
 so that particular bug cannot ship twice. Note that every scraper caches: a
 redraw will not change a link somebody has already shared.
 
+## `provaro-sample-report.pdf`
+
+The document `#report` hands over, and the only piece of evidence on the page
+that a reader can judge for themselves. **It is an export, not a facsimile.**
+It came out of the shipping renderer on a simulator and was never touched
+afterwards — `pdfinfo` still reports `Creator: Provaro`, and the red arrow on
+page 2 is the app's own mark-up drawn as a vector at export resolution.
+
+Reproduce it from the app repo (`~/Git/provaro`):
+
+    xcrun simctl install <udid> build/dev/Build/Products/Debug-iphonesimulator/provaro.app
+    xcrun simctl launch <udid> 12f.provaro \
+        --reset --skip-welcome --seed-business --seed-pro on \
+        --seed-trade bathroom --seed-report 4 \
+        -AppleLanguages "(en)" -AppleLocale en_GB
+
+then walk to `preview-and-export` and copy the PDF out of the app's container
+(`xcrun simctl get_app_container <udid> 12f.provaro data`, then `tmp/`). Verify
+it with the app repo's own gate before committing it here:
+
+    Scripts/verify-pdf.sh assets/provaro-sample-report.pdf
+
+`--seed-trade bathroom --seed-report 4` is deliberate: it is the same seed the
+App Store screenshots use, so the sample and `screens/iphone/document-preview.png`
+are the same three pages — 528 kB, A4, cover plus two sheets of two-up.
+
+**Everything in it is provably fictional**, which is `DemoIdentity`'s job and
+not ours: `.example` domains cannot be registered by anyone, `GB 123 4567 89`
+fails the VAT mod-97 check, and `+44 20 7946 0958` is inside Ofcom's drama
+range. Nothing here can accidentally be a real tradesperson.
+
+**The cover stamps the day it was rendered.** A regenerated sample carries a
+new date, which is the one thing about the file that ages; regenerate it when
+the renderer changes, not on a schedule.
+
 **Everything the page serves is WebP, apart from the logo and the App Store
 badge** (#17). These are photographs, and the framed shots are photographs
 behind a transparent silhouette, which is the case PNG is worst at: the served

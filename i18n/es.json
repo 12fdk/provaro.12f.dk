@@ -62,13 +62,9 @@
     "A finished Provaro report page": "Una página de informe de Provaro terminada",
     "Wrenfield Building Services": "Vergara Reformas",
     "Bathroom refit &mdash; 14 Selborne Road": "Reforma de baño &mdash; Calle Selborne 14",
-    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE6 1XN<br /> 14 August 2026": "Sr. y Sra. Acosta<br /> Calle Selborne 14, 28012 Madrid<br /> 14 de agosto de 2026",
     "Old suite stripped out and walls prepared": "Sanitarios antiguos retirados y paredes preparadas",
     "A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page": "Un baño desmontado con una flecha roja trazada a lo ancho de la pared, cayendo en su sitio sobre la página del informe",
     "Marked up on site &middot; 09:41": "Anotado en obra &middot; 09:41",
-    "<strong>Wrenfield Building Services</strong>VAT GB 123 4567 89": "<strong>Vergara Reformas</strong>CIF B12345678",
-    "+44 20 7946 0958<br />hello@wrenfield.example": "+34 910 87 65 43<br />hola@vergara.example",
-    "wrenfield.example<br />Page 1 of 3": "vergara.example<br />Página 1 de 3",
     "At a glance": "De un vistazo",
     "<strong>Under a minute</strong> <span>from the last photo to a finished PDF, standing on the job</span>": "<strong>Menos de un minuto</strong> <span>de la última foto al PDF terminado, de pie en la obra</span>",
     "<strong><span data-price=\"pro\"></span> once</strong> <span>not per month and not per user — there is nothing to renew</span>": "<strong><span data-price=\"pro\"></span> una vez</strong> <span>ni al mes ni por usuario: no hay nada que renovar</span>",
@@ -118,8 +114,8 @@
     "<b>Your details, every page</b>Registration number, phone, email and your review link.": "<b>Tus datos, en cada página</b>CIF, teléfono, correo y tu enlace de reseñas.",
     "A finished Provaro report page, annotated": "Una página de informe de Provaro terminada, con anotaciones",
     "Stripped bathroom with a red arrow drawn across the wall to the corner that was made good": "Baño desmontado con una flecha roja trazada a lo ancho de la pared hasta el rincón que se reparó",
-    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example": "Calle Sandhurst 27, 28012 Madrid<br />+34 910 87 65 43<br />hola@vergara.example",
-    "wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3": "vergara.example<br />Valóranos en Trustpilot<br />Página 1 de 3",
+    "Open a finished report": "Abrir un informe terminado",
+    "Three pages, 528&nbsp;kB. Not a picture of a report — the file the app exported, opening the way it opens for your customer.": "Tres páginas, 528&nbsp;kB, en inglés. No es la foto de un informe: es el archivo que exportó la app, abriéndose igual que se abre en casa de tu cliente.",
     "The rest of it": "Lo demás",
     "Everything a job report should carry": "Todo lo que un parte de trabajo debería llevar",
     "Built for plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers and letting agents — anyone who has to show what they did.": "Hecho para fontaneros, electricistas, tejadores, albañiles, pintores, yesaires, especialistas en humedades y moho, empresas de movimiento de tierras y administradores de fincas: cualquiera que tenga que enseñar lo que ha hecho.",
@@ -239,6 +235,12 @@
     "Job photo reports for tradespeople": "Informes fotográficos para profesionales de los gremios",
     "Footer": "Pie de página",
     "Privacy policy": "Política de privacidad",
-    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Actualizado en agosto de 2026"
+    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Actualizado en agosto de 2026",
+    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE13 5QP<br /> 14 August 2026": "Sr. y Sra. Acosta<br /> Calle Selborne 14, 28012 Madrid<br /> 14 de agosto de 2026",
+    "<strong>Wrenfield Building Services</strong>VAT number GB 123 4567 89": "<strong>Vergara Reformas</strong>CIF B12345678",
+    "+44 20 7946 0958<br />hello@wrenfield-building.example": "+34 910 87 65 43<br />hola@vergara.example",
+    "wrenfield-building.example<br />Page 1 of 3": "vergara.example<br />Página 1 de 3",
+    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield-building.example": "Calle Sandhurst 27, 28012 Madrid<br />+34 910 87 65 43<br />hola@vergara.example",
+    "wrenfield-building.example<br />trustpilot.com/review/wrenfield-building.example<br />Page 1 of 3": "vergara.example<br />Valóranos en Trustpilot<br />Página 1 de 3"
   }
 }

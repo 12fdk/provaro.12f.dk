@@ -62,13 +62,9 @@
     "A finished Provaro report page": "Gotowa strona raportu Provaro",
     "Wrenfield Building Services": "Wrzesiński Instalacje",
     "Bathroom refit &mdash; 14 Selborne Road": "Remont łazienki &mdash; ul. Selborna 14",
-    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE6 1XN<br /> 14 August 2026": "Państwo Andrzejewscy<br /> ul. Selborna 14, 00-712 Warszawa<br /> 14 sierpnia 2026",
     "Old suite stripped out and walls prepared": "Stara armatura zdemontowana, ściany przygotowane",
     "A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page": "Rozebrana łazienka z czerwoną strzałką narysowaną w poprzek ściany, opadająca na stronę raportu",
     "Marked up on site &middot; 09:41": "Zaznaczone na miejscu &middot; 09:41",
-    "<strong>Wrenfield Building Services</strong>VAT GB 123 4567 89": "<strong>Wrzesiński Instalacje</strong>NIP 123-456-32-18",
-    "+44 20 7946 0958<br />hello@wrenfield.example": "+48 22 794 60 95<br />kontakt@wrzesinski.example",
-    "wrenfield.example<br />Page 1 of 3": "wrzesinski.example<br />Strona 1 z 3",
     "At a glance": "W skrócie",
     "<strong>Under a minute</strong> <span>from the last photo to a finished PDF, standing on the job</span>": "<strong>Poniżej minuty</strong> <span>od ostatniego zdjęcia do gotowego PDF-a, na stojąco na budowie</span>",
     "<strong><span data-price=\"pro\"></span> once</strong> <span>not per month and not per user — there is nothing to renew</span>": "<strong><span data-price=\"pro\"></span> raz</strong> <span>nie co miesiąc i nie za użytkownika — nie ma czego odnawiać</span>",
@@ -118,8 +114,8 @@
     "<b>Your details, every page</b>Registration number, phone, email and your review link.": "<b>Twoje dane na każdej stronie</b>NIP, telefon, e-mail i link do opinii.",
     "A finished Provaro report page, annotated": "Gotowa strona raportu Provaro z objaśnieniami",
     "Stripped bathroom with a red arrow drawn across the wall to the corner that was made good": "Rozebrana łazienka z czerwoną strzałką narysowaną w poprzek ściany do naprawionego narożnika",
-    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example": "ul. Sandhurcka 27, 00-712 Warszawa<br />+48 22 794 60 95<br />kontakt@wrzesinski.example",
-    "wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3": "wrzesinski.example<br />Oceń nas na Trustpilocie<br />Strona 1 z 3",
+    "Open a finished report": "Otwórz gotowy raport",
+    "Three pages, 528&nbsp;kB. Not a picture of a report — the file the app exported, opening the way it opens for your customer.": "Trzy strony, 528&nbsp;kB, po angielsku. To nie obrazek raportu — to plik wyeksportowany przez aplikację, który otwiera się tak samo jak u Twojego klienta.",
     "The rest of it": "Cała reszta",
     "Everything a job report should carry": "Wszystko, co powinien nieść protokół odbioru",
     "Built for plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers and letting agents — anyone who has to show what they did.": "Zrobione dla hydraulików, elektryków, dekarzy, murarzy, malarzy, tynkarzy, specjalistów od wilgoci i pleśni, firm ziemnych i zarządców najmu — dla każdego, kto musi pokazać, co zrobił.",
@@ -239,6 +235,12 @@
     "Job photo reports for tradespeople": "Raporty fotograficzne dla fachowców",
     "Footer": "Stopka",
     "Privacy policy": "Polityka prywatności",
-    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Zaktualizowano w sierpniu 2026"
+    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Zaktualizowano w sierpniu 2026",
+    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE13 5QP<br /> 14 August 2026": "Państwo Andrzejewscy<br /> ul. Selborna 14, 00-712 Warszawa<br /> 14 sierpnia 2026",
+    "<strong>Wrenfield Building Services</strong>VAT number GB 123 4567 89": "<strong>Wrzesiński Instalacje</strong>NIP 123-456-32-18",
+    "+44 20 7946 0958<br />hello@wrenfield-building.example": "+48 22 794 60 95<br />kontakt@wrzesinski.example",
+    "wrenfield-building.example<br />Page 1 of 3": "wrzesinski.example<br />Strona 1 z 3",
+    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield-building.example": "ul. Sandhurcka 27, 00-712 Warszawa<br />+48 22 794 60 95<br />kontakt@wrzesinski.example",
+    "wrenfield-building.example<br />trustpilot.com/review/wrenfield-building.example<br />Page 1 of 3": "wrzesinski.example<br />Oceń nas na Trustpilocie<br />Strona 1 z 3"
   }
 }

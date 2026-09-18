@@ -62,13 +62,9 @@
     "A finished Provaro report page": "Uma página de relatório do Provaro pronta",
     "Wrenfield Building Services": "Werneck Reformas",
     "Bathroom refit &mdash; 14 Selborne Road": "Reforma de banheiro &mdash; Rua Selborne, 14",
-    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE6 1XN<br /> 14 August 2026": "Sr. e Sra. Andrade<br /> Rua Selborne, 14 — São Paulo SP 04547-130<br /> 14 de agosto de 2026",
     "Old suite stripped out and walls prepared": "Louças antigas retiradas e paredes preparadas",
     "A stripped-out bathroom with a red arrow drawn across the wall, dropping into place on the report page": "Um banheiro demolido com uma seta vermelha traçada atravessando a parede, caindo no lugar sobre a página do relatório",
     "Marked up on site &middot; 09:41": "Marcado na obra &middot; 09:41",
-    "<strong>Wrenfield Building Services</strong>VAT GB 123 4567 89": "<strong>Werneck Reformas</strong>CNPJ 12.345.678/0001-90",
-    "+44 20 7946 0958<br />hello@wrenfield.example": "+55 11 3794-6095<br />ola@werneck.example",
-    "wrenfield.example<br />Page 1 of 3": "werneck.example<br />Página 1 de 3",
     "At a glance": "Em resumo",
     "<strong>Under a minute</strong> <span>from the last photo to a finished PDF, standing on the job</span>": "<strong>Menos de um minuto</strong> <span>da última foto ao PDF pronto, de pé na obra</span>",
     "<strong><span data-price=\"pro\"></span> once</strong> <span>not per month and not per user — there is nothing to renew</span>": "<strong><span data-price=\"pro\"></span> uma vez</strong> <span>não por mês e não por usuário — não há o que renovar</span>",
@@ -118,8 +114,8 @@
     "<b>Your details, every page</b>Registration number, phone, email and your review link.": "<b>Seus dados, em toda página</b>CNPJ, telefone, e-mail e o seu link de avaliação.",
     "A finished Provaro report page, annotated": "Uma página de relatório do Provaro pronta, com anotações",
     "Stripped bathroom with a red arrow drawn across the wall to the corner that was made good": "Banheiro demolido com uma seta vermelha traçada atravessando a parede até o canto que foi recuperado",
-    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield.example": "Rua Sandhurst, 27 — São Paulo SP 04547-130<br />+55 11 3794-6095<br />ola@werneck.example",
-    "wrenfield.example<br />Review us on Trustpilot<br />Page 1 of 3": "werneck.example<br />Avalie a gente no Trustpilot<br />Página 1 de 3",
+    "Open a finished report": "Abrir um relatório pronto",
+    "Three pages, 528&nbsp;kB. Not a picture of a report — the file the app exported, opening the way it opens for your customer.": "Três páginas, 528&nbsp;kB, em inglês. Não é a foto de um relatório: é o arquivo que o app exportou, abrindo do mesmo jeito que abre para o seu cliente.",
     "The rest of it": "O resto",
     "Everything a job report should carry": "Tudo o que um diário de obra deveria levar",
     "Built for plumbers, electricians, roofers, builders, decorators, plasterers, damp and mould specialists, groundworkers and letting agents — anyone who has to show what they did.": "Feito para encanadores, eletricistas, telhadistas, pedreiros, pintores, gesseiros, especialistas em umidade e mofo, empresas de terraplenagem e administradoras de imóveis — quem precisa mostrar o que fez.",
@@ -239,6 +235,12 @@
     "Job photo reports for tradespeople": "Relatórios fotográficos para quem executa a obra",
     "Footer": "Rodapé",
     "Privacy policy": "Política de privacidade",
-    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Atualizado em agosto de 2026"
+    "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Updated August 2026": "&copy; 2026 <a href=\"https://www.12f.dk/\">12F ApS</a> &middot; CVR 45362957 &middot; <a href=\"mailto:provaro@12f.dk\">provaro@12f.dk</a> &middot; Atualizado em agosto de 2026",
+    "Mr &amp; Mrs Ashworth<br /> 14 Selborne Road, London SE13 5QP<br /> 14 August 2026": "Sr. e Sra. Andrade<br /> Rua Selborne, 14 — São Paulo SP 04547-130<br /> 14 de agosto de 2026",
+    "<strong>Wrenfield Building Services</strong>VAT number GB 123 4567 89": "<strong>Werneck Reformas</strong>CNPJ 12.345.678/0001-90",
+    "+44 20 7946 0958<br />hello@wrenfield-building.example": "+55 11 3794-6095<br />ola@werneck.example",
+    "wrenfield-building.example<br />Page 1 of 3": "werneck.example<br />Página 1 de 3",
+    "27 Sandhurst Road, London SE6 1XN<br />+44 20 7946 0958<br />hello@wrenfield-building.example": "Rua Sandhurst, 27 — São Paulo SP 04547-130<br />+55 11 3794-6095<br />ola@werneck.example",
+    "wrenfield-building.example<br />trustpilot.com/review/wrenfield-building.example<br />Page 1 of 3": "werneck.example<br />Avalie a gente no Trustpilot<br />Página 1 de 3"
   }
 }
