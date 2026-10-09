@@ -183,7 +183,7 @@
        plainly that visits are counted. -->
   <!-- Umami analytics: production-hostname guard — local dev (localhost/127.0.0.1/preview domains) never reports to the provaro.12f.dk production site. -->
 <script>
-(function(){var H="provaro.12f.dk",d=document;if(location.hostname===H||location.hostname==="www."+H){var s=d.createElement("script");s.src="https://umami.robert-jensen.dk/script.js";s.defer=true;s.dataset.websiteId="007e0c65-405a-4881-99a3-ca9bb0895715";d.head.appendChild(s);}})();
+(function(){var H="provaro.12f.dk",d=document;if(location.hostname===H||location.hostname==="www."+H){var s=d.createElement("script");s.src="https://umami.robert-jensen.dk/script.js";s.defer=true;s.dataset.websiteId="007e0c65-405a-4881-99a3-ca9bb0895715";s.dataset.performance="true";d.head.appendChild(s);}})();
 </script>
 
   <script type="application/ld+json">
