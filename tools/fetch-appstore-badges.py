@@ -40,6 +40,7 @@ ENDPOINT = ("https://toolbox.marketingtools.apple.com/api/badges/"
 # should not have to know about this table.
 BADGES = {
     None: "en-us",
+    "da": "da-dk",
     "de": "de-de",
     "es": "es-es",
     "fr": "fr-fr",
