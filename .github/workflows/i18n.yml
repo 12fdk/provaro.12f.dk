@@ -1,7 +1,7 @@
 name: Translations
 
-# index.html is the only page written by hand; /de/, /es/, /fr/, /it/, /ja/,
-# /nl/, /pl/ and /pt-br/ are generated from it and the catalogues in i18n/.
+# index.html is the only page written by hand; /da/, /de/, /es/, /fr/, /it/,
+# /ja/, /nl/, /pl/ and /pt-br/ are generated from it and the catalogues in i18n/.
 # Nothing enforces that by itself, so this does: it fails when a catalogue has
 # fallen behind the English source, and when the committed pages are not what
 # tools/build-i18n.py would write today. Either way the fix is the same —

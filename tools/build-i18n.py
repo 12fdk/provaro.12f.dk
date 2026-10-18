@@ -6,8 +6,8 @@ every translatable unit — the inner HTML of each leaf block, the handful of
 attributes a reader can see, and the string fields of the two JSON-LD blocks —
 and splices a language's catalogue back in to produce `<lang>/index.html`.
 
-Eight copies of a nine-hundred-line file cannot be kept in step by hand: the
-first English edit leaves seven pages quietly wrong. Generating them turns that
+Nine copies of a nine-hundred-line file cannot be kept in step by hand: the
+first English edit leaves eight pages quietly wrong. Generating them turns that
 into an error message. `--check` fails when a catalogue has drifted from the
 English source, so a copy change surfaces in CI rather than on the page.
 
@@ -24,7 +24,7 @@ Two things are deliberately kept out of the catalogues:
     prints yen — and the JSON-LD offer is restated in that currency.
   * Language names. The switcher lists every translation in its own language,
     which is the same list on every page, so it is built here rather than
-    translated nine times.
+    translated ten times.
 
 The App Store badge is artwork, not copy, so it is not in the catalogues
 either: each page is pointed at Apple's own badge for its language, at whatever
@@ -32,7 +32,7 @@ size that badge happens to be. tools/fetch-appstore-badges.py fetches them.
 
 Nor is the App Store link. Each page points at its own storefront and carries
 its own `ct=` campaign token, so App Store Connect can say which language page
-a download came from rather than filing all nine under "Web referrer".
+a download came from rather than filing all ten under "Web referrer".
 """
 
 import argparse
@@ -57,6 +57,8 @@ SITE = "https://provaro.12f.dk/"
 # for the same reason kroner earn it on the English one: a lot of the readers
 # are billed in it.
 LANGUAGES = {
+    "da": dict(dirname="da", tag="da", locale="da_DK", code="DA", name="Dansk",
+               aria="Sprog", cjk=False, store="dk", primary="dk", second=None),
     "de": dict(dirname="de", tag="de", locale="de_DE", code="DE", name="Deutsch",
                aria="Sprache", cjk=False, store="de", primary="de", second="ch"),
     "es": dict(dirname="es", tag="es", locale="es_ES", code="ES", name="Español",
@@ -76,7 +78,7 @@ LANGUAGES = {
                   primary="br", second=None),
 }
 
-# The English page is one of the nine the switcher lists, and it is the
+# The English page is one of the ten the switcher lists, and it is the
 # x-default, so it belongs in the same table when the menu is built.
 ENGLISH = dict(dirname="", tag="en", locale="en_GB", code="EN", name="English",
                aria="Language", cjk=False, store="us", primary="ie", second="dk")
@@ -390,7 +392,7 @@ def badge(doc, lang):
 
 def langpick(current):
     order = [ENGLISH] + [LANGUAGES[k] for k in
-                         ("de", "es", "fr", "it", "ja", "nl", "pl", "pt-br")]
+                         ("da", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-br")]
     links = "\n".join(
         '          <a href="/%s" hreflang="%s" lang="%s"%s>%s</a>' % (
             (lang["dirname"] + "/") if lang["dirname"] else "",
